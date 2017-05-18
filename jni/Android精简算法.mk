@@ -28,14 +28,6 @@ LOCAL_SRC_FILES :=\
 	o_fips.c \
 	o_init.c \
 	fips_ers.c \
-	aes/aes_cbc.c \
-	aes/aes_cfb.c \
-	aes/aes_ctr.c \
-	aes/aes_ecb.c \
-	aes/aes_ige.c \
-	aes/aes_misc.c \
-	aes/aes_ofb.c \
-	aes/aes_wrap.c \
 	asn1/a_bitstr.c \
 	asn1/a_bool.c \
 	asn1/a_bytes.c \
@@ -208,28 +200,6 @@ LOCAL_SRC_FILES :=\
 	des/set_key.c \
 	des/str2key.c \
 	des/xcbc_enc.c \
-	dh/dh_ameth.c \
-	dh/dh_asn1.c \
-	dh/dh_check.c \
-	dh/dh_depr.c \
-	dh/dh_err.c \
-	dh/dh_gen.c \
-	dh/dh_key.c \
-	dh/dh_lib.c \
-	dh/dh_pmeth.c \
-	dh/dh_prn.c \
-	dsa/dsa_ameth.c \
-	dsa/dsa_asn1.c \
-	dsa/dsa_depr.c \
-	dsa/dsa_err.c \
-	dsa/dsa_gen.c \
-	dsa/dsa_key.c \
-	dsa/dsa_lib.c \
-	dsa/dsa_ossl.c \
-	dsa/dsa_pmeth.c \
-	dsa/dsa_prn.c \
-	dsa/dsa_sign.c \
-	dsa/dsa_vrf.c \
 	dso/dso_dl.c \
 	dso/dso_dlfcn.c \
 	dso/dso_err.c \
@@ -239,40 +209,6 @@ LOCAL_SRC_FILES :=\
 	dso/dso_vms.c \
 	dso/dso_win32.c \
 	dso/dso_beos.c \
-	ec/ec2_mult.c \
-	ec/ec2_smpl.c \
-	ec/ec_ameth.c \
-	ec/ec_asn1.c \
-	ec/ec_check.c \
-	ec/ec_curve.c \
-	ec/ec_cvt.c \
-	ec/ec_err.c \
-	ec/ec_key.c \
-	ec/ec_lib.c \
-	ec/ec_mult.c \
-	ec/ec_pmeth.c \
-	ec/ec_print.c \
-	ec/eck_prn.c \
-	ec/ecp_mont.c \
-	ec/ecp_nist.c \
-	ec/ecp_smpl.c \
-	ec/ecp_nistp224.c \
-	ec/ecp_nistp256.c \
-	ec/ecp_nistp521.c \
-	ec/ecp_nistputil.c \
-	ec/ecp_oct.c \
-	ec/ec2_oct.c \
-	ec/ec_oct.c \
-	ecdh/ech_err.c \
-	ecdh/ech_key.c \
-	ecdh/ech_lib.c \
-	ecdh/ech_ossl.c \
-	ecdsa/ecs_asn1.c \
-	ecdsa/ecs_err.c \
-	ecdsa/ecs_lib.c \
-	ecdsa/ecs_ossl.c \
-	ecdsa/ecs_sign.c \
-	ecdsa/ecs_vrf.c \
 	err/err.c \
 	err/err_all.c \
 	err/err_prn.c \
@@ -342,8 +278,6 @@ LOCAL_SRC_FILES :=\
 	krb5/krb5_asn.c \
 	lhash/lh_stats.c \
 	lhash/lhash.c \
-	md4/md4_dgst.c \
-	md4/md4_one.c \
 	md5/md5_dgst.c \
 	md5/md5_one.c \
 	modes/cbc128.c \
@@ -418,28 +352,6 @@ LOCAL_SRC_FILES :=\
 	rc4/rc4_enc.c \
 	rc4/rc4_skey.c \
 	rc4/rc4_utl.c \
-	ripemd/rmd_dgst.c \
-	ripemd/rmd_one.c \
-	rsa/rsa_ameth.c \
-	rsa/rsa_asn1.c \
-	rsa/rsa_chk.c \
-	rsa/rsa_eay.c \
-	rsa/rsa_err.c \
-	rsa/rsa_gen.c \
-	rsa/rsa_lib.c \
-	rsa/rsa_none.c \
-	rsa/rsa_null.c \
-	rsa/rsa_oaep.c \
-	rsa/rsa_pk1.c \
-	rsa/rsa_pmeth.c \
-	rsa/rsa_prn.c \
-	rsa/rsa_pss.c \
-	rsa/rsa_saos.c \
-	rsa/rsa_sign.c \
-	rsa/rsa_ssl.c \
-	rsa/rsa_x931.c \
-	rsa/rsa_depr.c \
-	rsa/rsa_crpt.c \
 	sha/sha1_one.c \
 	sha/sha1dgst.c \
 	sha/sha256.c \
@@ -543,13 +455,14 @@ LOCAL_CFLAGS += -DOPENSSL_THREADS -D_REENTRANT -DDSO_DLFCN -DHAVE_DLFCN_H -DL_EN
 
 # From DEPFLAG=
 LOCAL_CFLAGS += -DOPENSSL_NO_CAMELLIA -DOPENSSL_NO_CAPIENG -DOPENSSL_NO_CAST -DOPENSSL_NO_CMS -DOPENSSL_NO_GMP -DOPENSSL_NO_IDEA -DOPENSSL_NO_JPAKE -DOPENSSL_NO_MD2 -DOPENSSL_NO_MDC2 -DOPENSSL_NO_RC5 -DOPENSSL_NO_SHA0 -DOPENSSL_NO_RFC3779 -DOPENSSL_NO_SEED -DOPENSSL_NO_STORE -DOPENSSL_NO_WHIRLPOOL
-
+LOCAL_CFLAGS += -DOPENSSL_NO_RIPEMD
 # Extra
 LOCAL_CFLAGS += -DOPENSSL_NO_HW -DOPENSSL_NO_ENGINE 
 #LOCAL_CFLAGS += -DZLIB
 
 #Disable crypto Algorithm
-#LOCAL_CFLAGS += -DOPENSSL_NO_AES #-DOPENSSL_NO_BIO
+LOCAL_CFLAGS += -DOPENSSL_NO_AES -DOPENSSL_NO_RSA -DOPENSSL_NO_DSA #-DOPENSSL_NO_BIO
+LOCAL_CFLAGS += -DOPENSSL_NO_DH -DOPENSSL_NO_EC -DOPENSSL_NO_ECDH -DOPENSSL_NO_ECDSA -DOPENSSL_NO_MD4
 
 # Debug
 # LOCAL_CFLAGS += -DCIPHER_DEBUG	
