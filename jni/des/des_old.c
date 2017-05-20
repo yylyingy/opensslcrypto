@@ -78,10 +78,10 @@
 #include <openssl/des.h>
 #include <openssl/rand.h>
 
-const char *_ossl_old_des_options(void)
-{
-    return DES_options();
-}
+// const char *_ossl_old_des_options(void)
+// {
+    // return DES_options();
+// }
 
 void _ossl_old_des_ecb3_encrypt(_ossl_old_des_cblock *input,
                                 _ossl_old_des_cblock *output,
@@ -218,17 +218,17 @@ void _ossl_old_des_xwhite_in2out(_ossl_old_des_cblock (*des_key),
 }
 #endif
 
-int _ossl_old_des_enc_read(int fd, char *buf, int len, des_key_schedule sched,
-                           _ossl_old_des_cblock *iv)
-{
-    return DES_enc_read(fd, buf, len, (DES_key_schedule *)sched, iv);
-}
+// int _ossl_old_des_enc_read(int fd, char *buf, int len, des_key_schedule sched,
+                           // _ossl_old_des_cblock *iv)
+// {
+    // return DES_enc_read(fd, buf, len, (DES_key_schedule *)sched, iv);
+// }
 
-int _ossl_old_des_enc_write(int fd, char *buf, int len,
-                            des_key_schedule sched, _ossl_old_des_cblock *iv)
-{
-    return DES_enc_write(fd, buf, len, (DES_key_schedule *)sched, iv);
-}
+// int _ossl_old_des_enc_write(int fd, char *buf, int len,
+                            // des_key_schedule sched, _ossl_old_des_cblock *iv)
+// {
+    // return DES_enc_write(fd, buf, len, (DES_key_schedule *)sched, iv);
+// }
 
 char *_ossl_old_des_fcrypt(const char *buf, const char *salt, char *ret)
 {
@@ -273,26 +273,26 @@ DES_LONG _ossl_old_des_quad_cksum(_ossl_old_des_cblock *input,
 
 void _ossl_old_des_random_seed(_ossl_old_des_cblock key)
 {
-    RAND_seed(key, sizeof(_ossl_old_des_cblock));
+    //RAND_seed(key, sizeof(_ossl_old_des_cblock));
 }
 
-void _ossl_old_des_random_key(_ossl_old_des_cblock ret)
-{
-    DES_random_key((DES_cblock *)ret);
-}
+// void _ossl_old_des_random_key(_ossl_old_des_cblock ret)
+// {
+    // DES_random_key((DES_cblock *)ret);
+// }
 
-int _ossl_old_des_read_password(_ossl_old_des_cblock *key, const char *prompt,
-                                int verify)
-{
-    return DES_read_password(key, prompt, verify);
-}
+// int _ossl_old_des_read_password(_ossl_old_des_cblock *key, const char *prompt,
+                                // int verify)
+// {
+    // return DES_read_password(key, prompt, verify);
+// }
 
-int _ossl_old_des_read_2passwords(_ossl_old_des_cblock *key1,
-                                  _ossl_old_des_cblock *key2,
-                                  const char *prompt, int verify)
-{
-    return DES_read_2passwords(key1, key2, prompt, verify);
-}
+// int _ossl_old_des_read_2passwords(_ossl_old_des_cblock *key1,
+                                  // _ossl_old_des_cblock *key2,
+                                  // const char *prompt, int verify)
+// {
+    // return DES_read_2passwords(key1, key2, prompt, verify);
+// }
 
 void _ossl_old_des_set_odd_parity(_ossl_old_des_cblock *key)
 {
@@ -316,16 +316,16 @@ int _ossl_old_des_key_sched(_ossl_old_des_cblock *key,
     return DES_key_sched(key, (DES_key_schedule *)schedule);
 }
 
-void _ossl_old_des_string_to_key(char *str, _ossl_old_des_cblock *key)
-{
-    DES_string_to_key(str, key);
-}
+// void _ossl_old_des_string_to_key(char *str, _ossl_old_des_cblock *key)
+// {
+    // DES_string_to_key(str, key);
+// }
 
-void _ossl_old_des_string_to_2keys(char *str, _ossl_old_des_cblock *key1,
-                                   _ossl_old_des_cblock *key2)
-{
-    DES_string_to_2keys(str, key1, key2);
-}
+// void _ossl_old_des_string_to_2keys(char *str, _ossl_old_des_cblock *key1,
+                                   // _ossl_old_des_cblock *key2)
+// {
+    // DES_string_to_2keys(str, key1, key2);
+// }
 
 void _ossl_old_des_cfb64_encrypt(unsigned char *in, unsigned char *out,
                                  long length, des_key_schedule schedule,

@@ -239,12 +239,12 @@ struct st_ERR_FNS {
 };
 
 /* Predeclarations of the "err_defaults" functions */
-static LHASH_OF(ERR_STRING_DATA) *int_err_get(int create);
+//static LHASH_OF(ERR_STRING_DATA) *int_err_get(int create);
 static void int_err_del(void);
 static ERR_STRING_DATA *int_err_get_item(const ERR_STRING_DATA *);
 static ERR_STRING_DATA *int_err_set_item(ERR_STRING_DATA *);
 static ERR_STRING_DATA *int_err_del_item(ERR_STRING_DATA *);
-static LHASH_OF(ERR_STATE) *int_thread_get(int create);
+//static LHASH_OF(ERR_STATE) *int_thread_get(int create);
 static void int_thread_release(LHASH_OF(ERR_STATE) **hash);
 static ERR_STATE *int_thread_get_item(const ERR_STATE *);
 static ERR_STATE *int_thread_set_item(ERR_STATE *);
@@ -252,12 +252,12 @@ static void int_thread_del_item(const ERR_STATE *);
 static int int_err_get_next_lib(void);
 /* The static ERR_FNS table using these defaults functions */
 static const ERR_FNS err_defaults = {
-    int_err_get,
+    //int_err_get,
     int_err_del,
     int_err_get_item,
     int_err_set_item,
     int_err_del_item,
-    int_thread_get,
+    //int_thread_get,
     int_thread_release,
     int_thread_get_item,
     int_thread_set_item,
@@ -353,22 +353,22 @@ static int err_string_data_cmp(const ERR_STRING_DATA *a,
 
 static IMPLEMENT_LHASH_COMP_FN(err_string_data, ERR_STRING_DATA)
 
-static LHASH_OF(ERR_STRING_DATA) *int_err_get(int create)
-{
-    LHASH_OF(ERR_STRING_DATA) *ret = NULL;
+// static LHASH_OF(ERR_STRING_DATA) *int_err_get(int create)
+// {
+    // LHASH_OF(ERR_STRING_DATA) *ret = NULL;
 
-    CRYPTO_w_lock(CRYPTO_LOCK_ERR);
-    if (!int_error_hash && create) {
-        CRYPTO_push_info("int_err_get (err.c)");
-        int_error_hash = lh_ERR_STRING_DATA_new();
-        CRYPTO_pop_info();
-    }
-    if (int_error_hash)
-        ret = int_error_hash;
-    CRYPTO_w_unlock(CRYPTO_LOCK_ERR);
+    // CRYPTO_w_lock(CRYPTO_LOCK_ERR);
+    // if (!int_error_hash && create) {
+        // CRYPTO_push_info("int_err_get (err.c)");
+        // int_error_hash = lh_ERR_STRING_DATA_new();
+        // CRYPTO_pop_info();
+    // }
+    // if (int_error_hash)
+        // ret = int_error_hash;
+    // CRYPTO_w_unlock(CRYPTO_LOCK_ERR);
 
-    return ret;
-}
+    // return ret;
+// }
 
 static void int_err_del(void)
 {
@@ -445,23 +445,23 @@ static int err_state_cmp(const ERR_STATE *a, const ERR_STATE *b)
 
 static IMPLEMENT_LHASH_COMP_FN(err_state, ERR_STATE)
 
-static LHASH_OF(ERR_STATE) *int_thread_get(int create)
-{
-    LHASH_OF(ERR_STATE) *ret = NULL;
+// static LHASH_OF(ERR_STATE) *int_thread_get(int create)
+// {
+    // LHASH_OF(ERR_STATE) *ret = NULL;
 
-    CRYPTO_w_lock(CRYPTO_LOCK_ERR);
-    if (!int_thread_hash && create) {
-        CRYPTO_push_info("int_thread_get (err.c)");
-        int_thread_hash = lh_ERR_STATE_new();
-        CRYPTO_pop_info();
-    }
-    if (int_thread_hash) {
-        int_thread_hash_references++;
-        ret = int_thread_hash;
-    }
-    CRYPTO_w_unlock(CRYPTO_LOCK_ERR);
-    return ret;
-}
+    // CRYPTO_w_lock(CRYPTO_LOCK_ERR);
+    // if (!int_thread_hash && create) {
+        // CRYPTO_push_info("int_thread_get (err.c)");
+        // int_thread_hash = lh_ERR_STATE_new();
+        // CRYPTO_pop_info();
+    // }
+    // if (int_thread_hash) {
+        // int_thread_hash_references++;
+        // ret = int_thread_hash;
+    // }
+    // CRYPTO_w_unlock(CRYPTO_LOCK_ERR);
+    // return ret;
+// }
 
 static void int_thread_release(LHASH_OF(ERR_STATE) **hash)
 {

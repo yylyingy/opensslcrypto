@@ -210,39 +210,39 @@ void *sk_delete(_STACK *st, int loc)
     return (ret);
 }
 
-static int internal_find(_STACK *st, void *data, int ret_val_options)
-{
-    const void *const *r;
-    int i;
+// static int internal_find(_STACK *st, void *data, int ret_val_options)
+// {
+    // const void *const *r;
+    // int i;
 
-    if (st == NULL)
-        return -1;
+    // if (st == NULL)
+        // return -1;
 
-    if (st->comp == NULL) {
-        for (i = 0; i < st->num; i++)
-            if (st->data[i] == data)
-                return (i);
-        return (-1);
-    }
-    sk_sort(st);
-    if (data == NULL)
-        return (-1);
-    r = OBJ_bsearch_ex_(&data, st->data, st->num, sizeof(void *), st->comp,
-                        ret_val_options);
-    if (r == NULL)
-        return (-1);
-    return (int)((char **)r - st->data);
-}
+    // if (st->comp == NULL) {
+        // for (i = 0; i < st->num; i++)
+            // if (st->data[i] == data)
+                // return (i);
+        // return (-1);
+    // }
+    // sk_sort(st);
+    // if (data == NULL)
+        // return (-1);
+    // r = OBJ_bsearch_ex_(&data, st->data, st->num, sizeof(void *), st->comp,
+                        // ret_val_options);
+    // if (r == NULL)
+        // return (-1);
+    // return (int)((char **)r - st->data);
+// }
 
-int sk_find(_STACK *st, void *data)
-{
-    return internal_find(st, data, OBJ_BSEARCH_FIRST_VALUE_ON_MATCH);
-}
+// int sk_find(_STACK *st, void *data)
+// {
+    // return internal_find(st, data, OBJ_BSEARCH_FIRST_VALUE_ON_MATCH);
+// }
 
-int sk_find_ex(_STACK *st, void *data)
-{
-    return internal_find(st, data, OBJ_BSEARCH_VALUE_ON_NOMATCH);
-}
+// int sk_find_ex(_STACK *st, void *data)
+// {
+    // return internal_find(st, data, OBJ_BSEARCH_VALUE_ON_NOMATCH);
+// }
 
 int sk_push(_STACK *st, void *data)
 {

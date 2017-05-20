@@ -344,287 +344,287 @@ void usage(void)
     EXIT(1);
 }
 
-void doencryption(void)
-{
-#ifdef _LIBC
-    extern unsigned long time();
-#endif
+// void doencryption(void)
+// {
+// #ifdef _LIBC
+    // extern unsigned long time();
+// #endif
 
-    register int i;
-    DES_key_schedule ks, ks2;
-    DES_cblock iv, iv2;
-    char *p;
-    int num = 0, j, k, l, rem, ll, len, last, ex = 0;
-    DES_cblock kk, k2;
-    FILE *O;
-    int Exit = 0;
-#ifndef OPENSSL_SYS_MSDOS
-    static unsigned char buf[BUFSIZE + 8], obuf[BUFSIZE + 8];
-#else
-    static unsigned char *buf = NULL, *obuf = NULL;
+    // register int i;
+    // DES_key_schedule ks, ks2;
+    // DES_cblock iv, iv2;
+    // char *p;
+    // int num = 0, j, k, l, rem, ll, len, last, ex = 0;
+    // DES_cblock kk, k2;
+    // FILE *O;
+    // int Exit = 0;
+// #ifndef OPENSSL_SYS_MSDOS
+    // static unsigned char buf[BUFSIZE + 8], obuf[BUFSIZE + 8];
+// #else
+    // static unsigned char *buf = NULL, *obuf = NULL;
 
-    if (buf == NULL) {
-        if (((buf = OPENSSL_malloc(BUFSIZE + 8)) == NULL) ||
-            ((obuf = OPENSSL_malloc(BUFSIZE + 8)) == NULL)) {
-            fputs("Not enough memory\n", stderr);
-            Exit = 10;
-            goto problems;
-        }
-    }
-#endif
+    // if (buf == NULL) {
+        // if (((buf = OPENSSL_malloc(BUFSIZE + 8)) == NULL) ||
+            // ((obuf = OPENSSL_malloc(BUFSIZE + 8)) == NULL)) {
+            // fputs("Not enough memory\n", stderr);
+            // Exit = 10;
+            // goto problems;
+        // }
+    // }
+// #endif
 
-    if (hflag) {
-        j = (flag3 ? 16 : 8);
-        p = key;
-        for (i = 0; i < j; i++) {
-            k = 0;
-            if ((*p <= '9') && (*p >= '0'))
-                k = (*p - '0') << 4;
-            else if ((*p <= 'f') && (*p >= 'a'))
-                k = (*p - 'a' + 10) << 4;
-            else if ((*p <= 'F') && (*p >= 'A'))
-                k = (*p - 'A' + 10) << 4;
-            else {
-                fputs("Bad hex key\n", stderr);
-                Exit = 9;
-                goto problems;
-            }
-            p++;
-            if ((*p <= '9') && (*p >= '0'))
-                k |= (*p - '0');
-            else if ((*p <= 'f') && (*p >= 'a'))
-                k |= (*p - 'a' + 10);
-            else if ((*p <= 'F') && (*p >= 'A'))
-                k |= (*p - 'A' + 10);
-            else {
-                fputs("Bad hex key\n", stderr);
-                Exit = 9;
-                goto problems;
-            }
-            p++;
-            if (i < 8)
-                kk[i] = k;
-            else
-                k2[i - 8] = k;
-        }
-        DES_set_key_unchecked(&k2, &ks2);
-        OPENSSL_cleanse(k2, sizeof(k2));
-    } else if (longk || flag3) {
-        if (flag3) {
-            DES_string_to_2keys(key, &kk, &k2);
-            DES_set_key_unchecked(&k2, &ks2);
-            OPENSSL_cleanse(k2, sizeof(k2));
-        } else
-            DES_string_to_key(key, &kk);
-    } else
-        for (i = 0; i < KEYSIZ; i++) {
-            l = 0;
-            k = key[i];
-            for (j = 0; j < 8; j++) {
-                if (k & 1)
-                    l++;
-                k >>= 1;
-            }
-            if (l & 1)
-                kk[i] = key[i] & 0x7f;
-            else
-                kk[i] = key[i] | 0x80;
-        }
+    // if (hflag) {
+        // j = (flag3 ? 16 : 8);
+        // p = key;
+        // for (i = 0; i < j; i++) {
+            // k = 0;
+            // if ((*p <= '9') && (*p >= '0'))
+                // k = (*p - '0') << 4;
+            // else if ((*p <= 'f') && (*p >= 'a'))
+                // k = (*p - 'a' + 10) << 4;
+            // else if ((*p <= 'F') && (*p >= 'A'))
+                // k = (*p - 'A' + 10) << 4;
+            // else {
+                // fputs("Bad hex key\n", stderr);
+                // Exit = 9;
+                // goto problems;
+            // }
+            // p++;
+            // if ((*p <= '9') && (*p >= '0'))
+                // k |= (*p - '0');
+            // else if ((*p <= 'f') && (*p >= 'a'))
+                // k |= (*p - 'a' + 10);
+            // else if ((*p <= 'F') && (*p >= 'A'))
+                // k |= (*p - 'A' + 10);
+            // else {
+                // fputs("Bad hex key\n", stderr);
+                // Exit = 9;
+                // goto problems;
+            // }
+            // p++;
+            // if (i < 8)
+                // kk[i] = k;
+            // else
+                // k2[i - 8] = k;
+        // }
+        // DES_set_key_unchecked(&k2, &ks2);
+        // OPENSSL_cleanse(k2, sizeof(k2));
+    // } else if (longk || flag3) {
+        // if (flag3) {
+            // DES_string_to_2keys(key, &kk, &k2);
+            // DES_set_key_unchecked(&k2, &ks2);
+            // OPENSSL_cleanse(k2, sizeof(k2));
+        // } else
+            // DES_string_to_key(key, &kk);
+    // } else
+        // for (i = 0; i < KEYSIZ; i++) {
+            // l = 0;
+            // k = key[i];
+            // for (j = 0; j < 8; j++) {
+                // if (k & 1)
+                    // l++;
+                // k >>= 1;
+            // }
+            // if (l & 1)
+                // kk[i] = key[i] & 0x7f;
+            // else
+                // kk[i] = key[i] | 0x80;
+        // }
 
-    DES_set_key_unchecked(&kk, &ks);
-    OPENSSL_cleanse(key, sizeof(key));
-    OPENSSL_cleanse(kk, sizeof(kk));
-    /* woops - A bug that does not showup under unix :-( */
-    memset(iv, 0, sizeof(iv));
-    memset(iv2, 0, sizeof(iv2));
+    // DES_set_key_unchecked(&kk, &ks);
+    // OPENSSL_cleanse(key, sizeof(key));
+    // OPENSSL_cleanse(kk, sizeof(kk));
+    // /* woops - A bug that does not showup under unix :-( */
+    // memset(iv, 0, sizeof(iv));
+    // memset(iv2, 0, sizeof(iv2));
 
-    l = 1;
-    rem = 0;
-    /* first read */
-    if (eflag || (!dflag && cflag)) {
-        for (;;) {
-            num = l = fread(&(buf[rem]), 1, BUFSIZE, DES_IN);
-            l += rem;
-            num += rem;
-            if (l < 0) {
-                perror("read error");
-                Exit = 6;
-                goto problems;
-            }
+    // l = 1;
+    // rem = 0;
+    // /* first read */
+    // if (eflag || (!dflag && cflag)) {
+        // for (;;) {
+            // num = l = fread(&(buf[rem]), 1, BUFSIZE, DES_IN);
+            // l += rem;
+            // num += rem;
+            // if (l < 0) {
+                // perror("read error");
+                // Exit = 6;
+                // goto problems;
+            // }
 
-            rem = l % 8;
-            len = l - rem;
-            if (feof(DES_IN)) {
-                for (i = 7 - rem; i > 0; i--) {
-                    if (RAND_bytes(buf + l++, 1) <= 0)
-                        goto problems;
-                }
-                buf[l++] = rem;
-                ex = 1;
-                len += rem;
-            } else
-                l -= rem;
+            // rem = l % 8;
+            // len = l - rem;
+            // if (feof(DES_IN)) {
+                // for (i = 7 - rem; i > 0; i--) {
+                    // if (RAND_bytes(buf + l++, 1) <= 0)
+                        // goto problems;
+                // }
+                // buf[l++] = rem;
+                // ex = 1;
+                // len += rem;
+            // } else
+                // l -= rem;
 
-            if (cflag) {
-                DES_cbc_cksum(buf, &cksum, (long)len, &ks, &cksum);
-                if (!eflag) {
-                    if (feof(DES_IN))
-                        break;
-                    else
-                        continue;
-                }
-            }
+            // if (cflag) {
+                // DES_cbc_cksum(buf, &cksum, (long)len, &ks, &cksum);
+                // if (!eflag) {
+                    // if (feof(DES_IN))
+                        // break;
+                    // else
+                        // continue;
+                // }
+            // }
 
-            if (bflag && !flag3)
-                for (i = 0; i < l; i += 8)
-                    DES_ecb_encrypt((DES_cblock *)&(buf[i]),
-                                    (DES_cblock *)&(obuf[i]),
-                                    &ks, do_encrypt);
-            else if (flag3 && bflag)
-                for (i = 0; i < l; i += 8)
-                    DES_ecb2_encrypt((DES_cblock *)&(buf[i]),
-                                     (DES_cblock *)&(obuf[i]),
-                                     &ks, &ks2, do_encrypt);
-            else if (flag3 && !bflag) {
-                char tmpbuf[8];
+            // if (bflag && !flag3)
+                // for (i = 0; i < l; i += 8)
+                    // DES_ecb_encrypt((DES_cblock *)&(buf[i]),
+                                    // (DES_cblock *)&(obuf[i]),
+                                    // &ks, do_encrypt);
+            // else if (flag3 && bflag)
+                // for (i = 0; i < l; i += 8)
+                    // DES_ecb2_encrypt((DES_cblock *)&(buf[i]),
+                                     // (DES_cblock *)&(obuf[i]),
+                                     // &ks, &ks2, do_encrypt);
+            // else if (flag3 && !bflag) {
+                // char tmpbuf[8];
 
-                if (rem)
-                    memcpy(tmpbuf, &(buf[l]), (unsigned int)rem);
-                DES_3cbc_encrypt((DES_cblock *)buf, (DES_cblock *)obuf,
-                                 (long)l, ks, ks2, &iv, &iv2, do_encrypt);
-                if (rem)
-                    memcpy(&(buf[l]), tmpbuf, (unsigned int)rem);
-            } else {
-                DES_cbc_encrypt(buf, obuf, (long)l, &ks, &iv, do_encrypt);
-                if (l >= 8)
-                    memcpy(iv, &(obuf[l - 8]), 8);
-            }
-            if (rem)
-                memcpy(buf, &(buf[l]), (unsigned int)rem);
+                // if (rem)
+                    // memcpy(tmpbuf, &(buf[l]), (unsigned int)rem);
+                // DES_3cbc_encrypt((DES_cblock *)buf, (DES_cblock *)obuf,
+                                 // (long)l, ks, ks2, &iv, &iv2, do_encrypt);
+                // if (rem)
+                    // memcpy(&(buf[l]), tmpbuf, (unsigned int)rem);
+            // } else {
+                // DES_cbc_encrypt(buf, obuf, (long)l, &ks, &iv, do_encrypt);
+                // if (l >= 8)
+                    // memcpy(iv, &(obuf[l - 8]), 8);
+            // }
+            // if (rem)
+                // memcpy(buf, &(buf[l]), (unsigned int)rem);
 
-            i = 0;
-            while (i < l) {
-                if (uflag)
-                    j = uufwrite(obuf, 1, (unsigned int)l - i, DES_OUT);
-                else
-                    j = fwrite(obuf, 1, (unsigned int)l - i, DES_OUT);
-                if (j == -1) {
-                    perror("Write error");
-                    Exit = 7;
-                    goto problems;
-                }
-                i += j;
-            }
-            if (feof(DES_IN)) {
-                if (uflag)
-                    uufwriteEnd(DES_OUT);
-                break;
-            }
-        }
-    } else {                    /* decrypt */
+            // i = 0;
+            // while (i < l) {
+                // if (uflag)
+                    // j = uufwrite(obuf, 1, (unsigned int)l - i, DES_OUT);
+                // else
+                    // j = fwrite(obuf, 1, (unsigned int)l - i, DES_OUT);
+                // if (j == -1) {
+                    // perror("Write error");
+                    // Exit = 7;
+                    // goto problems;
+                // }
+                // i += j;
+            // }
+            // if (feof(DES_IN)) {
+                // if (uflag)
+                    // uufwriteEnd(DES_OUT);
+                // break;
+            // }
+        // }
+    // } else {                    /* decrypt */
 
-        ex = 1;
-        for (;;) {
-            if (ex) {
-                if (uflag)
-                    l = uufread(buf, 1, BUFSIZE, DES_IN);
-                else
-                    l = fread(buf, 1, BUFSIZE, DES_IN);
-                ex = 0;
-                rem = l % 8;
-                l -= rem;
-            }
-            if (l < 0) {
-                perror("read error");
-                Exit = 6;
-                goto problems;
-            }
+        // ex = 1;
+        // for (;;) {
+            // if (ex) {
+                // if (uflag)
+                    // l = uufread(buf, 1, BUFSIZE, DES_IN);
+                // else
+                    // l = fread(buf, 1, BUFSIZE, DES_IN);
+                // ex = 0;
+                // rem = l % 8;
+                // l -= rem;
+            // }
+            // if (l < 0) {
+                // perror("read error");
+                // Exit = 6;
+                // goto problems;
+            // }
 
-            if (bflag && !flag3)
-                for (i = 0; i < l; i += 8)
-                    DES_ecb_encrypt((DES_cblock *)&(buf[i]),
-                                    (DES_cblock *)&(obuf[i]),
-                                    &ks, do_encrypt);
-            else if (flag3 && bflag)
-                for (i = 0; i < l; i += 8)
-                    DES_ecb2_encrypt((DES_cblock *)&(buf[i]),
-                                     (DES_cblock *)&(obuf[i]),
-                                     &ks, &ks2, do_encrypt);
-            else if (flag3 && !bflag) {
-                DES_3cbc_encrypt((DES_cblock *)buf, (DES_cblock *)obuf,
-                                 (long)l, ks, ks2, &iv, &iv2, do_encrypt);
-            } else {
-                DES_cbc_encrypt(buf, obuf, (long)l, &ks, &iv, do_encrypt);
-                if (l >= 8)
-                    memcpy(iv, &(buf[l - 8]), 8);
-            }
+            // if (bflag && !flag3)
+                // for (i = 0; i < l; i += 8)
+                    // DES_ecb_encrypt((DES_cblock *)&(buf[i]),
+                                    // (DES_cblock *)&(obuf[i]),
+                                    // &ks, do_encrypt);
+            // else if (flag3 && bflag)
+                // for (i = 0; i < l; i += 8)
+                    // DES_ecb2_encrypt((DES_cblock *)&(buf[i]),
+                                     // (DES_cblock *)&(obuf[i]),
+                                     // &ks, &ks2, do_encrypt);
+            // else if (flag3 && !bflag) {
+                // DES_3cbc_encrypt((DES_cblock *)buf, (DES_cblock *)obuf,
+                                 // (long)l, ks, ks2, &iv, &iv2, do_encrypt);
+            // } else {
+                // DES_cbc_encrypt(buf, obuf, (long)l, &ks, &iv, do_encrypt);
+                // if (l >= 8)
+                    // memcpy(iv, &(buf[l - 8]), 8);
+            // }
 
-            if (uflag)
-                ll = uufread(&(buf[rem]), 1, BUFSIZE, DES_IN);
-            else
-                ll = fread(&(buf[rem]), 1, BUFSIZE, DES_IN);
-            ll += rem;
-            rem = ll % 8;
-            ll -= rem;
-            if (feof(DES_IN) && (ll == 0)) {
-                last = obuf[l - 1];
+            // if (uflag)
+                // ll = uufread(&(buf[rem]), 1, BUFSIZE, DES_IN);
+            // else
+                // ll = fread(&(buf[rem]), 1, BUFSIZE, DES_IN);
+            // ll += rem;
+            // rem = ll % 8;
+            // ll -= rem;
+            // if (feof(DES_IN) && (ll == 0)) {
+                // last = obuf[l - 1];
 
-                if ((last > 7) || (last < 0)) {
-                    fputs("The file was not decrypted correctly.\n", stderr);
-                    Exit = 8;
-                    last = 0;
-                }
-                l = l - 8 + last;
-            }
-            i = 0;
-            if (cflag)
-                DES_cbc_cksum(obuf,
-                              (DES_cblock *)cksum, (long)l / 8 * 8, &ks,
-                              (DES_cblock *)cksum);
-            while (i != l) {
-                j = fwrite(obuf, 1, (unsigned int)l - i, DES_OUT);
-                if (j == -1) {
-                    perror("Write error");
-                    Exit = 7;
-                    goto problems;
-                }
-                i += j;
-            }
-            l = ll;
-            if ((l == 0) && feof(DES_IN))
-                break;
-        }
-    }
-    if (cflag) {
-        l = 0;
-        if (cksumname[0] != '\0') {
-            if ((O = fopen(cksumname, "w")) != NULL) {
-                CKSUM_OUT = O;
-                l = 1;
-            }
-        }
-        for (i = 0; i < 8; i++)
-            fprintf(CKSUM_OUT, "%02X", cksum[i]);
-        fprintf(CKSUM_OUT, "\n");
-        if (l)
-            fclose(CKSUM_OUT);
-    }
- problems:
-    OPENSSL_cleanse(buf, sizeof(buf));
-    OPENSSL_cleanse(obuf, sizeof(obuf));
-    OPENSSL_cleanse(&ks, sizeof(ks));
-    OPENSSL_cleanse(&ks2, sizeof(ks2));
-    OPENSSL_cleanse(iv, sizeof(iv));
-    OPENSSL_cleanse(iv2, sizeof(iv2));
-    OPENSSL_cleanse(kk, sizeof(kk));
-    OPENSSL_cleanse(k2, sizeof(k2));
-    OPENSSL_cleanse(uubuf, sizeof(uubuf));
-    OPENSSL_cleanse(b, sizeof(b));
-    OPENSSL_cleanse(bb, sizeof(bb));
-    OPENSSL_cleanse(cksum, sizeof(cksum));
-    if (Exit)
-        EXIT(Exit);
-}
+                // if ((last > 7) || (last < 0)) {
+                    // fputs("The file was not decrypted correctly.\n", stderr);
+                    // Exit = 8;
+                    // last = 0;
+                // }
+                // l = l - 8 + last;
+            // }
+            // i = 0;
+            // if (cflag)
+                // DES_cbc_cksum(obuf,
+                              // (DES_cblock *)cksum, (long)l / 8 * 8, &ks,
+                              // (DES_cblock *)cksum);
+            // while (i != l) {
+                // j = fwrite(obuf, 1, (unsigned int)l - i, DES_OUT);
+                // if (j == -1) {
+                    // perror("Write error");
+                    // Exit = 7;
+                    // goto problems;
+                // }
+                // i += j;
+            // }
+            // l = ll;
+            // if ((l == 0) && feof(DES_IN))
+                // break;
+        // }
+    // }
+    // if (cflag) {
+        // l = 0;
+        // if (cksumname[0] != '\0') {
+            // if ((O = fopen(cksumname, "w")) != NULL) {
+                // CKSUM_OUT = O;
+                // l = 1;
+            // }
+        // }
+        // for (i = 0; i < 8; i++)
+            // fprintf(CKSUM_OUT, "%02X", cksum[i]);
+        // fprintf(CKSUM_OUT, "\n");
+        // if (l)
+            // fclose(CKSUM_OUT);
+    // }
+ // problems:
+    // OPENSSL_cleanse(buf, sizeof(buf));
+    // OPENSSL_cleanse(obuf, sizeof(obuf));
+    // OPENSSL_cleanse(&ks, sizeof(ks));
+    // OPENSSL_cleanse(&ks2, sizeof(ks2));
+    // OPENSSL_cleanse(iv, sizeof(iv));
+    // OPENSSL_cleanse(iv2, sizeof(iv2));
+    // OPENSSL_cleanse(kk, sizeof(kk));
+    // OPENSSL_cleanse(k2, sizeof(k2));
+    // OPENSSL_cleanse(uubuf, sizeof(uubuf));
+    // OPENSSL_cleanse(b, sizeof(b));
+    // OPENSSL_cleanse(bb, sizeof(bb));
+    // OPENSSL_cleanse(cksum, sizeof(cksum));
+    // if (Exit)
+        // EXIT(Exit);
+// }
 
 /*    We ignore this parameter but it should be > ~50 I believe    */
 int uufwrite(unsigned char *data, int size, unsigned int num, FILE *fp)

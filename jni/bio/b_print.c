@@ -781,47 +781,47 @@ doapr_outch(char **sbuffer,
 
 /***************************************************************************/
 
-int BIO_printf(BIO *bio, const char *format, ...)
-{
-    va_list args;
-    int ret;
+// int BIO_printf(BIO *bio, const char *format, ...)
+// {
+    // va_list args;
+    // int ret;
 
-    va_start(args, format);
+    // va_start(args, format);
 
-    ret = BIO_vprintf(bio, format, args);
+    // ret = BIO_vprintf(bio, format, args);
 
-    va_end(args);
-    return (ret);
-}
+    // va_end(args);
+    // return (ret);
+// }
 
-int BIO_vprintf(BIO *bio, const char *format, va_list args)
-{
-    int ret;
-    size_t retlen;
-    char hugebuf[1024 * 2];     /* Was previously 10k, which is unreasonable
-                                 * in small-stack environments, like threads
-                                 * or DOS programs. */
-    char *hugebufp = hugebuf;
-    size_t hugebufsize = sizeof(hugebuf);
-    char *dynbuf = NULL;
-    int ignored;
+// int BIO_vprintf(BIO *bio, const char *format, va_list args)
+// {
+    // int ret;
+    // size_t retlen;
+    // char hugebuf[1024 * 2];     /* Was previously 10k, which is unreasonable
+                                 // * in small-stack environments, like threads
+                                 // * or DOS programs. */
+    // char *hugebufp = hugebuf;
+    // size_t hugebufsize = sizeof(hugebuf);
+    // char *dynbuf = NULL;
+    // int ignored;
 
-    dynbuf = NULL;
-    CRYPTO_push_info("doapr()");
-    if (!_dopr(&hugebufp, &dynbuf, &hugebufsize, &retlen, &ignored, format,
-                args)) {
-        OPENSSL_free(dynbuf);
-        return -1;
-    }
-    if (dynbuf) {
-        ret = BIO_write(bio, dynbuf, (int)retlen);
-        OPENSSL_free(dynbuf);
-    } else {
-        ret = BIO_write(bio, hugebuf, (int)retlen);
-    }
-    CRYPTO_pop_info();
-    return (ret);
-}
+    // dynbuf = NULL;
+    // CRYPTO_push_info("doapr()");
+    // if (!_dopr(&hugebufp, &dynbuf, &hugebufsize, &retlen, &ignored, format,
+                // args)) {
+        // OPENSSL_free(dynbuf);
+        // return -1;
+    // }
+    // if (dynbuf) {
+        // ret = BIO_write(bio, dynbuf, (int)retlen);
+        // OPENSSL_free(dynbuf);
+    // } else {
+        // ret = BIO_write(bio, hugebuf, (int)retlen);
+    // }
+    // CRYPTO_pop_info();
+    // return (ret);
+// }
 
 /*
  * As snprintf is not available everywhere, we provide our own

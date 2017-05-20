@@ -202,99 +202,99 @@ static void (MS_FAR *dynlock_destroy_callback) (struct CRYPTO_dynlock_value
                                                 *l, const char *file,
                                                 int line) = 0;
 
-int CRYPTO_get_new_lockid(char *name)
-{
-    char *str;
-    int i;
+// int CRYPTO_get_new_lockid(char *name)
+// {
+    // char *str;
+    // int i;
 
-#if defined(OPENSSL_SYS_WIN32) || defined(OPENSSL_SYS_WIN16)
-    /*
-     * A hack to make Visual C++ 5.0 work correctly when linking as a DLL
-     * using /MT. Without this, the application cannot use any floating point
-     * printf's. It also seems to be needed for Visual C 1.5 (win16)
-     */
-    SSLeay_MSVC5_hack = (double)name[0] * (double)name[1];
-#endif
+// #if defined(OPENSSL_SYS_WIN32) || defined(OPENSSL_SYS_WIN16)
+    // /*
+     // * A hack to make Visual C++ 5.0 work correctly when linking as a DLL
+     // * using /MT. Without this, the application cannot use any floating point
+     // * printf's. It also seems to be needed for Visual C 1.5 (win16)
+     // */
+    // SSLeay_MSVC5_hack = (double)name[0] * (double)name[1];
+// #endif
 
-    if ((app_locks == NULL)
-        && ((app_locks = sk_OPENSSL_STRING_new_null()) == NULL)) {
-        CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_LOCKID, ERR_R_MALLOC_FAILURE);
-        return (0);
-    }
-    if ((str = BUF_strdup(name)) == NULL) {
-        CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_LOCKID, ERR_R_MALLOC_FAILURE);
-        return (0);
-    }
-    i = sk_OPENSSL_STRING_push(app_locks, str);
-    if (!i)
-        OPENSSL_free(str);
-    else
-        i += CRYPTO_NUM_LOCKS;  /* gap of one :-) */
-    return (i);
-}
+    // if ((app_locks == NULL)
+        // && ((app_locks = sk_OPENSSL_STRING_new_null()) == NULL)) {
+        //CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_LOCKID, ERR_R_MALLOC_FAILURE);
+        // return (0);
+    // }
+    // if ((str = BUF_strdup(name)) == NULL) {
+        //CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_LOCKID, ERR_R_MALLOC_FAILURE);
+        // return (0);
+    // }
+    // i = sk_OPENSSL_STRING_push(app_locks, str);
+    // if (!i)
+        // OPENSSL_free(str);
+    // else
+        // i += CRYPTO_NUM_LOCKS;  /* gap of one :-) */
+    // return (i);
+// }
 
 int CRYPTO_num_locks(void)
 {
     return CRYPTO_NUM_LOCKS;
 }
 
-int CRYPTO_get_new_dynlockid(void)
-{
-    int i = 0;
-    CRYPTO_dynlock *pointer = NULL;
+// int CRYPTO_get_new_dynlockid(void)
+// {
+    // int i = 0;
+    // CRYPTO_dynlock *pointer = NULL;
 
-    if (dynlock_create_callback == NULL) {
-        CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_DYNLOCKID,
-                  CRYPTO_R_NO_DYNLOCK_CREATE_CALLBACK);
-        return (0);
-    }
-    CRYPTO_w_lock(CRYPTO_LOCK_DYNLOCK);
-    if ((dyn_locks == NULL)
-        && ((dyn_locks = sk_CRYPTO_dynlock_new_null()) == NULL)) {
-        CRYPTO_w_unlock(CRYPTO_LOCK_DYNLOCK);
-        CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_DYNLOCKID, ERR_R_MALLOC_FAILURE);
-        return (0);
-    }
-    CRYPTO_w_unlock(CRYPTO_LOCK_DYNLOCK);
+    // if (dynlock_create_callback == NULL) {
+        // CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_DYNLOCKID,
+                  //CRYPTO_R_NO_DYNLOCK_CREATE_CALLBACK);
+        // return (0);
+    // }
+    // CRYPTO_w_lock(CRYPTO_LOCK_DYNLOCK);
+    // if ((dyn_locks == NULL)
+        // && ((dyn_locks = sk_CRYPTO_dynlock_new_null()) == NULL)) {
+        // CRYPTO_w_unlock(CRYPTO_LOCK_DYNLOCK);
+        // CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_DYNLOCKID, ERR_R_MALLOC_FAILURE);
+        // return (0);
+    // }
+    // CRYPTO_w_unlock(CRYPTO_LOCK_DYNLOCK);
 
-    pointer = (CRYPTO_dynlock *) OPENSSL_malloc(sizeof(CRYPTO_dynlock));
-    if (pointer == NULL) {
-        CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_DYNLOCKID, ERR_R_MALLOC_FAILURE);
-        return (0);
-    }
-    pointer->references = 1;
-    pointer->data = dynlock_create_callback(__FILE__, __LINE__);
-    if (pointer->data == NULL) {
-        OPENSSL_free(pointer);
-        CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_DYNLOCKID, ERR_R_MALLOC_FAILURE);
-        return (0);
-    }
+    // pointer = (CRYPTO_dynlock *) OPENSSL_malloc(sizeof(CRYPTO_dynlock));
+    // if (pointer == NULL) {
+        // CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_DYNLOCKID, ERR_R_MALLOC_FAILURE);
+        // return (0);
+    // }
+    // pointer->references = 1;
+    // pointer->data = dynlock_create_callback(__FILE__, __LINE__);
+    // if (pointer->data == NULL) {
+        // OPENSSL_free(pointer);
+        // CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_DYNLOCKID, ERR_R_MALLOC_FAILURE);
+        // return (0);
+    // }
 
-    CRYPTO_w_lock(CRYPTO_LOCK_DYNLOCK);
-    /* First, try to find an existing empty slot */
-    i = sk_CRYPTO_dynlock_find(dyn_locks, NULL);
-    /* If there was none, push, thereby creating a new one */
-    if (i == -1)
-        /*
-         * Since sk_push() returns the number of items on the stack, not the
-         * location of the pushed item, we need to transform the returned
-         * number into a position, by decreasing it.
-         */
-        i = sk_CRYPTO_dynlock_push(dyn_locks, pointer) - 1;
-    else
-        /*
-         * If we found a place with a NULL pointer, put our pointer in it.
-         */
-        (void)sk_CRYPTO_dynlock_set(dyn_locks, i, pointer);
-    CRYPTO_w_unlock(CRYPTO_LOCK_DYNLOCK);
+    // CRYPTO_w_lock(CRYPTO_LOCK_DYNLOCK);
+    // /* First, try to find an existing empty slot */
+    // i = sk_CRYPTO_dynlock_find(dyn_locks, NULL);
+    // /* If there was none, push, thereby creating a new one */
+    // if (i == -1)
+        // /*
+         // * Since sk_push() returns the number of items on the stack, not the
+         // * location of the pushed item, we need to transform the returned
+         // * number into a position, by decreasing it.
+         // */
+        // i = sk_CRYPTO_dynlock_push(dyn_locks, pointer) - 1;
+    // else
+        // /*
+         // * If we found a place with a NULL pointer, put our pointer in it.
+         // */
+        // (void)sk_CRYPTO_dynlock_set(dyn_locks, i, pointer);
+    // CRYPTO_w_unlock(CRYPTO_LOCK_DYNLOCK);
 
-    if (i == -1) {
-        dynlock_destroy_callback(pointer->data, __FILE__, __LINE__);
-        OPENSSL_free(pointer);
-    } else
-        i += 1;                 /* to avoid 0 */
-    return -i;
-}
+    // if (i == -1) {
+        // dynlock_destroy_callback(pointer->data, __FILE__, __LINE__);
+        // OPENSSL_free(pointer);
+    // } else
+        // i += 1;                 /* to avoid 0 */
+    // return -i;
+// }
 
 void CRYPTO_destroy_dynlockid(int i)
 {

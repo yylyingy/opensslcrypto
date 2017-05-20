@@ -89,26 +89,26 @@ int RAND_set_rand_method(const RAND_METHOD *meth)
     return 1;
 }
 
-const RAND_METHOD *RAND_get_rand_method(void)
-{
-    if (!default_RAND_meth) {
-#ifndef OPENSSL_NO_ENGINE
-        ENGINE *e = ENGINE_get_default_RAND();
-        if (e) {
-            default_RAND_meth = ENGINE_get_RAND(e);
-            if (!default_RAND_meth) {
-                ENGINE_finish(e);
-                e = NULL;
-            }
-        }
-        if (e)
-            funct_ref = e;
-        else
-#endif
-            default_RAND_meth = RAND_SSLeay();
-    }
-    return default_RAND_meth;
-}
+// const RAND_METHOD *RAND_get_rand_method(void)
+// {
+    // if (!default_RAND_meth) {
+// #ifndef OPENSSL_NO_ENGINE
+        // ENGINE *e = ENGINE_get_default_RAND();
+        // if (e) {
+            // default_RAND_meth = ENGINE_get_RAND(e);
+            // if (!default_RAND_meth) {
+                // ENGINE_finish(e);
+                // e = NULL;
+            // }
+        // }
+        // if (e)
+            // funct_ref = e;
+        // else
+// #endif
+            // default_RAND_meth = RAND_SSLeay();
+    // }
+    // return default_RAND_meth;
+// }
 
 #ifndef OPENSSL_NO_ENGINE
 int RAND_set_rand_engine(ENGINE *engine)
@@ -130,51 +130,51 @@ int RAND_set_rand_engine(ENGINE *engine)
 }
 #endif
 
-void RAND_cleanup(void)
-{
-    const RAND_METHOD *meth = RAND_get_rand_method();
-    if (meth && meth->cleanup)
-        meth->cleanup();
-    RAND_set_rand_method(NULL);
-}
+// void RAND_cleanup(void)
+// {
+    // const RAND_METHOD *meth = RAND_get_rand_method();
+    // if (meth && meth->cleanup)
+        // meth->cleanup();
+    // RAND_set_rand_method(NULL);
+// }
 
-void RAND_seed(const void *buf, int num)
-{
-    const RAND_METHOD *meth = RAND_get_rand_method();
-    if (meth && meth->seed)
-        meth->seed(buf, num);
-}
+// void RAND_seed(const void *buf, int num)
+// {
+    // const RAND_METHOD *meth = RAND_get_rand_method();
+    // if (meth && meth->seed)
+        // meth->seed(buf, num);
+// }
 
-void RAND_add(const void *buf, int num, double entropy)
-{
-    const RAND_METHOD *meth = RAND_get_rand_method();
-    if (meth && meth->add)
-        meth->add(buf, num, entropy);
-}
+// void RAND_add(const void *buf, int num, double entropy)
+// {
+    // const RAND_METHOD *meth = RAND_get_rand_method();
+    // if (meth && meth->add)
+        // meth->add(buf, num, entropy);
+// }
 
-int RAND_bytes(unsigned char *buf, int num)
-{
-    const RAND_METHOD *meth = RAND_get_rand_method();
-    if (meth && meth->bytes)
-        return meth->bytes(buf, num);
-    return (-1);
-}
+// int RAND_bytes(unsigned char *buf, int num)
+// {
+    // const RAND_METHOD *meth = RAND_get_rand_method();
+    // if (meth && meth->bytes)
+        // return meth->bytes(buf, num);
+    // return (-1);
+// }
 
-int RAND_pseudo_bytes(unsigned char *buf, int num)
-{
-    const RAND_METHOD *meth = RAND_get_rand_method();
-    if (meth && meth->pseudorand)
-        return meth->pseudorand(buf, num);
-    return (-1);
-}
+// int RAND_pseudo_bytes(unsigned char *buf, int num)
+// {
+    // const RAND_METHOD *meth = RAND_get_rand_method();
+    // if (meth && meth->pseudorand)
+        // return meth->pseudorand(buf, num);
+    // return (-1);
+// }
 
-int RAND_status(void)
-{
-    const RAND_METHOD *meth = RAND_get_rand_method();
-    if (meth && meth->status)
-        return meth->status();
-    return 0;
-}
+// int RAND_status(void)
+// {
+    // const RAND_METHOD *meth = RAND_get_rand_method();
+    // if (meth && meth->status)
+        // return meth->status();
+    // return 0;
+// }
 
 #ifdef OPENSSL_FIPS
 

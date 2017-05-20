@@ -66,8 +66,8 @@
  * BIO_put and BIO_get both add to the digest, BIO_gets returns the digest
  */
 
-static int nbiof_write(BIO *h, const char *buf, int num);
-static int nbiof_read(BIO *h, char *buf, int size);
+//static int nbiof_write(BIO *h, const char *buf, int num);
+//static int nbiof_read(BIO *h, char *buf, int size);
 static int nbiof_puts(BIO *h, const char *str);
 static int nbiof_gets(BIO *h, char *str, int size);
 static long nbiof_ctrl(BIO *h, int cmd, long arg1, void *arg2);
@@ -83,8 +83,8 @@ typedef struct nbio_test_st {
 static BIO_METHOD methods_nbiof = {
     BIO_TYPE_NBIO_TEST,
     "non-blocking IO test filter",
-    nbiof_write,
-    nbiof_read,
+    //nbiof_write,
+    //nbiof_read,
     nbiof_puts,
     nbiof_gets,
     nbiof_ctrl,
@@ -124,83 +124,83 @@ static int nbiof_free(BIO *a)
     return (1);
 }
 
-static int nbiof_read(BIO *b, char *out, int outl)
-{
-    int ret = 0;
-#if 1
-    int num;
-    unsigned char n;
-#endif
+// static int nbiof_read(BIO *b, char *out, int outl)
+// {
+    // int ret = 0;
+// #if 1
+    // int num;
+    // unsigned char n;
+// #endif
 
-    if (out == NULL)
-        return (0);
-    if (b->next_bio == NULL)
-        return (0);
+    // if (out == NULL)
+        // return (0);
+    // if (b->next_bio == NULL)
+        // return (0);
 
-    BIO_clear_retry_flags(b);
-#if 1
-    if (RAND_bytes(&n, 1) <= 0)
-        return -1;
-    num = (n & 0x07);
+    // BIO_clear_retry_flags(b);
+// #if 1
+    // if (RAND_bytes(&n, 1) <= 0)
+        // return -1;
+    // num = (n & 0x07);
 
-    if (outl > num)
-        outl = num;
+    // if (outl > num)
+        // outl = num;
 
-    if (num == 0) {
-        ret = -1;
-        BIO_set_retry_read(b);
-    } else
-#endif
-    {
-        ret = BIO_read(b->next_bio, out, outl);
-        if (ret < 0)
-            BIO_copy_next_retry(b);
-    }
-    return (ret);
-}
+    // if (num == 0) {
+        // ret = -1;
+        // BIO_set_retry_read(b);
+    // } else
+// #endif
+    // {
+        // ret = BIO_read(b->next_bio, out, outl);
+        // if (ret < 0)
+            // BIO_copy_next_retry(b);
+    // }
+    // return (ret);
+// }
 
-static int nbiof_write(BIO *b, const char *in, int inl)
-{
-    NBIO_TEST *nt;
-    int ret = 0;
-    int num;
-    unsigned char n;
+// static int nbiof_write(BIO *b, const char *in, int inl)
+// {
+    // NBIO_TEST *nt;
+    // int ret = 0;
+    // int num;
+    // unsigned char n;
 
-    if ((in == NULL) || (inl <= 0))
-        return (0);
-    if (b->next_bio == NULL)
-        return (0);
-    nt = (NBIO_TEST *)b->ptr;
+    // if ((in == NULL) || (inl <= 0))
+        // return (0);
+    // if (b->next_bio == NULL)
+        // return (0);
+    // nt = (NBIO_TEST *)b->ptr;
 
-    BIO_clear_retry_flags(b);
+    // BIO_clear_retry_flags(b);
 
-#if 1
-    if (nt->lwn > 0) {
-        num = nt->lwn;
-        nt->lwn = 0;
-    } else {
-        if (RAND_bytes(&n, 1) <= 0)
-            return -1;
-        num = (n & 7);
-    }
+// #if 1
+    // if (nt->lwn > 0) {
+        // num = nt->lwn;
+        // nt->lwn = 0;
+    // } else {
+        // if (RAND_bytes(&n, 1) <= 0)
+            // return -1;
+        // num = (n & 7);
+    // }
 
-    if (inl > num)
-        inl = num;
+    // if (inl > num)
+        // inl = num;
 
-    if (num == 0) {
-        ret = -1;
-        BIO_set_retry_write(b);
-    } else
-#endif
-    {
-        ret = BIO_write(b->next_bio, in, inl);
-        if (ret < 0) {
-            BIO_copy_next_retry(b);
-            nt->lwn = inl;
-        }
-    }
-    return (ret);
-}
+    // if (num == 0) {
+        // ret = -1;
+        // BIO_set_retry_write(b);
+    // } else
+// #endif
+    // {
+        // ret = BIO_write(b->next_bio, in, inl);
+        // if (ret < 0) {
+            // BIO_copy_next_retry(b);
+            // nt->lwn = inl;
+        // }
+    // }
+    // return (ret);
+// }
 
 static long nbiof_ctrl(BIO *b, int cmd, long num, void *ptr)
 {

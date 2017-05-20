@@ -569,10 +569,10 @@ int BIO_get_ex_new_index(long argl, void *argp, CRYPTO_EX_new *new_func,
                                    new_func, dup_func, free_func);
 }
 
-int BIO_set_ex_data(BIO *bio, int idx, void *data)
-{
-    return (CRYPTO_set_ex_data(&(bio->ex_data), idx, data));
-}
+// int BIO_set_ex_data(BIO *bio, int idx, void *data)
+// {
+    // return (CRYPTO_set_ex_data(&(bio->ex_data), idx, data));
+// }
 
 void *BIO_get_ex_data(BIO *bio, int idx)
 {
