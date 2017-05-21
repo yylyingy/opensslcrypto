@@ -551,10 +551,10 @@ int UI_get_ex_new_index(long argl, void *argp, CRYPTO_EX_new *new_func,
                                    new_func, dup_func, free_func);
 }
 
-int UI_set_ex_data(UI *r, int idx, void *arg)
-{
-    return (CRYPTO_set_ex_data(&r->ex_data, idx, arg));
-}
+// int UI_set_ex_data(UI *r, int idx, void *arg)
+// {
+    // return (CRYPTO_set_ex_data(&r->ex_data, idx, arg));
+// }
 
 void *UI_get_ex_data(UI *r, int idx)
 {

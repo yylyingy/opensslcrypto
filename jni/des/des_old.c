@@ -271,10 +271,10 @@ DES_LONG _ossl_old_des_quad_cksum(_ossl_old_des_cblock *input,
                           out_count, seed);
 }
 
-void _ossl_old_des_random_seed(_ossl_old_des_cblock key)
-{
-    //RAND_seed(key, sizeof(_ossl_old_des_cblock));
-}
+// void _ossl_old_des_random_seed(_ossl_old_des_cblock key)
+// {
+    // RAND_seed(key, sizeof(_ossl_old_des_cblock));
+// }
 
 // void _ossl_old_des_random_key(_ossl_old_des_cblock ret)
 // {
@@ -316,16 +316,16 @@ int _ossl_old_des_key_sched(_ossl_old_des_cblock *key,
     return DES_key_sched(key, (DES_key_schedule *)schedule);
 }
 
-// void _ossl_old_des_string_to_key(char *str, _ossl_old_des_cblock *key)
-// {
-    // DES_string_to_key(str, key);
-// }
+void _ossl_old_des_string_to_key(char *str, _ossl_old_des_cblock *key)
+{
+    DES_string_to_key(str, key);
+}
 
-// void _ossl_old_des_string_to_2keys(char *str, _ossl_old_des_cblock *key1,
-                                   // _ossl_old_des_cblock *key2)
-// {
-    // DES_string_to_2keys(str, key1, key2);
-// }
+void _ossl_old_des_string_to_2keys(char *str, _ossl_old_des_cblock *key1,
+                                   _ossl_old_des_cblock *key2)
+{
+    DES_string_to_2keys(str, key1, key2);
+}
 
 void _ossl_old_des_cfb64_encrypt(unsigned char *in, unsigned char *out,
                                  long length, des_key_schedule schedule,

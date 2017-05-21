@@ -16,6 +16,7 @@ LOCAL_SRC_FILES :=\
 	cryptlib.c \
 	mem.c \
 	mem_clr.c \
+	mem_dbg.c \
 	o_init.c \
 	ex_data.c \
 	bio/b_print.c \
@@ -26,9 +27,7 @@ LOCAL_SRC_FILES :=\
 	bio/bio_cb.c \
 	bio/bio_err.c \
 	bio/bio_lib.c \
-	bio/bss_acpt.c \
 	bio/bss_bio.c \
-	bio/bss_conn.c \
 	bio/bss_dgram.c \
 	bio/bss_fd.c \
 	bio/bss_file.c \
@@ -63,11 +62,17 @@ LOCAL_SRC_FILES :=\
 	des/str2key.c \
 	des/xcbc_enc.c \
 	err/err.c \
+	err/err_prn.c \
 	evp/bio_b64.c \
+	evp/digest.c \
 	evp/encode.c \
 	lhash/lhash.c \
+	rand/rand_egd.c \
 	rand/rand_lib.c \
 	stack/stack.c \
+	ui/ui_lib.c \
+	ui/ui_openssl.c \
+	ui/ui_util.c \
 	buffer/buffer.c \
 	buffer/buf_str.c
 

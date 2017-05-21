@@ -1,0 +1,5822 @@
+diff --git a/jni/Android.mk b/jni/Android.mk
+index 24c2e52..785d626 100644
+--- a/jni/Android.mk
++++ b/jni/Android.mk
+@@ -16,109 +16,8 @@ LOCAL_SRC_FILES :=\
+ 	cryptlib.c \
+ 	mem.c \
+ 	mem_clr.c \
+-	mem_dbg.c \
+-	cversion.c \
+-	ex_data.c \
+-	cpt_err.c \
+-	ebcdic.c \
+-	uid.c \
+-	o_time.c \
+-	o_str.c \
+-	o_dir.c \
+-	o_fips.c \
+ 	o_init.c \
+-	fips_ers.c \
+-	aes/aes_cbc.c \
+-	aes/aes_cfb.c \
+-	aes/aes_ctr.c \
+-	aes/aes_ecb.c \
+-	aes/aes_ige.c \
+-	aes/aes_misc.c \
+-	aes/aes_ofb.c \
+-	aes/aes_wrap.c \
+-	asn1/a_bitstr.c \
+-	asn1/a_bool.c \
+-	asn1/a_bytes.c \
+-	asn1/a_d2i_fp.c \
+-	asn1/a_digest.c \
+-	asn1/a_dup.c \
+-	asn1/a_enum.c \
+-	asn1/a_gentm.c \
+-	asn1/a_i2d_fp.c \
+-	asn1/a_int.c \
+-	asn1/a_mbstr.c \
+-	asn1/a_object.c \
+-	asn1/a_octet.c \
+-	asn1/a_print.c \
+-	asn1/a_set.c \
+-	asn1/a_sign.c \
+-	asn1/a_strex.c \
+-	asn1/a_strnid.c \
+-	asn1/a_time.c \
+-	asn1/a_type.c \
+-	asn1/a_utctm.c \
+-	asn1/a_utf8.c \
+-	asn1/a_verify.c \
+-	asn1/ameth_lib.c \
+-	asn1/asn1_err.c \
+-	asn1/asn1_gen.c \
+-	asn1/asn1_lib.c \
+-	asn1/asn1_par.c \
+-	asn1/asn_mime.c \
+-	asn1/asn_moid.c \
+-	asn1/asn_pack.c \
+-	asn1/bio_asn1.c \
+-	asn1/bio_ndef.c \
+-	asn1/d2i_pr.c \
+-	asn1/d2i_pu.c \
+-	asn1/evp_asn1.c \
+-	asn1/f_enum.c \
+-	asn1/f_int.c \
+-	asn1/f_string.c \
+-	asn1/i2d_pr.c \
+-	asn1/i2d_pu.c \
+-	asn1/n_pkey.c \
+-	asn1/nsseq.c \
+-	asn1/p5_pbe.c \
+-	asn1/p5_pbev2.c \
+-	asn1/p8_pkey.c \
+-	asn1/t_bitst.c \
+-	asn1/t_crl.c \
+-	asn1/t_pkey.c \
+-	asn1/t_req.c \
+-	asn1/t_spki.c \
+-	asn1/t_x509.c \
+-	asn1/t_x509a.c \
+-	asn1/tasn_dec.c \
+-	asn1/tasn_enc.c \
+-	asn1/tasn_fre.c \
+-	asn1/tasn_new.c \
+-	asn1/tasn_prn.c \
+-	asn1/tasn_typ.c \
+-	asn1/tasn_utl.c \
+-	asn1/x_algor.c \
+-	asn1/x_attrib.c \
+-	asn1/x_bignum.c \
+-	asn1/x_crl.c \
+-	asn1/x_exten.c \
+-	asn1/x_info.c \
+-	asn1/x_long.c \
+-	asn1/x_name.c \
+-	asn1/x_nx509.c \
+-	asn1/x_pkey.c \
+-	asn1/x_pubkey.c \
+-	asn1/x_req.c \
+-	asn1/x_sig.c \
+-	asn1/x_spki.c \
+-	asn1/x_val.c \
+-	asn1/x_x509.c \
+-	asn1/x_x509a.c \
+-	bf/bf_cfb64.c \
+-	bf/bf_ecb.c \
+-	bf/bf_enc.c \
+-	bf/bf_ofb64.c \
+-	bf/bf_skey.c \
+-	bio/b_dump.c \
++	ex_data.c \
+ 	bio/b_print.c \
+ 	bio/b_sock.c \
+ 	bio/bf_buff.c \
+@@ -137,51 +36,6 @@ LOCAL_SRC_FILES :=\
+ 	bio/bss_mem.c \
+ 	bio/bss_null.c \
+ 	bio/bss_sock.c \
+-	bn/bn_add.c \
+-	bn/bn_asm.c \
+-	bn/bn_blind.c \
+-	bn/bn_const.c \
+-	bn/bn_ctx.c \
+-	bn/bn_depr.c \
+-	bn/bn_div.c \
+-	bn/bn_err.c \
+-	bn/bn_exp.c \
+-	bn/bn_exp2.c \
+-	bn/bn_gcd.c \
+-	bn/bn_gf2m.c \
+-	bn/bn_kron.c \
+-	bn/bn_lib.c \
+-	bn/bn_mod.c \
+-	bn/bn_mont.c \
+-	bn/bn_mpi.c \
+-	bn/bn_mul.c \
+-	bn/bn_nist.c \
+-	bn/bn_prime.c \
+-	bn/bn_print.c \
+-	bn/bn_rand.c \
+-	bn/bn_recp.c \
+-	bn/bn_shift.c \
+-	bn/bn_sqr.c \
+-	bn/bn_sqrt.c \
+-	bn/bn_word.c \
+-	bn/bn_x931p.c \
+-	buffer/buf_err.c \
+-	buffer/buf_str.c \
+-	buffer/buffer.c \
+-	cmac/cmac.c \
+-	cmac/cm_ameth.c \
+-	cmac/cm_pmeth.c \
+-	comp/c_rle.c \
+-	comp/c_zlib.c \
+-	comp/comp_err.c \
+-	comp/comp_lib.c \
+-	conf/conf_api.c \
+-	conf/conf_def.c \
+-	conf/conf_err.c \
+-	conf/conf_lib.c \
+-	conf/conf_mall.c \
+-	conf/conf_mod.c \
+-	conf/conf_sap.c \
+ 	des/cbc_cksm.c \
+ 	des/cbc_enc.c \
+ 	des/cfb64ede.c \
+@@ -208,324 +62,15 @@ LOCAL_SRC_FILES :=\
+ 	des/set_key.c \
+ 	des/str2key.c \
+ 	des/xcbc_enc.c \
+-	dh/dh_ameth.c \
+-	dh/dh_asn1.c \
+-	dh/dh_check.c \
+-	dh/dh_depr.c \
+-	dh/dh_err.c \
+-	dh/dh_gen.c \
+-	dh/dh_key.c \
+-	dh/dh_lib.c \
+-	dh/dh_pmeth.c \
+-	dh/dh_prn.c \
+-	dsa/dsa_ameth.c \
+-	dsa/dsa_asn1.c \
+-	dsa/dsa_depr.c \
+-	dsa/dsa_err.c \
+-	dsa/dsa_gen.c \
+-	dsa/dsa_key.c \
+-	dsa/dsa_lib.c \
+-	dsa/dsa_ossl.c \
+-	dsa/dsa_pmeth.c \
+-	dsa/dsa_prn.c \
+-	dsa/dsa_sign.c \
+-	dsa/dsa_vrf.c \
+-	dso/dso_dl.c \
+-	dso/dso_dlfcn.c \
+-	dso/dso_err.c \
+-	dso/dso_lib.c \
+-	dso/dso_null.c \
+-	dso/dso_openssl.c \
+-	dso/dso_vms.c \
+-	dso/dso_win32.c \
+-	dso/dso_beos.c \
+-	ec/ec2_mult.c \
+-	ec/ec2_smpl.c \
+-	ec/ec_ameth.c \
+-	ec/ec_asn1.c \
+-	ec/ec_check.c \
+-	ec/ec_curve.c \
+-	ec/ec_cvt.c \
+-	ec/ec_err.c \
+-	ec/ec_key.c \
+-	ec/ec_lib.c \
+-	ec/ec_mult.c \
+-	ec/ec_pmeth.c \
+-	ec/ec_print.c \
+-	ec/eck_prn.c \
+-	ec/ecp_mont.c \
+-	ec/ecp_nist.c \
+-	ec/ecp_smpl.c \
+-	ec/ecp_nistp224.c \
+-	ec/ecp_nistp256.c \
+-	ec/ecp_nistp521.c \
+-	ec/ecp_nistputil.c \
+-	ec/ecp_oct.c \
+-	ec/ec2_oct.c \
+-	ec/ec_oct.c \
+-	ecdh/ech_err.c \
+-	ecdh/ech_key.c \
+-	ecdh/ech_lib.c \
+-	ecdh/ech_ossl.c \
+-	ecdsa/ecs_asn1.c \
+-	ecdsa/ecs_err.c \
+-	ecdsa/ecs_lib.c \
+-	ecdsa/ecs_ossl.c \
+-	ecdsa/ecs_sign.c \
+-	ecdsa/ecs_vrf.c \
+ 	err/err.c \
+-	err/err_all.c \
+-	err/err_prn.c \
+ 	evp/bio_b64.c \
+-	evp/bio_enc.c \
+-	evp/bio_md.c \
+-	evp/bio_ok.c \
+-	evp/c_all.c \
+-	evp/c_allc.c \
+-	evp/c_alld.c \
+-	evp/digest.c \
+-	evp/e_aes.c \
+-	evp/e_bf.c \
+-	evp/e_des.c \
+-	evp/e_des3.c \
+-	evp/e_null.c \
+-	evp/e_old.c \
+-	evp/e_rc2.c \
+-	evp/e_rc4.c \
+-	evp/e_rc5.c \
+-	evp/e_xcbc_d.c \
+ 	evp/encode.c \
+-	evp/evp_acnf.c \
+-	evp/evp_cnf.c \
+-	evp/evp_enc.c \
+-	evp/evp_err.c \
+-	evp/evp_key.c \
+-	evp/evp_lib.c \
+-	evp/evp_pbe.c \
+-	evp/evp_pkey.c \
+-	evp/m_dss.c \
+-	evp/m_dss1.c \
+-	evp/m_ecdsa.c \
+-	evp/m_md4.c \
+-	evp/m_md5.c \
+-	evp/m_mdc2.c \
+-	evp/m_null.c \
+-	evp/m_ripemd.c \
+-	evp/m_sha1.c \
+-	evp/m_sigver.c \
+-	evp/m_wp.c \
+-	evp/names.c \
+-	evp/p5_crpt.c \
+-	evp/p5_crpt2.c \
+-	evp/p_dec.c \
+-	evp/p_enc.c \
+-	evp/p_lib.c \
+-	evp/p_open.c \
+-	evp/p_seal.c \
+-	evp/p_sign.c \
+-	evp/p_verify.c \
+-	evp/pmeth_fn.c \
+-	evp/pmeth_gn.c \
+-	evp/pmeth_lib.c \
+-	evp/e_idea.c \
+-	evp/e_camellia.c \
+-	evp/e_seed.c \
+-	evp/e_cast.c \
+-	evp/m_md2.c \
+-	evp/m_sha.c \
+-	evp/evp_fips.c \
+-	evp/e_aes_cbc_hmac_sha1.c \
+-	evp/e_rc4_hmac_md5.c \
+-	hmac/hm_ameth.c \
+-	hmac/hm_pmeth.c \
+-	hmac/hmac.c \
+-	krb5/krb5_asn.c \
+-	lhash/lh_stats.c \
+ 	lhash/lhash.c \
+-	md4/md4_dgst.c \
+-	md4/md4_one.c \
+-	md5/md5_dgst.c \
+-	md5/md5_one.c \
+-	modes/cbc128.c \
+-	modes/ctr128.c \
+-	modes/cts128.c \
+-	modes/cfb128.c \
+-	modes/ofb128.c \
+-	modes/gcm128.c \
+-	modes/ccm128.c \
+-	modes/xts128.c \
+-	objects/o_names.c \
+-	objects/obj_dat.c \
+-	objects/obj_err.c \
+-	objects/obj_lib.c \
+-	objects/obj_xref.c \
+-	ocsp/ocsp_asn.c \
+-	ocsp/ocsp_cl.c \
+-	ocsp/ocsp_err.c \
+-	ocsp/ocsp_ext.c \
+-	ocsp/ocsp_ht.c \
+-	ocsp/ocsp_lib.c \
+-	ocsp/ocsp_prn.c \
+-	ocsp/ocsp_srv.c \
+-	ocsp/ocsp_vfy.c \
+-	pem/pem_all.c \
+-	pem/pem_err.c \
+-	pem/pem_info.c \
+-	pem/pem_lib.c \
+-	pem/pem_oth.c \
+-	pem/pem_pk8.c \
+-	pem/pem_pkey.c \
+-	pem/pem_seal.c \
+-	pem/pem_sign.c \
+-	pem/pem_x509.c \
+-	pem/pem_xaux.c \
+-	pem/pvkfmt.c \
+-	pkcs12/p12_add.c \
+-	pkcs12/p12_asn.c \
+-	pkcs12/p12_attr.c \
+-	pkcs12/p12_crpt.c \
+-	pkcs12/p12_crt.c \
+-	pkcs12/p12_decr.c \
+-	pkcs12/p12_init.c \
+-	pkcs12/p12_key.c \
+-	pkcs12/p12_kiss.c \
+-	pkcs12/p12_mutl.c \
+-	pkcs12/p12_npas.c \
+-	pkcs12/p12_p8d.c \
+-	pkcs12/p12_p8e.c \
+-	pkcs12/p12_utl.c \
+-	pkcs12/pk12err.c \
+-	pkcs7/pk7_asn1.c \
+-	pkcs7/pk7_attr.c \
+-	pkcs7/pk7_doit.c \
+-	pkcs7/pk7_lib.c	\
+-	pkcs7/pk7_mime.c \
+-	pkcs7/pk7_smime.c \
+-	pkcs7/pkcs7err.c \
+-	pkcs7/bio_pk7.c \
+-	pqueue/pqueue.c \
+-	rand/md_rand.c \
+-	rand/rand_egd.c \
+-	rand/rand_err.c \
+ 	rand/rand_lib.c \
+-	rand/rand_unix.c \
+-	rand/randfile.c \
+-	rc2/rc2_cbc.c \
+-	rc2/rc2_ecb.c \
+-	rc2/rc2_skey.c \
+-	rc2/rc2cfb64.c \
+-	rc2/rc2ofb64.c \
+-	rc4/rc4_enc.c \
+-	rc4/rc4_skey.c \
+-	rc4/rc4_utl.c \
+-	ripemd/rmd_dgst.c \
+-	ripemd/rmd_one.c \
+-	rsa/rsa_ameth.c \
+-	rsa/rsa_asn1.c \
+-	rsa/rsa_chk.c \
+-	rsa/rsa_eay.c \
+-	rsa/rsa_err.c \
+-	rsa/rsa_gen.c \
+-	rsa/rsa_lib.c \
+-	rsa/rsa_none.c \
+-	rsa/rsa_null.c \
+-	rsa/rsa_oaep.c \
+-	rsa/rsa_pk1.c \
+-	rsa/rsa_pmeth.c \
+-	rsa/rsa_prn.c \
+-	rsa/rsa_pss.c \
+-	rsa/rsa_saos.c \
+-	rsa/rsa_sign.c \
+-	rsa/rsa_ssl.c \
+-	rsa/rsa_x931.c \
+-	rsa/rsa_depr.c \
+-	rsa/rsa_crpt.c \
+-	sha/sha1_one.c \
+-	sha/sha1dgst.c \
+-	sha/sha256.c \
+-	sha/sha512.c \
+-	sha/sha_dgst.c \
+-	sha/sha_one.c \
+-	srp/srp_lib.c \
+-	srp/srp_vfy.c \
+ 	stack/stack.c \
+-	ts/ts_asn1.c \
+-	ts/ts_conf.c \
+-	ts/ts_err.c \
+-	ts/ts_lib.c \
+-	ts/ts_req_print.c \
+-	ts/ts_req_utils.c \
+-	ts/ts_rsp_print.c \
+-	ts/ts_rsp_sign.c \
+-	ts/ts_rsp_utils.c \
+-	ts/ts_rsp_verify.c \
+-	ts/ts_verify_ctx.c \
+-	txt_db/txt_db.c \
+-	ui/ui_compat.c \
+-	ui/ui_err.c \
+-	ui/ui_lib.c \
+-	ui/ui_openssl.c \
+-	ui/ui_util.c \
+-	x509/by_dir.c \
+-	x509/by_file.c \
+-	x509/x509_att.c \
+-	x509/x509_cmp.c \
+-	x509/x509_d2.c \
+-	x509/x509_def.c \
+-	x509/x509_err.c \
+-	x509/x509_ext.c \
+-	x509/x509_lu.c \
+-	x509/x509_obj.c \
+-	x509/x509_r2x.c \
+-	x509/x509_req.c \
+-	x509/x509_set.c \
+-	x509/x509_trs.c \
+-	x509/x509_txt.c \
+-	x509/x509_v3.c \
+-	x509/x509_vfy.c \
+-	x509/x509_vpm.c \
+-	x509/x509cset.c \
+-	x509/x509name.c \
+-	x509/x509rset.c \
+-	x509/x509spki.c \
+-	x509/x509type.c \
+-	x509/x_all.c \
+-	x509v3/pcy_cache.c \
+-	x509v3/pcy_data.c \
+-	x509v3/pcy_lib.c \
+-	x509v3/pcy_map.c \
+-	x509v3/pcy_node.c \
+-	x509v3/pcy_tree.c \
+-	x509v3/v3_akey.c \
+-	x509v3/v3_akeya.c \
+-	x509v3/v3_alt.c \
+-	x509v3/v3_asid.c \
+-	x509v3/v3_addr.c \
+-	x509v3/v3_bcons.c \
+-	x509v3/v3_bitst.c \
+-	x509v3/v3_conf.c \
+-	x509v3/v3_cpols.c \
+-	x509v3/v3_crld.c \
+-	x509v3/v3_enum.c \
+-	x509v3/v3_extku.c \
+-	x509v3/v3_genn.c \
+-	x509v3/v3_ia5.c \
+-	x509v3/v3_info.c \
+-	x509v3/v3_int.c \
+-	x509v3/v3_lib.c \
+-	x509v3/v3_ncons.c \
+-	x509v3/v3_ocsp.c \
+-	x509v3/v3_pci.c \
+-	x509v3/v3_pcia.c \
+-	x509v3/v3_pcons.c \
+-	x509v3/v3_pku.c \
+-	x509v3/v3_pmaps.c \
+-	x509v3/v3_prn.c \
+-	x509v3/v3_purp.c \
+-	x509v3/v3_skey.c \
+-	x509v3/v3_sxnet.c \
+-	x509v3/v3_utl.c \
+-	x509v3/v3err.c
++	buffer/buffer.c \
++	buffer/buf_str.c
++
+ 	
+ ifeq ($(TARGET_ARCH),arm)
+ 	LOCAL_SRC_FILES += $(arm_src_files)
+diff --git a/jni/bio/b_print.c b/jni/bio/b_print.c
+index 90248fa..65913c9 100644
+--- a/jni/bio/b_print.c
++++ b/jni/bio/b_print.c
+@@ -781,47 +781,47 @@ doapr_outch(char **sbuffer,
+ 
+ /***************************************************************************/
+ 
+-int BIO_printf(BIO *bio, const char *format, ...)
+-{
+-    va_list args;
+-    int ret;
+-
+-    va_start(args, format);
+-
+-    ret = BIO_vprintf(bio, format, args);
+-
+-    va_end(args);
+-    return (ret);
+-}
+-
+-int BIO_vprintf(BIO *bio, const char *format, va_list args)
+-{
+-    int ret;
+-    size_t retlen;
+-    char hugebuf[1024 * 2];     /* Was previously 10k, which is unreasonable
+-                                 * in small-stack environments, like threads
+-                                 * or DOS programs. */
+-    char *hugebufp = hugebuf;
+-    size_t hugebufsize = sizeof(hugebuf);
+-    char *dynbuf = NULL;
+-    int ignored;
+-
+-    dynbuf = NULL;
+-    CRYPTO_push_info("doapr()");
+-    if (!_dopr(&hugebufp, &dynbuf, &hugebufsize, &retlen, &ignored, format,
+-                args)) {
+-        OPENSSL_free(dynbuf);
+-        return -1;
+-    }
+-    if (dynbuf) {
+-        ret = BIO_write(bio, dynbuf, (int)retlen);
+-        OPENSSL_free(dynbuf);
+-    } else {
+-        ret = BIO_write(bio, hugebuf, (int)retlen);
+-    }
+-    CRYPTO_pop_info();
+-    return (ret);
+-}
++// int BIO_printf(BIO *bio, const char *format, ...)
++// {
++    // va_list args;
++    // int ret;
++
++    // va_start(args, format);
++
++    // ret = BIO_vprintf(bio, format, args);
++
++    // va_end(args);
++    // return (ret);
++// }
++
++// int BIO_vprintf(BIO *bio, const char *format, va_list args)
++// {
++    // int ret;
++    // size_t retlen;
++    // char hugebuf[1024 * 2];     /* Was previously 10k, which is unreasonable
++                                 // * in small-stack environments, like threads
++                                 // * or DOS programs. */
++    // char *hugebufp = hugebuf;
++    // size_t hugebufsize = sizeof(hugebuf);
++    // char *dynbuf = NULL;
++    // int ignored;
++
++    // dynbuf = NULL;
++    // CRYPTO_push_info("doapr()");
++    // if (!_dopr(&hugebufp, &dynbuf, &hugebufsize, &retlen, &ignored, format,
++                // args)) {
++        // OPENSSL_free(dynbuf);
++        // return -1;
++    // }
++    // if (dynbuf) {
++        // ret = BIO_write(bio, dynbuf, (int)retlen);
++        // OPENSSL_free(dynbuf);
++    // } else {
++        // ret = BIO_write(bio, hugebuf, (int)retlen);
++    // }
++    // CRYPTO_pop_info();
++    // return (ret);
++// }
+ 
+ /*
+  * As snprintf is not available everywhere, we provide our own
+diff --git a/jni/bio/b_sock.c b/jni/bio/b_sock.c
+index bda882c..68da3a2 100644
+--- a/jni/bio/b_sock.c
++++ b/jni/bio/b_sock.c
+@@ -111,116 +111,116 @@ static int get_ip(const char *str, unsigned char *ip);
+ static void ghbn_free(struct hostent *a);
+ static struct hostent *ghbn_dup(struct hostent *a);
+ # endif
+-int BIO_get_host_ip(const char *str, unsigned char *ip)
+-{
+-    int i;
+-    int err = 1;
+-    int locked = 0;
+-    struct hostent *he;
+-
+-    i = get_ip(str, ip);
+-    if (i < 0) {
+-        BIOerr(BIO_F_BIO_GET_HOST_IP, BIO_R_INVALID_IP_ADDRESS);
+-        goto err;
+-    }
+-
+-    /*
+-     * At this point, we have something that is most probably correct in some
+-     * way, so let's init the socket.
+-     */
+-    if (BIO_sock_init() != 1)
+-        return 0;               /* don't generate another error code here */
+-
+-    /*
+-     * If the string actually contained an IP address, we need not do
+-     * anything more
+-     */
+-    if (i > 0)
+-        return (1);
+-
+-    /* do a gethostbyname */
+-    CRYPTO_w_lock(CRYPTO_LOCK_GETHOSTBYNAME);
+-    locked = 1;
+-    he = BIO_gethostbyname(str);
+-    if (he == NULL) {
+-        BIOerr(BIO_F_BIO_GET_HOST_IP, BIO_R_BAD_HOSTNAME_LOOKUP);
+-        goto err;
+-    }
+-
+-    /* cast to short because of win16 winsock definition */
+-    if ((short)he->h_addrtype != AF_INET) {
+-        BIOerr(BIO_F_BIO_GET_HOST_IP,
+-               BIO_R_GETHOSTBYNAME_ADDR_IS_NOT_AF_INET);
+-        goto err;
+-    }
+-    for (i = 0; i < 4; i++)
+-        ip[i] = he->h_addr_list[0][i];
+-    err = 0;
+-
+- err:
+-    if (locked)
+-        CRYPTO_w_unlock(CRYPTO_LOCK_GETHOSTBYNAME);
+-    if (err) {
+-        ERR_add_error_data(2, "host=", str);
+-        return 0;
+-    } else
+-        return 1;
+-}
+-
+-int BIO_get_port(const char *str, unsigned short *port_ptr)
+-{
+-    int i;
+-    struct servent *s;
+-
+-    if (str == NULL) {
+-        BIOerr(BIO_F_BIO_GET_PORT, BIO_R_NO_PORT_DEFINED);
+-        return (0);
+-    }
+-    i = atoi(str);
+-    if (i != 0)
+-        *port_ptr = (unsigned short)i;
+-    else {
+-        CRYPTO_w_lock(CRYPTO_LOCK_GETSERVBYNAME);
+-        /*
+-         * Note: under VMS with SOCKETSHR, it seems like the first parameter
+-         * is 'char *', instead of 'const char *'
+-         */
+-# ifndef CONST_STRICT
+-        s = getservbyname((char *)str, "tcp");
+-# else
+-        s = getservbyname(str, "tcp");
+-# endif
+-        if (s != NULL)
+-            *port_ptr = ntohs((unsigned short)s->s_port);
+-        CRYPTO_w_unlock(CRYPTO_LOCK_GETSERVBYNAME);
+-        if (s == NULL) {
+-            if (strcmp(str, "http") == 0)
+-                *port_ptr = 80;
+-            else if (strcmp(str, "telnet") == 0)
+-                *port_ptr = 23;
+-            else if (strcmp(str, "socks") == 0)
+-                *port_ptr = 1080;
+-            else if (strcmp(str, "https") == 0)
+-                *port_ptr = 443;
+-            else if (strcmp(str, "ssl") == 0)
+-                *port_ptr = 443;
+-            else if (strcmp(str, "ftp") == 0)
+-                *port_ptr = 21;
+-            else if (strcmp(str, "gopher") == 0)
+-                *port_ptr = 70;
+-# if 0
+-            else if (strcmp(str, "wais") == 0)
+-                *port_ptr = 21;
+-# endif
+-            else {
+-                SYSerr(SYS_F_GETSERVBYNAME, get_last_socket_error());
+-                ERR_add_error_data(3, "service='", str, "'");
+-                return (0);
+-            }
+-        }
+-    }
+-    return (1);
+-}
++// int BIO_get_host_ip(const char *str, unsigned char *ip)
++// {
++    // int i;
++    // int err = 1;
++    // int locked = 0;
++    // struct hostent *he;
++
++    // i = get_ip(str, ip);
++    // if (i < 0) {
++        // BIOerr(BIO_F_BIO_GET_HOST_IP, BIO_R_INVALID_IP_ADDRESS);
++        // goto err;
++    // }
++
++    // /*
++     // * At this point, we have something that is most probably correct in some
++     // * way, so let's init the socket.
++     // */
++    // if (BIO_sock_init() != 1)
++        // return 0;               /* don't generate another error code here */
++
++    // /*
++     // * If the string actually contained an IP address, we need not do
++     // * anything more
++     // */
++    // if (i > 0)
++        // return (1);
++
++    // /* do a gethostbyname */
++    // CRYPTO_w_lock(CRYPTO_LOCK_GETHOSTBYNAME);
++    // locked = 1;
++    // he = BIO_gethostbyname(str);
++    // if (he == NULL) {
++        // BIOerr(BIO_F_BIO_GET_HOST_IP, BIO_R_BAD_HOSTNAME_LOOKUP);
++        // goto err;
++    // }
++
++    // /* cast to short because of win16 winsock definition */
++    // if ((short)he->h_addrtype != AF_INET) {
++        // BIOerr(BIO_F_BIO_GET_HOST_IP,
++               // BIO_R_GETHOSTBYNAME_ADDR_IS_NOT_AF_INET);
++        // goto err;
++    // }
++    // for (i = 0; i < 4; i++)
++        // ip[i] = he->h_addr_list[0][i];
++    // err = 0;
++
++ // err:
++    // if (locked)
++        // CRYPTO_w_unlock(CRYPTO_LOCK_GETHOSTBYNAME);
++    // if (err) {
++        // ERR_add_error_data(2, "host=", str);
++        // return 0;
++    // } else
++        // return 1;
++// }
++
++// int BIO_get_port(const char *str, unsigned short *port_ptr)
++// {
++    // int i;
++    // struct servent *s;
++
++    // if (str == NULL) {
++        // BIOerr(BIO_F_BIO_GET_PORT, BIO_R_NO_PORT_DEFINED);
++        // return (0);
++    // }
++    // i = atoi(str);
++    // if (i != 0)
++        // *port_ptr = (unsigned short)i;
++    // else {
++        // CRYPTO_w_lock(CRYPTO_LOCK_GETSERVBYNAME);
++        // /*
++         // * Note: under VMS with SOCKETSHR, it seems like the first parameter
++         // * is 'char *', instead of 'const char *'
++         // */
++// # ifndef CONST_STRICT
++        // s = getservbyname((char *)str, "tcp");
++// # else
++        // s = getservbyname(str, "tcp");
++// # endif
++        // if (s != NULL)
++            // *port_ptr = ntohs((unsigned short)s->s_port);
++        // CRYPTO_w_unlock(CRYPTO_LOCK_GETSERVBYNAME);
++        // if (s == NULL) {
++            // if (strcmp(str, "http") == 0)
++                // *port_ptr = 80;
++            // else if (strcmp(str, "telnet") == 0)
++                // *port_ptr = 23;
++            // else if (strcmp(str, "socks") == 0)
++                // *port_ptr = 1080;
++            // else if (strcmp(str, "https") == 0)
++                // *port_ptr = 443;
++            // else if (strcmp(str, "ssl") == 0)
++                // *port_ptr = 443;
++            // else if (strcmp(str, "ftp") == 0)
++                // *port_ptr = 21;
++            // else if (strcmp(str, "gopher") == 0)
++                // *port_ptr = 70;
++// # if 0
++            // else if (strcmp(str, "wais") == 0)
++                // *port_ptr = 21;
++// # endif
++            // else {
++                // SYSerr(SYS_F_GETSERVBYNAME, get_last_socket_error());
++                // ERR_add_error_data(3, "service='", str, "'");
++                // return (0);
++            // }
++        // }
++    // }
++    // return (1);
++// }
+ 
+ int BIO_sock_error(int sock)
+ {
+@@ -360,146 +360,146 @@ static void ghbn_free(struct hostent *a)
+ 
+ # endif
+ 
+-struct hostent *BIO_gethostbyname(const char *name)
+-{
+-# if 1
+-    /*
+-     * Caching gethostbyname() results forever is wrong, so we have to let
+-     * the true gethostbyname() worry about this
+-     */
+-#  if (defined(NETWARE_BSDSOCK) && !defined(__NOVELL_LIBC__))
+-    return gethostbyname((char *)name);
+-#  else
+-    return gethostbyname(name);
+-#  endif
+-# else
+-    struct hostent *ret;
+-    int i, lowi = 0, j;
+-    unsigned long low = (unsigned long)-1;
+-
+-#  if 0
+-    /*
+-     * It doesn't make sense to use locking here: The function interface is
+-     * not thread-safe, because threads can never be sure when some other
+-     * thread destroys the data they were given a pointer to.
+-     */
+-    CRYPTO_w_lock(CRYPTO_LOCK_GETHOSTBYNAME);
+-#  endif
+-    j = strlen(name);
+-    if (j < 128) {
+-        for (i = 0; i < GHBN_NUM; i++) {
+-            if (low > ghbn_cache[i].order) {
+-                low = ghbn_cache[i].order;
+-                lowi = i;
+-            }
+-            if (ghbn_cache[i].order > 0) {
+-                if (strncmp(name, ghbn_cache[i].name, 128) == 0)
+-                    break;
+-            }
+-        }
+-    } else
+-        i = GHBN_NUM;
+-
+-    if (i == GHBN_NUM) {        /* no hit */
+-        BIO_ghbn_miss++;
+-        /*
+-         * Note: under VMS with SOCKETSHR, it seems like the first parameter
+-         * is 'char *', instead of 'const char *'
+-         */
+-#  ifndef CONST_STRICT
+-        ret = gethostbyname((char *)name);
+-#  else
+-        ret = gethostbyname(name);
+-#  endif
+-
+-        if (ret == NULL)
+-            goto end;
+-        if (j > 128) {          /* too big to cache */
+-#  if 0
+-            /*
+-             * If we were trying to make this function thread-safe (which is
+-             * bound to fail), we'd have to give up in this case (or allocate
+-             * more memory).
+-             */
+-            ret = NULL;
+-#  endif
+-            goto end;
+-        }
+-
+-        /* else add to cache */
+-        if (ghbn_cache[lowi].ent != NULL)
+-            ghbn_free(ghbn_cache[lowi].ent); /* XXX not thread-safe */
+-        ghbn_cache[lowi].name[0] = '\0';
+-
+-        if ((ret = ghbn_cache[lowi].ent = ghbn_dup(ret)) == NULL) {
+-            BIOerr(BIO_F_BIO_GETHOSTBYNAME, ERR_R_MALLOC_FAILURE);
+-            goto end;
+-        }
+-        strncpy(ghbn_cache[lowi].name, name, 128);
+-        ghbn_cache[lowi].order = BIO_ghbn_miss + BIO_ghbn_hits;
+-    } else {
+-        BIO_ghbn_hits++;
+-        ret = ghbn_cache[i].ent;
+-        ghbn_cache[i].order = BIO_ghbn_miss + BIO_ghbn_hits;
+-    }
+- end:
+-#  if 0
+-    CRYPTO_w_unlock(CRYPTO_LOCK_GETHOSTBYNAME);
+-#  endif
+-    return (ret);
+-# endif
+-}
+-
+-int BIO_sock_init(void)
+-{
+-# ifdef OPENSSL_SYS_WINDOWS
+-    static struct WSAData wsa_state;
+-
+-    if (!wsa_init_done) {
+-        int err;
+-
+-        wsa_init_done = 1;
+-        memset(&wsa_state, 0, sizeof(wsa_state));
+-        /*
+-         * Not making wsa_state available to the rest of the code is formally
+-         * wrong. But the structures we use are [beleived to be] invariable
+-         * among Winsock DLLs, while API availability is [expected to be]
+-         * probed at run-time with DSO_global_lookup.
+-         */
+-        if (WSAStartup(0x0202, &wsa_state) != 0) {
+-            err = WSAGetLastError();
+-            SYSerr(SYS_F_WSASTARTUP, err);
+-            BIOerr(BIO_F_BIO_SOCK_INIT, BIO_R_WSASTARTUP);
+-            return (-1);
+-        }
+-    }
+-# endif                         /* OPENSSL_SYS_WINDOWS */
+-# ifdef WATT32
+-    extern int _watt_do_exit;
+-    _watt_do_exit = 0;          /* don't make sock_init() call exit() */
+-    if (sock_init())
+-        return (-1);
+-# endif
+-
+-# if defined(OPENSSL_SYS_NETWARE) && !defined(NETWARE_BSDSOCK)
+-    WORD wVerReq;
+-    WSADATA wsaData;
+-    int err;
+-
+-    if (!wsa_init_done) {
+-        wsa_init_done = 1;
+-        wVerReq = MAKEWORD(2, 0);
+-        err = WSAStartup(wVerReq, &wsaData);
+-        if (err != 0) {
+-            SYSerr(SYS_F_WSASTARTUP, err);
+-            BIOerr(BIO_F_BIO_SOCK_INIT, BIO_R_WSASTARTUP);
+-            return (-1);
+-        }
+-    }
+-# endif
+-
+-    return (1);
+-}
++// struct hostent *BIO_gethostbyname(const char *name)
++// {
++// # if 1
++    // /*
++     // * Caching gethostbyname() results forever is wrong, so we have to let
++     // * the true gethostbyname() worry about this
++     // */
++// #  if (defined(NETWARE_BSDSOCK) && !defined(__NOVELL_LIBC__))
++    // return gethostbyname((char *)name);
++// #  else
++    // return gethostbyname(name);
++// #  endif
++// # else
++    // struct hostent *ret;
++    // int i, lowi = 0, j;
++    // unsigned long low = (unsigned long)-1;
++
++// #  if 0
++    // /*
++     // * It doesn't make sense to use locking here: The function interface is
++     // * not thread-safe, because threads can never be sure when some other
++     // * thread destroys the data they were given a pointer to.
++     // */
++    // CRYPTO_w_lock(CRYPTO_LOCK_GETHOSTBYNAME);
++// #  endif
++    // j = strlen(name);
++    // if (j < 128) {
++        // for (i = 0; i < GHBN_NUM; i++) {
++            // if (low > ghbn_cache[i].order) {
++                // low = ghbn_cache[i].order;
++                // lowi = i;
++            // }
++            // if (ghbn_cache[i].order > 0) {
++                // if (strncmp(name, ghbn_cache[i].name, 128) == 0)
++                    // break;
++            // }
++        // }
++    // } else
++        // i = GHBN_NUM;
++
++    // if (i == GHBN_NUM) {        /* no hit */
++        // BIO_ghbn_miss++;
++        // /*
++         // * Note: under VMS with SOCKETSHR, it seems like the first parameter
++         // * is 'char *', instead of 'const char *'
++         // */
++// #  ifndef CONST_STRICT
++        // ret = gethostbyname((char *)name);
++// #  else
++        // ret = gethostbyname(name);
++// #  endif
++
++        // if (ret == NULL)
++            // goto end;
++        // if (j > 128) {          /* too big to cache */
++// #  if 0
++            // /*
++             // * If we were trying to make this function thread-safe (which is
++             // * bound to fail), we'd have to give up in this case (or allocate
++             // * more memory).
++             // */
++            // ret = NULL;
++// #  endif
++            // goto end;
++        // }
++
++        // /* else add to cache */
++        // if (ghbn_cache[lowi].ent != NULL)
++            // ghbn_free(ghbn_cache[lowi].ent); /* XXX not thread-safe */
++        // ghbn_cache[lowi].name[0] = '\0';
++
++        // if ((ret = ghbn_cache[lowi].ent = ghbn_dup(ret)) == NULL) {
++            // BIOerr(BIO_F_BIO_GETHOSTBYNAME, ERR_R_MALLOC_FAILURE);
++            // goto end;
++        // }
++        // strncpy(ghbn_cache[lowi].name, name, 128);
++        // ghbn_cache[lowi].order = BIO_ghbn_miss + BIO_ghbn_hits;
++    // } else {
++        // BIO_ghbn_hits++;
++        // ret = ghbn_cache[i].ent;
++        // ghbn_cache[i].order = BIO_ghbn_miss + BIO_ghbn_hits;
++    // }
++ // end:
++// #  if 0
++    // CRYPTO_w_unlock(CRYPTO_LOCK_GETHOSTBYNAME);
++// #  endif
++    // return (ret);
++// # endif
++// }
++
++// int BIO_sock_init(void)
++// {
++// # ifdef OPENSSL_SYS_WINDOWS
++    // static struct WSAData wsa_state;
++
++    // if (!wsa_init_done) {
++        // int err;
++
++        // wsa_init_done = 1;
++        // memset(&wsa_state, 0, sizeof(wsa_state));
++        // /*
++         // * Not making wsa_state available to the rest of the code is formally
++         // * wrong. But the structures we use are [beleived to be] invariable
++         // * among Winsock DLLs, while API availability is [expected to be]
++         // * probed at run-time with DSO_global_lookup.
++         // */
++        // if (WSAStartup(0x0202, &wsa_state) != 0) {
++            // err = WSAGetLastError();
++            // SYSerr(SYS_F_WSASTARTUP, err);
++            // BIOerr(BIO_F_BIO_SOCK_INIT, BIO_R_WSASTARTUP);
++            // return (-1);
++        // }
++    // }
++// # endif                         /* OPENSSL_SYS_WINDOWS */
++// # ifdef WATT32
++    // extern int _watt_do_exit;
++    // _watt_do_exit = 0;          /* don't make sock_init() call exit() */
++    // if (sock_init())
++        // return (-1);
++// # endif
++
++// # if defined(OPENSSL_SYS_NETWARE) && !defined(NETWARE_BSDSOCK)
++    // WORD wVerReq;
++    // WSADATA wsaData;
++    // int err;
++
++    // if (!wsa_init_done) {
++        // wsa_init_done = 1;
++        // wVerReq = MAKEWORD(2, 0);
++        // err = WSAStartup(wVerReq, &wsaData);
++        // if (err != 0) {
++            // SYSerr(SYS_F_WSASTARTUP, err);
++            // BIOerr(BIO_F_BIO_SOCK_INIT, BIO_R_WSASTARTUP);
++            // return (-1);
++        // }
++    // }
++// # endif
++
++    // return (1);
++// }
+ 
+ void BIO_sock_cleanup(void)
+ {
+@@ -520,46 +520,46 @@ void BIO_sock_cleanup(void)
+ # endif
+ }
+ 
+-# if !defined(OPENSSL_SYS_VMS) || __VMS_VER >= 70000000
+-
+-int BIO_socket_ioctl(int fd, long type, void *arg)
+-{
+-    int i;
+-
+-#  ifdef __DJGPP__
+-    i = ioctlsocket(fd, type, (char *)arg);
+-#  else
+-#   if defined(OPENSSL_SYS_VMS)
+-    /*-
+-     * 2011-02-18 SMS.
+-     * VMS ioctl() can't tolerate a 64-bit "void *arg", but we
+-     * observe that all the consumers pass in an "unsigned long *",
+-     * so we arrange a local copy with a short pointer, and use
+-     * that, instead.
+-     */
+-#    if __INITIAL_POINTER_SIZE == 64
+-#     define ARG arg_32p
+-#     pragma pointer_size save
+-#     pragma pointer_size 32
+-    unsigned long arg_32;
+-    unsigned long *arg_32p;
+-#     pragma pointer_size restore
+-    arg_32p = &arg_32;
+-    arg_32 = *((unsigned long *)arg);
+-#    else                       /* __INITIAL_POINTER_SIZE == 64 */
+-#     define ARG arg
+-#    endif                      /* __INITIAL_POINTER_SIZE == 64 [else] */
+-#   else                        /* defined(OPENSSL_SYS_VMS) */
+-#    define ARG arg
+-#   endif                       /* defined(OPENSSL_SYS_VMS) [else] */
+-
+-    i = ioctlsocket(fd, type, ARG);
+-#  endif                        /* __DJGPP__ */
+-    if (i < 0)
+-        SYSerr(SYS_F_IOCTLSOCKET, get_last_socket_error());
+-    return (i);
+-}
+-# endif                         /* __VMS_VER */
++// # if !defined(OPENSSL_SYS_VMS) || __VMS_VER >= 70000000
++
++// int BIO_socket_ioctl(int fd, long type, void *arg)
++// {
++    // int i;
++
++// #  ifdef __DJGPP__
++    // i = ioctlsocket(fd, type, (char *)arg);
++// #  else
++// #   if defined(OPENSSL_SYS_VMS)
++    // /*-
++     // * 2011-02-18 SMS.
++     // * VMS ioctl() can't tolerate a 64-bit "void *arg", but we
++     // * observe that all the consumers pass in an "unsigned long *",
++     // * so we arrange a local copy with a short pointer, and use
++     // * that, instead.
++     // */
++// #    if __INITIAL_POINTER_SIZE == 64
++// #     define ARG arg_32p
++// #     pragma pointer_size save
++// #     pragma pointer_size 32
++    // unsigned long arg_32;
++    // unsigned long *arg_32p;
++// #     pragma pointer_size restore
++    // arg_32p = &arg_32;
++    // arg_32 = *((unsigned long *)arg);
++// #    else                       /* __INITIAL_POINTER_SIZE == 64 */
++// #     define ARG arg
++// #    endif                      /* __INITIAL_POINTER_SIZE == 64 [else] */
++// #   else                        /* defined(OPENSSL_SYS_VMS) */
++// #    define ARG arg
++// #   endif                       /* defined(OPENSSL_SYS_VMS) [else] */
++
++    // i = ioctlsocket(fd, type, ARG);
++// #  endif                        /* __DJGPP__ */
++    // if (i < 0)
++        // SYSerr(SYS_F_IOCTLSOCKET, get_last_socket_error());
++    // return (i);
++// }
++// # endif                         /* __VMS_VER */
+ 
+ /*
+  * The reason I have implemented this instead of using sscanf is because
+@@ -598,332 +598,332 @@ static int get_ip(const char *str, unsigned char ip[4])
+     return (1);
+ }
+ 
+-int BIO_get_accept_socket(char *host, int bind_mode)
+-{
+-    int ret = 0;
+-    union {
+-        struct sockaddr sa;
+-        struct sockaddr_in sa_in;
+-# if OPENSSL_USE_IPV6
+-        struct sockaddr_in6 sa_in6;
+-# endif
+-    } server, client;
+-    int s = INVALID_SOCKET, cs, addrlen;
+-    unsigned char ip[4];
+-    unsigned short port;
+-    char *str = NULL, *e;
+-    char *h, *p;
+-    unsigned long l;
+-    int err_num;
+-
+-    if (BIO_sock_init() != 1)
+-        return (INVALID_SOCKET);
+-
+-    if ((str = BUF_strdup(host)) == NULL)
+-        return (INVALID_SOCKET);
+-
+-    h = p = NULL;
+-    h = str;
+-    for (e = str; *e; e++) {
+-        if (*e == ':') {
+-            p = e;
+-        } else if (*e == '/') {
+-            *e = '\0';
+-            break;
+-        }
+-    }
+-    if (p)
+-        *p++ = '\0';            /* points at last ':', '::port' is special
+-                                 * [see below] */
+-    else
+-        p = h, h = NULL;
+-
+-# ifdef EAI_FAMILY
+-    do {
+-        static union {
+-            void *p;
+-            int (WSAAPI *f) (const char *, const char *,
+-                             const struct addrinfo *, struct addrinfo **);
+-        } p_getaddrinfo = {
+-            NULL
+-        };
+-        static union {
+-            void *p;
+-            void (WSAAPI *f) (struct addrinfo *);
+-        } p_freeaddrinfo = {
+-            NULL
+-        };
+-        struct addrinfo *res, hint;
+-
+-        if (p_getaddrinfo.p == NULL) {
+-            if ((p_getaddrinfo.p = DSO_global_lookup("getaddrinfo")) == NULL
+-                || (p_freeaddrinfo.p =
+-                    DSO_global_lookup("freeaddrinfo")) == NULL)
+-                p_getaddrinfo.p = (void *)-1;
+-        }
+-        if (p_getaddrinfo.p == (void *)-1)
+-            break;
+-
+-        /*
+-         * '::port' enforces IPv6 wildcard listener. Some OSes, e.g. Solaris,
+-         * default to IPv6 without any hint. Also note that commonly IPv6
+-         * wildchard socket can service IPv4 connections just as well...
+-         */
+-        memset(&hint, 0, sizeof(hint));
+-        hint.ai_flags = AI_PASSIVE;
+-        if (h) {
+-            if (strchr(h, ':')) {
+-                if (h[1] == '\0')
+-                    h = NULL;
+-#  if OPENSSL_USE_IPV6
+-                hint.ai_family = AF_INET6;
+-#  else
+-                h = NULL;
+-#  endif
+-            } else if (h[0] == '*' && h[1] == '\0') {
+-                hint.ai_family = AF_INET;
+-                h = NULL;
+-            }
+-        }
+-
+-        if ((*p_getaddrinfo.f) (h, p, &hint, &res))
+-            break;
+-
+-        addrlen = res->ai_addrlen <= sizeof(server) ?
+-            res->ai_addrlen : sizeof(server);
+-        memcpy(&server, res->ai_addr, addrlen);
+-
+-        (*p_freeaddrinfo.f) (res);
+-        goto again;
+-    } while (0);
+-# endif
+-
+-    if (!BIO_get_port(p, &port))
+-        goto err;
+-
+-    memset((char *)&server, 0, sizeof(server));
+-    server.sa_in.sin_family = AF_INET;
+-    server.sa_in.sin_port = htons(port);
+-    addrlen = sizeof(server.sa_in);
+-
+-    if (h == NULL || strcmp(h, "*") == 0)
+-        server.sa_in.sin_addr.s_addr = INADDR_ANY;
+-    else {
+-        if (!BIO_get_host_ip(h, &(ip[0])))
+-            goto err;
+-        l = (unsigned long)
+-            ((unsigned long)ip[0] << 24L) |
+-            ((unsigned long)ip[1] << 16L) |
+-            ((unsigned long)ip[2] << 8L) | ((unsigned long)ip[3]);
+-        server.sa_in.sin_addr.s_addr = htonl(l);
+-    }
+-
+- again:
+-    s = socket(server.sa.sa_family, SOCK_STREAM, SOCKET_PROTOCOL);
+-    if (s == INVALID_SOCKET) {
+-        SYSerr(SYS_F_SOCKET, get_last_socket_error());
+-        ERR_add_error_data(3, "port='", host, "'");
+-        BIOerr(BIO_F_BIO_GET_ACCEPT_SOCKET, BIO_R_UNABLE_TO_CREATE_SOCKET);
+-        goto err;
+-    }
+-# ifdef SO_REUSEADDR
+-    if (bind_mode == BIO_BIND_REUSEADDR) {
+-        int i = 1;
+-
+-        ret = setsockopt(s, SOL_SOCKET, SO_REUSEADDR, (char *)&i, sizeof(i));
+-        bind_mode = BIO_BIND_NORMAL;
+-    }
+-# endif
+-    if (bind(s, &server.sa, addrlen) == -1) {
+-# ifdef SO_REUSEADDR
+-        err_num = get_last_socket_error();
+-        if ((bind_mode == BIO_BIND_REUSEADDR_IF_UNUSED) &&
+-#  ifdef OPENSSL_SYS_WINDOWS
+-            /*
+-             * Some versions of Windows define EADDRINUSE to a dummy value.
+-             */
+-            (err_num == WSAEADDRINUSE))
+-#  else
+-            (err_num == EADDRINUSE))
+-#  endif
+-        {
+-            client = server;
+-            if (h == NULL || strcmp(h, "*") == 0) {
+-#  if OPENSSL_USE_IPV6
+-                if (client.sa.sa_family == AF_INET6) {
+-                    memset(&client.sa_in6.sin6_addr, 0,
+-                           sizeof(client.sa_in6.sin6_addr));
+-                    client.sa_in6.sin6_addr.s6_addr[15] = 1;
+-                } else
+-#  endif
+-                if (client.sa.sa_family == AF_INET) {
+-                    client.sa_in.sin_addr.s_addr = htonl(0x7F000001);
+-                } else
+-                    goto err;
+-            }
+-            cs = socket(client.sa.sa_family, SOCK_STREAM, SOCKET_PROTOCOL);
+-            if (cs != INVALID_SOCKET) {
+-                int ii;
+-                ii = connect(cs, &client.sa, addrlen);
+-                closesocket(cs);
+-                if (ii == INVALID_SOCKET) {
+-                    bind_mode = BIO_BIND_REUSEADDR;
+-                    closesocket(s);
+-                    goto again;
+-                }
+-                /* else error */
+-            }
+-            /* else error */
+-        }
+-# endif
+-        SYSerr(SYS_F_BIND, err_num);
+-        ERR_add_error_data(3, "port='", host, "'");
+-        BIOerr(BIO_F_BIO_GET_ACCEPT_SOCKET, BIO_R_UNABLE_TO_BIND_SOCKET);
+-        goto err;
+-    }
+-    if (listen(s, MAX_LISTEN) == -1) {
+-        SYSerr(SYS_F_BIND, get_last_socket_error());
+-        ERR_add_error_data(3, "port='", host, "'");
+-        BIOerr(BIO_F_BIO_GET_ACCEPT_SOCKET, BIO_R_UNABLE_TO_LISTEN_SOCKET);
+-        goto err;
+-    }
+-    ret = 1;
+- err:
+-    if (str != NULL)
+-        OPENSSL_free(str);
+-    if ((ret == 0) && (s != INVALID_SOCKET)) {
+-        closesocket(s);
+-        s = INVALID_SOCKET;
+-    }
+-    return (s);
+-}
+-
+-int BIO_accept(int sock, char **addr)
+-{
+-    int ret = INVALID_SOCKET;
+-    unsigned long l;
+-    unsigned short port;
+-    char *p;
+-
+-    struct {
+-        /*
+-         * As for following union. Trouble is that there are platforms
+-         * that have socklen_t and there are platforms that don't, on
+-         * some platforms socklen_t is int and on some size_t. So what
+-         * one can do? One can cook #ifdef spaghetti, which is nothing
+-         * but masochistic. Or one can do union between int and size_t.
+-         * One naturally does it primarily for 64-bit platforms where
+-         * sizeof(int) != sizeof(size_t). But would it work? Note that
+-         * if size_t member is initialized to 0, then later int member
+-         * assignment naturally does the job on little-endian platforms
+-         * regardless accept's expectations! What about big-endians?
+-         * If accept expects int*, then it works, and if size_t*, then
+-         * length value would appear as unreasonably large. But this
+-         * won't prevent it from filling in the address structure. The
+-         * trouble of course would be if accept returns more data than
+-         * actual buffer can accomodate and overwrite stack... That's
+-         * where early OPENSSL_assert comes into picture. Besides, the
+-         * only 64-bit big-endian platform found so far that expects
+-         * size_t* is HP-UX, where stack grows towards higher address.
+-         * <appro>
+-         */
+-        union {
+-            size_t s;
+-            int i;
+-        } len;
+-        union {
+-            struct sockaddr sa;
+-            struct sockaddr_in sa_in;
+-# if OPENSSL_USE_IPV6
+-            struct sockaddr_in6 sa_in6;
+-# endif
+-        } from;
+-    } sa;
+-
+-    sa.len.s = 0;
+-    sa.len.i = sizeof(sa.from);
+-    memset(&sa.from, 0, sizeof(sa.from));
+-    ret = accept(sock, &sa.from.sa, (void *)&sa.len);
+-    if (sizeof(sa.len.i) != sizeof(sa.len.s) && sa.len.i == 0) {
+-        OPENSSL_assert(sa.len.s <= sizeof(sa.from));
+-        sa.len.i = (int)sa.len.s;
+-        /* use sa.len.i from this point */
+-    }
+-    if (ret == INVALID_SOCKET) {
+-        if (BIO_sock_should_retry(ret))
+-            return -2;
+-        SYSerr(SYS_F_ACCEPT, get_last_socket_error());
+-        BIOerr(BIO_F_BIO_ACCEPT, BIO_R_ACCEPT_ERROR);
+-        goto end;
+-    }
+-
+-    if (addr == NULL)
+-        goto end;
+-
+-# ifdef EAI_FAMILY
+-    do {
+-        char h[NI_MAXHOST], s[NI_MAXSERV];
+-        size_t nl;
+-        static union {
+-            void *p;
+-            int (WSAAPI *f) (const struct sockaddr *, size_t /* socklen_t */ ,
+-                             char *, size_t, char *, size_t, int);
+-        } p_getnameinfo = {
+-            NULL
+-        };
+-        /*
+-         * 2nd argument to getnameinfo is specified to be socklen_t.
+-         * Unfortunately there is a number of environments where socklen_t is
+-         * not defined. As it's passed by value, it's safe to pass it as
+-         * size_t... <appro>
+-         */
+-
+-        if (p_getnameinfo.p == NULL) {
+-            if ((p_getnameinfo.p = DSO_global_lookup("getnameinfo")) == NULL)
+-                p_getnameinfo.p = (void *)-1;
+-        }
+-        if (p_getnameinfo.p == (void *)-1)
+-            break;
+-
+-        if ((*p_getnameinfo.f) (&sa.from.sa, sa.len.i, h, sizeof(h), s,
+-                                sizeof(s), NI_NUMERICHOST | NI_NUMERICSERV))
+-            break;
+-        nl = strlen(h) + strlen(s) + 2;
+-        p = *addr;
+-        if (p) {
+-            *p = '\0';
+-            p = OPENSSL_realloc(p, nl);
+-        } else {
+-            p = OPENSSL_malloc(nl);
+-        }
+-        if (p == NULL) {
+-            BIOerr(BIO_F_BIO_ACCEPT, ERR_R_MALLOC_FAILURE);
+-            goto end;
+-        }
+-        *addr = p;
+-        BIO_snprintf(*addr, nl, "%s:%s", h, s);
+-        goto end;
+-    } while (0);
+-# endif
+-    if (sa.from.sa.sa_family != AF_INET)
+-        goto end;
+-    l = ntohl(sa.from.sa_in.sin_addr.s_addr);
+-    port = ntohs(sa.from.sa_in.sin_port);
+-    if (*addr == NULL) {
+-        if ((p = OPENSSL_malloc(24)) == NULL) {
+-            BIOerr(BIO_F_BIO_ACCEPT, ERR_R_MALLOC_FAILURE);
+-            goto end;
+-        }
+-        *addr = p;
+-    }
+-    BIO_snprintf(*addr, 24, "%d.%d.%d.%d:%d",
+-                 (unsigned char)(l >> 24L) & 0xff,
+-                 (unsigned char)(l >> 16L) & 0xff,
+-                 (unsigned char)(l >> 8L) & 0xff,
+-                 (unsigned char)(l) & 0xff, port);
+- end:
+-    return (ret);
+-}
++// int BIO_get_accept_socket(char *host, int bind_mode)
++// {
++    // int ret = 0;
++    // union {
++        // struct sockaddr sa;
++        // struct sockaddr_in sa_in;
++// # if OPENSSL_USE_IPV6
++        // struct sockaddr_in6 sa_in6;
++// # endif
++    // } server, client;
++    // int s = INVALID_SOCKET, cs, addrlen;
++    // unsigned char ip[4];
++    // unsigned short port;
++    // char *str = NULL, *e;
++    // char *h, *p;
++    // unsigned long l;
++    // int err_num;
++
++    // if (BIO_sock_init() != 1)
++        // return (INVALID_SOCKET);
++
++    // if ((str = BUF_strdup(host)) == NULL)
++        // return (INVALID_SOCKET);
++
++    // h = p = NULL;
++    // h = str;
++    // for (e = str; *e; e++) {
++        // if (*e == ':') {
++            // p = e;
++        // } else if (*e == '/') {
++            // *e = '\0';
++            // break;
++        // }
++    // }
++    // if (p)
++        // *p++ = '\0';            /* points at last ':', '::port' is special
++                                 // * [see below] */
++    // else
++        // p = h, h = NULL;
++
++// # ifdef EAI_FAMILY
++    // do {
++        // static union {
++            // void *p;
++            // int (WSAAPI *f) (const char *, const char *,
++                             // const struct addrinfo *, struct addrinfo **);
++        // } p_getaddrinfo = {
++            // NULL
++        // };
++        // static union {
++            // void *p;
++            // void (WSAAPI *f) (struct addrinfo *);
++        // } p_freeaddrinfo = {
++            // NULL
++        // };
++        // struct addrinfo *res, hint;
++
++        // if (p_getaddrinfo.p == NULL) {
++            // if ((p_getaddrinfo.p = DSO_global_lookup("getaddrinfo")) == NULL
++                // || (p_freeaddrinfo.p =
++                    // DSO_global_lookup("freeaddrinfo")) == NULL)
++                // p_getaddrinfo.p = (void *)-1;
++        // }
++        // if (p_getaddrinfo.p == (void *)-1)
++            // break;
++
++        // /*
++         // * '::port' enforces IPv6 wildcard listener. Some OSes, e.g. Solaris,
++         // * default to IPv6 without any hint. Also note that commonly IPv6
++         // * wildchard socket can service IPv4 connections just as well...
++         // */
++        // memset(&hint, 0, sizeof(hint));
++        // hint.ai_flags = AI_PASSIVE;
++        // if (h) {
++            // if (strchr(h, ':')) {
++                // if (h[1] == '\0')
++                    // h = NULL;
++// #  if OPENSSL_USE_IPV6
++                // hint.ai_family = AF_INET6;
++// #  else
++                // h = NULL;
++// #  endif
++            // } else if (h[0] == '*' && h[1] == '\0') {
++                // hint.ai_family = AF_INET;
++                // h = NULL;
++            // }
++        // }
++
++        // if ((*p_getaddrinfo.f) (h, p, &hint, &res))
++            // break;
++
++        // addrlen = res->ai_addrlen <= sizeof(server) ?
++            // res->ai_addrlen : sizeof(server);
++        // memcpy(&server, res->ai_addr, addrlen);
++
++        // (*p_freeaddrinfo.f) (res);
++        // goto again;
++    // } while (0);
++// # endif
++
++    // if (!BIO_get_port(p, &port))
++        // goto err;
++
++    // memset((char *)&server, 0, sizeof(server));
++    // server.sa_in.sin_family = AF_INET;
++    // server.sa_in.sin_port = htons(port);
++    // addrlen = sizeof(server.sa_in);
++
++    // if (h == NULL || strcmp(h, "*") == 0)
++        // server.sa_in.sin_addr.s_addr = INADDR_ANY;
++    // else {
++        // if (!BIO_get_host_ip(h, &(ip[0])))
++            // goto err;
++        // l = (unsigned long)
++            // ((unsigned long)ip[0] << 24L) |
++            // ((unsigned long)ip[1] << 16L) |
++            // ((unsigned long)ip[2] << 8L) | ((unsigned long)ip[3]);
++        // server.sa_in.sin_addr.s_addr = htonl(l);
++    // }
++
++ // again:
++    // s = socket(server.sa.sa_family, SOCK_STREAM, SOCKET_PROTOCOL);
++    // if (s == INVALID_SOCKET) {
++        // SYSerr(SYS_F_SOCKET, get_last_socket_error());
++        // ERR_add_error_data(3, "port='", host, "'");
++        // BIOerr(BIO_F_BIO_GET_ACCEPT_SOCKET, BIO_R_UNABLE_TO_CREATE_SOCKET);
++        // goto err;
++    // }
++// # ifdef SO_REUSEADDR
++    // if (bind_mode == BIO_BIND_REUSEADDR) {
++        // int i = 1;
++
++        // ret = setsockopt(s, SOL_SOCKET, SO_REUSEADDR, (char *)&i, sizeof(i));
++        // bind_mode = BIO_BIND_NORMAL;
++    // }
++// # endif
++    // if (bind(s, &server.sa, addrlen) == -1) {
++// # ifdef SO_REUSEADDR
++        // err_num = get_last_socket_error();
++        // if ((bind_mode == BIO_BIND_REUSEADDR_IF_UNUSED) &&
++// #  ifdef OPENSSL_SYS_WINDOWS
++            // /*
++             // * Some versions of Windows define EADDRINUSE to a dummy value.
++             // */
++            // (err_num == WSAEADDRINUSE))
++// #  else
++            // (err_num == EADDRINUSE))
++// #  endif
++        // {
++            // client = server;
++            // if (h == NULL || strcmp(h, "*") == 0) {
++// #  if OPENSSL_USE_IPV6
++                // if (client.sa.sa_family == AF_INET6) {
++                    // memset(&client.sa_in6.sin6_addr, 0,
++                           // sizeof(client.sa_in6.sin6_addr));
++                    // client.sa_in6.sin6_addr.s6_addr[15] = 1;
++                // } else
++// #  endif
++                // if (client.sa.sa_family == AF_INET) {
++                    // client.sa_in.sin_addr.s_addr = htonl(0x7F000001);
++                // } else
++                    // goto err;
++            // }
++            // cs = socket(client.sa.sa_family, SOCK_STREAM, SOCKET_PROTOCOL);
++            // if (cs != INVALID_SOCKET) {
++                // int ii;
++                // ii = connect(cs, &client.sa, addrlen);
++                // closesocket(cs);
++                // if (ii == INVALID_SOCKET) {
++                    // bind_mode = BIO_BIND_REUSEADDR;
++                    // closesocket(s);
++                    // goto again;
++                // }
++                // /* else error */
++            // }
++            // /* else error */
++        // }
++// # endif
++        // SYSerr(SYS_F_BIND, err_num);
++        // ERR_add_error_data(3, "port='", host, "'");
++        // BIOerr(BIO_F_BIO_GET_ACCEPT_SOCKET, BIO_R_UNABLE_TO_BIND_SOCKET);
++        // goto err;
++    // }
++    // if (listen(s, MAX_LISTEN) == -1) {
++        // SYSerr(SYS_F_BIND, get_last_socket_error());
++        // ERR_add_error_data(3, "port='", host, "'");
++        // BIOerr(BIO_F_BIO_GET_ACCEPT_SOCKET, BIO_R_UNABLE_TO_LISTEN_SOCKET);
++        // goto err;
++    // }
++    // ret = 1;
++ // err:
++    // if (str != NULL)
++        // OPENSSL_free(str);
++    // if ((ret == 0) && (s != INVALID_SOCKET)) {
++        // closesocket(s);
++        // s = INVALID_SOCKET;
++    // }
++    // return (s);
++// }
++
++// int BIO_accept(int sock, char **addr)
++// {
++    // int ret = INVALID_SOCKET;
++    // unsigned long l;
++    // unsigned short port;
++    // char *p;
++
++    // struct {
++        // /*
++         // * As for following union. Trouble is that there are platforms
++         // * that have socklen_t and there are platforms that don't, on
++         // * some platforms socklen_t is int and on some size_t. So what
++         // * one can do? One can cook #ifdef spaghetti, which is nothing
++         // * but masochistic. Or one can do union between int and size_t.
++         // * One naturally does it primarily for 64-bit platforms where
++         // * sizeof(int) != sizeof(size_t). But would it work? Note that
++         // * if size_t member is initialized to 0, then later int member
++         // * assignment naturally does the job on little-endian platforms
++         // * regardless accept's expectations! What about big-endians?
++         // * If accept expects int*, then it works, and if size_t*, then
++         // * length value would appear as unreasonably large. But this
++         // * won't prevent it from filling in the address structure. The
++         // * trouble of course would be if accept returns more data than
++         // * actual buffer can accomodate and overwrite stack... That's
++         // * where early OPENSSL_assert comes into picture. Besides, the
++         // * only 64-bit big-endian platform found so far that expects
++         // * size_t* is HP-UX, where stack grows towards higher address.
++         // * <appro>
++         // */
++        // union {
++            // size_t s;
++            // int i;
++        // } len;
++        // union {
++            // struct sockaddr sa;
++            // struct sockaddr_in sa_in;
++// # if OPENSSL_USE_IPV6
++            // struct sockaddr_in6 sa_in6;
++// # endif
++        // } from;
++    // } sa;
++
++    // sa.len.s = 0;
++    // sa.len.i = sizeof(sa.from);
++    // memset(&sa.from, 0, sizeof(sa.from));
++    // ret = accept(sock, &sa.from.sa, (void *)&sa.len);
++    // if (sizeof(sa.len.i) != sizeof(sa.len.s) && sa.len.i == 0) {
++        // OPENSSL_assert(sa.len.s <= sizeof(sa.from));
++        // sa.len.i = (int)sa.len.s;
++        // /* use sa.len.i from this point */
++    // }
++    // if (ret == INVALID_SOCKET) {
++        // if (BIO_sock_should_retry(ret))
++            // return -2;
++        // SYSerr(SYS_F_ACCEPT, get_last_socket_error());
++        // BIOerr(BIO_F_BIO_ACCEPT, BIO_R_ACCEPT_ERROR);
++        // goto end;
++    // }
++
++    // if (addr == NULL)
++        // goto end;
++
++// # ifdef EAI_FAMILY
++    // do {
++        // char h[NI_MAXHOST], s[NI_MAXSERV];
++        // size_t nl;
++        // static union {
++            // void *p;
++            // int (WSAAPI *f) (const struct sockaddr *, size_t /* socklen_t */ ,
++                             // char *, size_t, char *, size_t, int);
++        // } p_getnameinfo = {
++            // NULL
++        // };
++        // /*
++         // * 2nd argument to getnameinfo is specified to be socklen_t.
++         // * Unfortunately there is a number of environments where socklen_t is
++         // * not defined. As it's passed by value, it's safe to pass it as
++         // * size_t... <appro>
++         // */
++
++        // if (p_getnameinfo.p == NULL) {
++            // if ((p_getnameinfo.p = DSO_global_lookup("getnameinfo")) == NULL)
++                // p_getnameinfo.p = (void *)-1;
++        // }
++        // if (p_getnameinfo.p == (void *)-1)
++            // break;
++
++        // if ((*p_getnameinfo.f) (&sa.from.sa, sa.len.i, h, sizeof(h), s,
++                                // sizeof(s), NI_NUMERICHOST | NI_NUMERICSERV))
++            // break;
++        // nl = strlen(h) + strlen(s) + 2;
++        // p = *addr;
++        // if (p) {
++            // *p = '\0';
++            // p = OPENSSL_realloc(p, nl);
++        // } else {
++            // p = OPENSSL_malloc(nl);
++        // }
++        // if (p == NULL) {
++            // BIOerr(BIO_F_BIO_ACCEPT, ERR_R_MALLOC_FAILURE);
++            // goto end;
++        // }
++        // *addr = p;
++        // BIO_snprintf(*addr, nl, "%s:%s", h, s);
++        // goto end;
++    // } while (0);
++// # endif
++    // if (sa.from.sa.sa_family != AF_INET)
++        // goto end;
++    // l = ntohl(sa.from.sa_in.sin_addr.s_addr);
++    // port = ntohs(sa.from.sa_in.sin_port);
++    // if (*addr == NULL) {
++        // if ((p = OPENSSL_malloc(24)) == NULL) {
++            // BIOerr(BIO_F_BIO_ACCEPT, ERR_R_MALLOC_FAILURE);
++            // goto end;
++        // }
++        // *addr = p;
++    // }
++    // BIO_snprintf(*addr, 24, "%d.%d.%d.%d:%d",
++                 // (unsigned char)(l >> 24L) & 0xff,
++                 // (unsigned char)(l >> 16L) & 0xff,
++                 // (unsigned char)(l >> 8L) & 0xff,
++                 // (unsigned char)(l) & 0xff, port);
++ // end:
++    // return (ret);
++// }
+ 
+ int BIO_set_tcp_ndelay(int s, int on)
+ {
+@@ -944,15 +944,15 @@ int BIO_set_tcp_ndelay(int s, int on)
+     return (ret == 0);
+ }
+ 
+-int BIO_socket_nbio(int s, int mode)
+-{
+-    int ret = -1;
+-    int l;
+-
+-    l = mode;
+-# ifdef FIONBIO
+-    ret = BIO_socket_ioctl(s, FIONBIO, &l);
+-# endif
+-    return (ret == 0);
+-}
++// int BIO_socket_nbio(int s, int mode)
++// {
++    // int ret = -1;
++    // int l;
++
++    // l = mode;
++// # ifdef FIONBIO
++    // ret = BIO_socket_ioctl(s, FIONBIO, &l);
++// # endif
++    // return (ret == 0);
++// }
+ #endif
+diff --git a/jni/bio/bf_nbio.c b/jni/bio/bf_nbio.c
+index 4842bb4..a3e4b24 100644
+--- a/jni/bio/bf_nbio.c
++++ b/jni/bio/bf_nbio.c
+@@ -66,8 +66,8 @@
+  * BIO_put and BIO_get both add to the digest, BIO_gets returns the digest
+  */
+ 
+-static int nbiof_write(BIO *h, const char *buf, int num);
+-static int nbiof_read(BIO *h, char *buf, int size);
++//static int nbiof_write(BIO *h, const char *buf, int num);
++//static int nbiof_read(BIO *h, char *buf, int size);
+ static int nbiof_puts(BIO *h, const char *str);
+ static int nbiof_gets(BIO *h, char *str, int size);
+ static long nbiof_ctrl(BIO *h, int cmd, long arg1, void *arg2);
+@@ -83,8 +83,8 @@ typedef struct nbio_test_st {
+ static BIO_METHOD methods_nbiof = {
+     BIO_TYPE_NBIO_TEST,
+     "non-blocking IO test filter",
+-    nbiof_write,
+-    nbiof_read,
++    //nbiof_write,
++    //nbiof_read,
+     nbiof_puts,
+     nbiof_gets,
+     nbiof_ctrl,
+@@ -124,83 +124,83 @@ static int nbiof_free(BIO *a)
+     return (1);
+ }
+ 
+-static int nbiof_read(BIO *b, char *out, int outl)
+-{
+-    int ret = 0;
+-#if 1
+-    int num;
+-    unsigned char n;
+-#endif
+-
+-    if (out == NULL)
+-        return (0);
+-    if (b->next_bio == NULL)
+-        return (0);
+-
+-    BIO_clear_retry_flags(b);
+-#if 1
+-    if (RAND_bytes(&n, 1) <= 0)
+-        return -1;
+-    num = (n & 0x07);
+-
+-    if (outl > num)
+-        outl = num;
+-
+-    if (num == 0) {
+-        ret = -1;
+-        BIO_set_retry_read(b);
+-    } else
+-#endif
+-    {
+-        ret = BIO_read(b->next_bio, out, outl);
+-        if (ret < 0)
+-            BIO_copy_next_retry(b);
+-    }
+-    return (ret);
+-}
+-
+-static int nbiof_write(BIO *b, const char *in, int inl)
+-{
+-    NBIO_TEST *nt;
+-    int ret = 0;
+-    int num;
+-    unsigned char n;
+-
+-    if ((in == NULL) || (inl <= 0))
+-        return (0);
+-    if (b->next_bio == NULL)
+-        return (0);
+-    nt = (NBIO_TEST *)b->ptr;
+-
+-    BIO_clear_retry_flags(b);
+-
+-#if 1
+-    if (nt->lwn > 0) {
+-        num = nt->lwn;
+-        nt->lwn = 0;
+-    } else {
+-        if (RAND_bytes(&n, 1) <= 0)
+-            return -1;
+-        num = (n & 7);
+-    }
+-
+-    if (inl > num)
+-        inl = num;
+-
+-    if (num == 0) {
+-        ret = -1;
+-        BIO_set_retry_write(b);
+-    } else
+-#endif
+-    {
+-        ret = BIO_write(b->next_bio, in, inl);
+-        if (ret < 0) {
+-            BIO_copy_next_retry(b);
+-            nt->lwn = inl;
+-        }
+-    }
+-    return (ret);
+-}
++// static int nbiof_read(BIO *b, char *out, int outl)
++// {
++    // int ret = 0;
++// #if 1
++    // int num;
++    // unsigned char n;
++// #endif
++
++    // if (out == NULL)
++        // return (0);
++    // if (b->next_bio == NULL)
++        // return (0);
++
++    // BIO_clear_retry_flags(b);
++// #if 1
++    // if (RAND_bytes(&n, 1) <= 0)
++        // return -1;
++    // num = (n & 0x07);
++
++    // if (outl > num)
++        // outl = num;
++
++    // if (num == 0) {
++        // ret = -1;
++        // BIO_set_retry_read(b);
++    // } else
++// #endif
++    // {
++        // ret = BIO_read(b->next_bio, out, outl);
++        // if (ret < 0)
++            // BIO_copy_next_retry(b);
++    // }
++    // return (ret);
++// }
++
++// static int nbiof_write(BIO *b, const char *in, int inl)
++// {
++    // NBIO_TEST *nt;
++    // int ret = 0;
++    // int num;
++    // unsigned char n;
++
++    // if ((in == NULL) || (inl <= 0))
++        // return (0);
++    // if (b->next_bio == NULL)
++        // return (0);
++    // nt = (NBIO_TEST *)b->ptr;
++
++    // BIO_clear_retry_flags(b);
++
++// #if 1
++    // if (nt->lwn > 0) {
++        // num = nt->lwn;
++        // nt->lwn = 0;
++    // } else {
++        // if (RAND_bytes(&n, 1) <= 0)
++            // return -1;
++        // num = (n & 7);
++    // }
++
++    // if (inl > num)
++        // inl = num;
++
++    // if (num == 0) {
++        // ret = -1;
++        // BIO_set_retry_write(b);
++    // } else
++// #endif
++    // {
++        // ret = BIO_write(b->next_bio, in, inl);
++        // if (ret < 0) {
++            // BIO_copy_next_retry(b);
++            // nt->lwn = inl;
++        // }
++    // }
++    // return (ret);
++// }
+ 
+ static long nbiof_ctrl(BIO *b, int cmd, long num, void *ptr)
+ {
+diff --git a/jni/bio/bio_lib.c b/jni/bio/bio_lib.c
+index 07934f8..f216807 100644
+--- a/jni/bio/bio_lib.c
++++ b/jni/bio/bio_lib.c
+@@ -569,10 +569,10 @@ int BIO_get_ex_new_index(long argl, void *argp, CRYPTO_EX_new *new_func,
+                                    new_func, dup_func, free_func);
+ }
+ 
+-int BIO_set_ex_data(BIO *bio, int idx, void *data)
+-{
+-    return (CRYPTO_set_ex_data(&(bio->ex_data), idx, data));
+-}
++// int BIO_set_ex_data(BIO *bio, int idx, void *data)
++// {
++    // return (CRYPTO_set_ex_data(&(bio->ex_data), idx, data));
++// }
+ 
+ void *BIO_get_ex_data(BIO *bio, int idx)
+ {
+diff --git a/jni/bio/bss_acpt.c b/jni/bio/bss_acpt.c
+index d08292c..7769217 100644
+--- a/jni/bio/bss_acpt.c
++++ b/jni/bio/bss_acpt.c
+@@ -91,13 +91,13 @@ typedef struct bio_accept_st {
+     BIO *bio_chain;
+ } BIO_ACCEPT;
+ 
+-static int acpt_write(BIO *h, const char *buf, int num);
+-static int acpt_read(BIO *h, char *buf, int size);
+-static int acpt_puts(BIO *h, const char *str);
++//static int acpt_write(BIO *h, const char *buf, int num);
++//static int acpt_read(BIO *h, char *buf, int size);
++//static int acpt_puts(BIO *h, const char *str);
+ static long acpt_ctrl(BIO *h, int cmd, long arg1, void *arg2);
+ static int acpt_new(BIO *h);
+ static int acpt_free(BIO *data);
+-static int acpt_state(BIO *b, BIO_ACCEPT *c);
++//static int acpt_state(BIO *b, BIO_ACCEPT *c);
+ static void acpt_close_socket(BIO *data);
+ static BIO_ACCEPT *BIO_ACCEPT_new(void);
+ static void BIO_ACCEPT_free(BIO_ACCEPT *a);
+@@ -109,13 +109,13 @@ static void BIO_ACCEPT_free(BIO_ACCEPT *a);
+ static BIO_METHOD methods_acceptp = {
+     BIO_TYPE_ACCEPT,
+     "socket accept",
+-    acpt_write,
+-    acpt_read,
+-    acpt_puts,
++    //acpt_write,
++    //acpt_read,
++    //acpt_puts,
+     NULL,                       /* connect_gets, */
+-    acpt_ctrl,
++    //acpt_ctrl,
+     acpt_new,
+-    acpt_free,
++    //acpt_free,
+     NULL,
+ };
+ 
+@@ -197,144 +197,144 @@ static int acpt_free(BIO *a)
+     return (1);
+ }
+ 
+-static int acpt_state(BIO *b, BIO_ACCEPT *c)
+-{
+-    BIO *bio = NULL, *dbio;
+-    int s = -1;
+-    int i;
+-
+- again:
+-    switch (c->state) {
+-    case ACPT_S_BEFORE:
+-        if (c->param_addr == NULL) {
+-            BIOerr(BIO_F_ACPT_STATE, BIO_R_NO_ACCEPT_PORT_SPECIFIED);
+-            return (-1);
+-        }
+-        s = BIO_get_accept_socket(c->param_addr, c->bind_mode);
+-        if (s == INVALID_SOCKET)
+-            return (-1);
+-
+-        if (c->accept_nbio) {
+-            if (!BIO_socket_nbio(s, 1)) {
+-                closesocket(s);
+-                BIOerr(BIO_F_ACPT_STATE,
+-                       BIO_R_ERROR_SETTING_NBIO_ON_ACCEPT_SOCKET);
+-                return (-1);
+-            }
+-        }
+-        c->accept_sock = s;
+-        b->num = s;
+-        c->state = ACPT_S_GET_ACCEPT_SOCKET;
+-        return (1);
+-        /* break; */
+-    case ACPT_S_GET_ACCEPT_SOCKET:
+-        if (b->next_bio != NULL) {
+-            c->state = ACPT_S_OK;
+-            goto again;
+-        }
+-        BIO_clear_retry_flags(b);
+-        b->retry_reason = 0;
+-        i = BIO_accept(c->accept_sock, &(c->addr));
+-
+-        /* -2 return means we should retry */
+-        if (i == -2) {
+-            BIO_set_retry_special(b);
+-            b->retry_reason = BIO_RR_ACCEPT;
+-            return -1;
+-        }
+-
+-        if (i < 0)
+-            return (i);
+-
+-        bio = BIO_new_socket(i, BIO_CLOSE);
+-        if (bio == NULL)
+-            goto err;
+-
+-        BIO_set_callback(bio, BIO_get_callback(b));
+-        BIO_set_callback_arg(bio, BIO_get_callback_arg(b));
+-
+-        if (c->nbio) {
+-            if (!BIO_socket_nbio(i, 1)) {
+-                BIOerr(BIO_F_ACPT_STATE,
+-                       BIO_R_ERROR_SETTING_NBIO_ON_ACCEPTED_SOCKET);
+-                goto err;
+-            }
+-        }
+-
+-        /*
+-         * If the accept BIO has an bio_chain, we dup it and put the new
+-         * socket at the end.
+-         */
+-        if (c->bio_chain != NULL) {
+-            if ((dbio = BIO_dup_chain(c->bio_chain)) == NULL)
+-                goto err;
+-            if (!BIO_push(dbio, bio))
+-                goto err;
+-            bio = dbio;
+-        }
+-        if (BIO_push(b, bio) == NULL)
+-            goto err;
+-
+-        c->state = ACPT_S_OK;
+-        return (1);
+- err:
+-        if (bio != NULL)
+-            BIO_free(bio);
+-        else if (s >= 0)
+-            closesocket(s);
+-        return (0);
+-        /* break; */
+-    case ACPT_S_OK:
+-        if (b->next_bio == NULL) {
+-            c->state = ACPT_S_GET_ACCEPT_SOCKET;
+-            goto again;
+-        }
+-        return (1);
+-        /* break; */
+-    default:
+-        return (0);
+-        /* break; */
+-    }
+-
+-}
+-
+-static int acpt_read(BIO *b, char *out, int outl)
+-{
+-    int ret = 0;
+-    BIO_ACCEPT *data;
+-
+-    BIO_clear_retry_flags(b);
+-    data = (BIO_ACCEPT *)b->ptr;
+-
+-    while (b->next_bio == NULL) {
+-        ret = acpt_state(b, data);
+-        if (ret <= 0)
+-            return (ret);
+-    }
+-
+-    ret = BIO_read(b->next_bio, out, outl);
+-    BIO_copy_next_retry(b);
+-    return (ret);
+-}
+-
+-static int acpt_write(BIO *b, const char *in, int inl)
+-{
+-    int ret;
+-    BIO_ACCEPT *data;
+-
+-    BIO_clear_retry_flags(b);
+-    data = (BIO_ACCEPT *)b->ptr;
+-
+-    while (b->next_bio == NULL) {
+-        ret = acpt_state(b, data);
+-        if (ret <= 0)
+-            return (ret);
+-    }
+-
+-    ret = BIO_write(b->next_bio, in, inl);
+-    BIO_copy_next_retry(b);
+-    return (ret);
+-}
++// static int acpt_state(BIO *b, BIO_ACCEPT *c)
++// {
++    // BIO *bio = NULL, *dbio;
++    // int s = -1;
++    // int i;
++
++ // again:
++    // switch (c->state) {
++    // case ACPT_S_BEFORE:
++        // if (c->param_addr == NULL) {
++            // BIOerr(BIO_F_ACPT_STATE, BIO_R_NO_ACCEPT_PORT_SPECIFIED);
++            // return (-1);
++        // }
++        // s = BIO_get_accept_socket(c->param_addr, c->bind_mode);
++        // if (s == INVALID_SOCKET)
++            // return (-1);
++
++        // if (c->accept_nbio) {
++            // if (!BIO_socket_nbio(s, 1)) {
++                // closesocket(s);
++                // BIOerr(BIO_F_ACPT_STATE,
++                       // BIO_R_ERROR_SETTING_NBIO_ON_ACCEPT_SOCKET);
++                // return (-1);
++            // }
++        // }
++        // c->accept_sock = s;
++        // b->num = s;
++        // c->state = ACPT_S_GET_ACCEPT_SOCKET;
++        // return (1);
++        // /* break; */
++    // case ACPT_S_GET_ACCEPT_SOCKET:
++        // if (b->next_bio != NULL) {
++            // c->state = ACPT_S_OK;
++            // goto again;
++        // }
++        // BIO_clear_retry_flags(b);
++        // b->retry_reason = 0;
++        // i = BIO_accept(c->accept_sock, &(c->addr));
++
++        // /* -2 return means we should retry */
++        // if (i == -2) {
++            // BIO_set_retry_special(b);
++            // b->retry_reason = BIO_RR_ACCEPT;
++            // return -1;
++        // }
++
++        // if (i < 0)
++            // return (i);
++
++        // bio = BIO_new_socket(i, BIO_CLOSE);
++        // if (bio == NULL)
++            // goto err;
++
++        // BIO_set_callback(bio, BIO_get_callback(b));
++        // BIO_set_callback_arg(bio, BIO_get_callback_arg(b));
++
++        // if (c->nbio) {
++            // if (!BIO_socket_nbio(i, 1)) {
++                // BIOerr(BIO_F_ACPT_STATE,
++                       // BIO_R_ERROR_SETTING_NBIO_ON_ACCEPTED_SOCKET);
++                // goto err;
++            // }
++        // }
++
++        // /*
++         // * If the accept BIO has an bio_chain, we dup it and put the new
++         // * socket at the end.
++         // */
++        // if (c->bio_chain != NULL) {
++            // if ((dbio = BIO_dup_chain(c->bio_chain)) == NULL)
++                // goto err;
++            // if (!BIO_push(dbio, bio))
++                // goto err;
++            // bio = dbio;
++        // }
++        // if (BIO_push(b, bio) == NULL)
++            // goto err;
++
++        // c->state = ACPT_S_OK;
++        // return (1);
++ // err:
++        // if (bio != NULL)
++            // BIO_free(bio);
++        // else if (s >= 0)
++            // closesocket(s);
++        // return (0);
++        // /* break; */
++    // case ACPT_S_OK:
++        // if (b->next_bio == NULL) {
++            // c->state = ACPT_S_GET_ACCEPT_SOCKET;
++            // goto again;
++        // }
++        // return (1);
++        // /* break; */
++    // default:
++        // return (0);
++        // /* break; */
++    // }
++
++// }
++
++// static int acpt_read(BIO *b, char *out, int outl)
++// {
++    // int ret = 0;
++    // BIO_ACCEPT *data;
++
++    // BIO_clear_retry_flags(b);
++    // data = (BIO_ACCEPT *)b->ptr;
++
++    // while (b->next_bio == NULL) {
++        // ret = acpt_state(b, data);
++        // if (ret <= 0)
++            // return (ret);
++    // }
++
++    // ret = BIO_read(b->next_bio, out, outl);
++    // BIO_copy_next_retry(b);
++    // return (ret);
++// }
++
++// static int acpt_write(BIO *b, const char *in, int inl)
++// {
++    // int ret;
++    // BIO_ACCEPT *data;
++
++    // BIO_clear_retry_flags(b);
++    // data = (BIO_ACCEPT *)b->ptr;
++
++    // while (b->next_bio == NULL) {
++        // ret = acpt_state(b, data);
++        // if (ret <= 0)
++            // return (ret);
++    // }
++
++    // ret = BIO_write(b->next_bio, in, inl);
++    // BIO_copy_next_retry(b);
++    // return (ret);
++// }
+ 
+ static long acpt_ctrl(BIO *b, int cmd, long num, void *ptr)
+ {
+@@ -436,14 +436,14 @@ static long acpt_ctrl(BIO *b, int cmd, long num, void *ptr)
+     return (ret);
+ }
+ 
+-static int acpt_puts(BIO *bp, const char *str)
+-{
+-    int n, ret;
++// static int acpt_puts(BIO *bp, const char *str)
++// {
++    // int n, ret;
+ 
+-    n = strlen(str);
+-    ret = acpt_write(bp, str, n);
+-    return (ret);
+-}
++    // n = strlen(str);
++    // ret = acpt_write(bp, str, n);
++    // return (ret);
++// }
+ 
+ BIO *BIO_new_accept(char *str)
+ {
+diff --git a/jni/bio/bss_conn.c b/jni/bio/bss_conn.c
+index ed214ca..afac3b2 100644
+--- a/jni/bio/bss_conn.c
++++ b/jni/bio/bss_conn.c
+@@ -95,15 +95,15 @@ typedef struct bio_connect_st {
+     int (*info_callback) (const BIO *bio, int state, int ret);
+ } BIO_CONNECT;
+ 
+-static int conn_write(BIO *h, const char *buf, int num);
+-static int conn_read(BIO *h, char *buf, int size);
+-static int conn_puts(BIO *h, const char *str);
+-static long conn_ctrl(BIO *h, int cmd, long arg1, void *arg2);
++//static int conn_write(BIO *h, const char *buf, int num);
++//static int conn_read(BIO *h, char *buf, int size);
++//static int conn_puts(BIO *h, const char *str);
++//static long conn_ctrl(BIO *h, int cmd, long arg1, void *arg2);
+ static int conn_new(BIO *h);
+ static int conn_free(BIO *data);
+ static long conn_callback_ctrl(BIO *h, int cmd, bio_info_cb *);
+ 
+-static int conn_state(BIO *b, BIO_CONNECT *c);
++//static int conn_state(BIO *b, BIO_CONNECT *c);
+ static void conn_close_socket(BIO *data);
+ BIO_CONNECT *BIO_CONNECT_new(void);
+ void BIO_CONNECT_free(BIO_CONNECT *a);
+@@ -111,183 +111,183 @@ void BIO_CONNECT_free(BIO_CONNECT *a);
+ static BIO_METHOD methods_connectp = {
+     BIO_TYPE_CONNECT,
+     "socket connect",
+-    conn_write,
+-    conn_read,
+-    conn_puts,
++    //conn_write,
++   // conn_read,
++    //conn_puts,
+     NULL,                       /* connect_gets, */
+-    conn_ctrl,
++    //conn_ctrl,
+     conn_new,
+     conn_free,
+     conn_callback_ctrl,
+ };
+ 
+-static int conn_state(BIO *b, BIO_CONNECT *c)
+-{
+-    int ret = -1, i;
+-    unsigned long l;
+-    char *p, *q;
+-    int (*cb) (const BIO *, int, int) = NULL;
+-
+-    if (c->info_callback != NULL)
+-        cb = c->info_callback;
+-
+-    for (;;) {
+-        switch (c->state) {
+-        case BIO_CONN_S_BEFORE:
+-            p = c->param_hostname;
+-            if (p == NULL) {
+-                BIOerr(BIO_F_CONN_STATE, BIO_R_NO_HOSTNAME_SPECIFIED);
+-                goto exit_loop;
+-            }
+-            for (; *p != '\0'; p++) {
+-                if ((*p == ':') || (*p == '/'))
+-                    break;
+-            }
+-
+-            i = *p;
+-            if ((i == ':') || (i == '/')) {
+-
+-                *(p++) = '\0';
+-                if (i == ':') {
+-                    for (q = p; *q; q++)
+-                        if (*q == '/') {
+-                            *q = '\0';
+-                            break;
+-                        }
+-                    if (c->param_port != NULL)
+-                        OPENSSL_free(c->param_port);
+-                    c->param_port = BUF_strdup(p);
+-                }
+-            }
+-
+-            if (c->param_port == NULL) {
+-                BIOerr(BIO_F_CONN_STATE, BIO_R_NO_PORT_SPECIFIED);
+-                ERR_add_error_data(2, "host=", c->param_hostname);
+-                goto exit_loop;
+-            }
+-            c->state = BIO_CONN_S_GET_IP;
+-            break;
+-
+-        case BIO_CONN_S_GET_IP:
+-            if (BIO_get_host_ip(c->param_hostname, &(c->ip[0])) <= 0)
+-                goto exit_loop;
+-            c->state = BIO_CONN_S_GET_PORT;
+-            break;
+-
+-        case BIO_CONN_S_GET_PORT:
+-            if (c->param_port == NULL) {
+-                /* abort(); */
+-                goto exit_loop;
+-            } else if (BIO_get_port(c->param_port, &c->port) <= 0)
+-                goto exit_loop;
+-            c->state = BIO_CONN_S_CREATE_SOCKET;
+-            break;
+-
+-        case BIO_CONN_S_CREATE_SOCKET:
+-            /* now setup address */
+-            memset((char *)&c->them, 0, sizeof(c->them));
+-            c->them.sin_family = AF_INET;
+-            c->them.sin_port = htons((unsigned short)c->port);
+-            l = (unsigned long)
+-                ((unsigned long)c->ip[0] << 24L) |
+-                ((unsigned long)c->ip[1] << 16L) |
+-                ((unsigned long)c->ip[2] << 8L) | ((unsigned long)c->ip[3]);
+-            c->them.sin_addr.s_addr = htonl(l);
+-            c->state = BIO_CONN_S_CREATE_SOCKET;
+-
+-            ret = socket(AF_INET, SOCK_STREAM, SOCKET_PROTOCOL);
+-            if (ret == INVALID_SOCKET) {
+-                SYSerr(SYS_F_SOCKET, get_last_socket_error());
+-                ERR_add_error_data(4, "host=", c->param_hostname,
+-                                   ":", c->param_port);
+-                BIOerr(BIO_F_CONN_STATE, BIO_R_UNABLE_TO_CREATE_SOCKET);
+-                goto exit_loop;
+-            }
+-            b->num = ret;
+-            c->state = BIO_CONN_S_NBIO;
+-            break;
+-
+-        case BIO_CONN_S_NBIO:
+-            if (c->nbio) {
+-                if (!BIO_socket_nbio(b->num, 1)) {
+-                    BIOerr(BIO_F_CONN_STATE, BIO_R_ERROR_SETTING_NBIO);
+-                    ERR_add_error_data(4, "host=",
+-                                       c->param_hostname, ":", c->param_port);
+-                    goto exit_loop;
+-                }
+-            }
+-            c->state = BIO_CONN_S_CONNECT;
+-
+-# if defined(SO_KEEPALIVE) && !defined(OPENSSL_SYS_MPE)
+-            i = 1;
+-            i = setsockopt(b->num, SOL_SOCKET, SO_KEEPALIVE, (char *)&i,
+-                           sizeof(i));
+-            if (i < 0) {
+-                SYSerr(SYS_F_SOCKET, get_last_socket_error());
+-                ERR_add_error_data(4, "host=", c->param_hostname,
+-                                   ":", c->param_port);
+-                BIOerr(BIO_F_CONN_STATE, BIO_R_KEEPALIVE);
+-                goto exit_loop;
+-            }
+-# endif
+-            break;
+-
+-        case BIO_CONN_S_CONNECT:
+-            BIO_clear_retry_flags(b);
+-            ret = connect(b->num,
+-                          (struct sockaddr *)&c->them, sizeof(c->them));
+-            b->retry_reason = 0;
+-            if (ret < 0) {
+-                if (BIO_sock_should_retry(ret)) {
+-                    BIO_set_retry_special(b);
+-                    c->state = BIO_CONN_S_BLOCKED_CONNECT;
+-                    b->retry_reason = BIO_RR_CONNECT;
+-                } else {
+-                    SYSerr(SYS_F_CONNECT, get_last_socket_error());
+-                    ERR_add_error_data(4, "host=",
+-                                       c->param_hostname, ":", c->param_port);
+-                    BIOerr(BIO_F_CONN_STATE, BIO_R_CONNECT_ERROR);
+-                }
+-                goto exit_loop;
+-            } else
+-                c->state = BIO_CONN_S_OK;
+-            break;
+-
+-        case BIO_CONN_S_BLOCKED_CONNECT:
+-            i = BIO_sock_error(b->num);
+-            if (i) {
+-                BIO_clear_retry_flags(b);
+-                SYSerr(SYS_F_CONNECT, i);
+-                ERR_add_error_data(4, "host=",
+-                                   c->param_hostname, ":", c->param_port);
+-                BIOerr(BIO_F_CONN_STATE, BIO_R_NBIO_CONNECT_ERROR);
+-                ret = 0;
+-                goto exit_loop;
+-            } else
+-                c->state = BIO_CONN_S_OK;
+-            break;
+-
+-        case BIO_CONN_S_OK:
+-            ret = 1;
+-            goto exit_loop;
+-        default:
+-            /* abort(); */
+-            goto exit_loop;
+-        }
+-
+-        if (cb != NULL) {
+-            if (!(ret = cb((BIO *)b, c->state, ret)))
+-                goto end;
+-        }
+-    }
+-
+-    /* Loop does not exit */
+- exit_loop:
+-    if (cb != NULL)
+-        ret = cb((BIO *)b, c->state, ret);
+- end:
+-    return (ret);
+-}
++// static int conn_state(BIO *b, BIO_CONNECT *c)
++// {
++    // int ret = -1, i;
++    // unsigned long l;
++    // char *p, *q;
++    // int (*cb) (const BIO *, int, int) = NULL;
++
++    // if (c->info_callback != NULL)
++        // cb = c->info_callback;
++
++    // for (;;) {
++        // switch (c->state) {
++        // case BIO_CONN_S_BEFORE:
++            // p = c->param_hostname;
++            // if (p == NULL) {
++                // BIOerr(BIO_F_CONN_STATE, BIO_R_NO_HOSTNAME_SPECIFIED);
++                // goto exit_loop;
++            // }
++            // for (; *p != '\0'; p++) {
++                // if ((*p == ':') || (*p == '/'))
++                    // break;
++            // }
++
++            // i = *p;
++            // if ((i == ':') || (i == '/')) {
++
++                // *(p++) = '\0';
++                // if (i == ':') {
++                    // for (q = p; *q; q++)
++                        // if (*q == '/') {
++                            // *q = '\0';
++                            // break;
++                        // }
++                    // if (c->param_port != NULL)
++                        // OPENSSL_free(c->param_port);
++                    // c->param_port = BUF_strdup(p);
++                // }
++            // }
++
++            // if (c->param_port == NULL) {
++                // BIOerr(BIO_F_CONN_STATE, BIO_R_NO_PORT_SPECIFIED);
++                // ERR_add_error_data(2, "host=", c->param_hostname);
++                // goto exit_loop;
++            // }
++            // c->state = BIO_CONN_S_GET_IP;
++            // break;
++
++        // case BIO_CONN_S_GET_IP:
++            // if (BIO_get_host_ip(c->param_hostname, &(c->ip[0])) <= 0)
++                // goto exit_loop;
++            // c->state = BIO_CONN_S_GET_PORT;
++            // break;
++
++        // case BIO_CONN_S_GET_PORT:
++            // if (c->param_port == NULL) {
++                // /* abort(); */
++                // goto exit_loop;
++            // } else if (BIO_get_port(c->param_port, &c->port) <= 0)
++                // goto exit_loop;
++            // c->state = BIO_CONN_S_CREATE_SOCKET;
++            // break;
++
++        // case BIO_CONN_S_CREATE_SOCKET:
++            // /* now setup address */
++            // memset((char *)&c->them, 0, sizeof(c->them));
++            // c->them.sin_family = AF_INET;
++            // c->them.sin_port = htons((unsigned short)c->port);
++            // l = (unsigned long)
++                // ((unsigned long)c->ip[0] << 24L) |
++                // ((unsigned long)c->ip[1] << 16L) |
++                // ((unsigned long)c->ip[2] << 8L) | ((unsigned long)c->ip[3]);
++            // c->them.sin_addr.s_addr = htonl(l);
++            // c->state = BIO_CONN_S_CREATE_SOCKET;
++
++            // ret = socket(AF_INET, SOCK_STREAM, SOCKET_PROTOCOL);
++            // if (ret == INVALID_SOCKET) {
++                // SYSerr(SYS_F_SOCKET, get_last_socket_error());
++                // ERR_add_error_data(4, "host=", c->param_hostname,
++                                   // ":", c->param_port);
++                // BIOerr(BIO_F_CONN_STATE, BIO_R_UNABLE_TO_CREATE_SOCKET);
++                // goto exit_loop;
++            // }
++            // b->num = ret;
++            // c->state = BIO_CONN_S_NBIO;
++            // break;
++
++        // case BIO_CONN_S_NBIO:
++            // if (c->nbio) {
++                // if (!BIO_socket_nbio(b->num, 1)) {
++                    // BIOerr(BIO_F_CONN_STATE, BIO_R_ERROR_SETTING_NBIO);
++                    // ERR_add_error_data(4, "host=",
++                                       // c->param_hostname, ":", c->param_port);
++                    // goto exit_loop;
++                // }
++            // }
++            // c->state = BIO_CONN_S_CONNECT;
++
++// # if defined(SO_KEEPALIVE) && !defined(OPENSSL_SYS_MPE)
++            // i = 1;
++            // i = setsockopt(b->num, SOL_SOCKET, SO_KEEPALIVE, (char *)&i,
++                           // sizeof(i));
++            // if (i < 0) {
++                // SYSerr(SYS_F_SOCKET, get_last_socket_error());
++                // ERR_add_error_data(4, "host=", c->param_hostname,
++                                   // ":", c->param_port);
++                // BIOerr(BIO_F_CONN_STATE, BIO_R_KEEPALIVE);
++                // goto exit_loop;
++            // }
++// # endif
++            // break;
++
++        // case BIO_CONN_S_CONNECT:
++            // BIO_clear_retry_flags(b);
++            // ret = connect(b->num,
++                          // (struct sockaddr *)&c->them, sizeof(c->them));
++            // b->retry_reason = 0;
++            // if (ret < 0) {
++                // if (BIO_sock_should_retry(ret)) {
++                    // BIO_set_retry_special(b);
++                    // c->state = BIO_CONN_S_BLOCKED_CONNECT;
++                    // b->retry_reason = BIO_RR_CONNECT;
++                // } else {
++                    // SYSerr(SYS_F_CONNECT, get_last_socket_error());
++                    // ERR_add_error_data(4, "host=",
++                                       // c->param_hostname, ":", c->param_port);
++                    // BIOerr(BIO_F_CONN_STATE, BIO_R_CONNECT_ERROR);
++                // }
++                // goto exit_loop;
++            // } else
++                // c->state = BIO_CONN_S_OK;
++            // break;
++
++        // case BIO_CONN_S_BLOCKED_CONNECT:
++            // i = BIO_sock_error(b->num);
++            // if (i) {
++                // BIO_clear_retry_flags(b);
++                // SYSerr(SYS_F_CONNECT, i);
++                // ERR_add_error_data(4, "host=",
++                                   // c->param_hostname, ":", c->param_port);
++                // BIOerr(BIO_F_CONN_STATE, BIO_R_NBIO_CONNECT_ERROR);
++                // ret = 0;
++                // goto exit_loop;
++            // } else
++                // c->state = BIO_CONN_S_OK;
++            // break;
++
++        // case BIO_CONN_S_OK:
++            // ret = 1;
++            // goto exit_loop;
++        // default:
++            // /* abort(); */
++            // goto exit_loop;
++        // }
++
++        // if (cb != NULL) {
++            // if (!(ret = cb((BIO *)b, c->state, ret)))
++                // goto end;
++        // }
++    // }
++
++    // /* Loop does not exit */
++ // exit_loop:
++    // if (cb != NULL)
++        // ret = cb((BIO *)b, c->state, ret);
++ // end:
++    // return (ret);
++// }
+ 
+ BIO_CONNECT *BIO_CONNECT_new(void)
+ {
+@@ -369,200 +369,200 @@ static int conn_free(BIO *a)
+     return (1);
+ }
+ 
+-static int conn_read(BIO *b, char *out, int outl)
+-{
+-    int ret = 0;
+-    BIO_CONNECT *data;
+-
+-    data = (BIO_CONNECT *)b->ptr;
+-    if (data->state != BIO_CONN_S_OK) {
+-        ret = conn_state(b, data);
+-        if (ret <= 0)
+-            return (ret);
+-    }
+-
+-    if (out != NULL) {
+-        clear_socket_error();
+-        ret = readsocket(b->num, out, outl);
+-        BIO_clear_retry_flags(b);
+-        if (ret <= 0) {
+-            if (BIO_sock_should_retry(ret))
+-                BIO_set_retry_read(b);
+-        }
+-    }
+-    return (ret);
+-}
+-
+-static int conn_write(BIO *b, const char *in, int inl)
+-{
+-    int ret;
+-    BIO_CONNECT *data;
+-
+-    data = (BIO_CONNECT *)b->ptr;
+-    if (data->state != BIO_CONN_S_OK) {
+-        ret = conn_state(b, data);
+-        if (ret <= 0)
+-            return (ret);
+-    }
+-
+-    clear_socket_error();
+-    ret = writesocket(b->num, in, inl);
+-    BIO_clear_retry_flags(b);
+-    if (ret <= 0) {
+-        if (BIO_sock_should_retry(ret))
+-            BIO_set_retry_write(b);
+-    }
+-    return (ret);
+-}
+-
+-static long conn_ctrl(BIO *b, int cmd, long num, void *ptr)
+-{
+-    BIO *dbio;
+-    int *ip;
+-    const char **pptr = NULL;
+-    long ret = 1;
+-    BIO_CONNECT *data;
+-
+-    data = (BIO_CONNECT *)b->ptr;
+-
+-    switch (cmd) {
+-    case BIO_CTRL_RESET:
+-        ret = 0;
+-        data->state = BIO_CONN_S_BEFORE;
+-        conn_close_socket(b);
+-        b->flags = 0;
+-        break;
+-    case BIO_C_DO_STATE_MACHINE:
+-        /* use this one to start the connection */
+-        if (data->state != BIO_CONN_S_OK)
+-            ret = (long)conn_state(b, data);
+-        else
+-            ret = 1;
+-        break;
+-    case BIO_C_GET_CONNECT:
+-        if (ptr != NULL) {
+-            pptr = (const char **)ptr;
+-        }
+-
+-        if (b->init) {
+-            if (pptr != NULL) {
+-                ret = 1;
+-                if (num == 0) {
+-                    *pptr = data->param_hostname;
+-                } else if (num == 1) {
+-                    *pptr = data->param_port;
+-                } else if (num == 2) {
+-                    *pptr = (char *)&(data->ip[0]);
+-                } else {
+-                    ret = 0;
+-                }
+-            }
+-            if (num == 3) {
+-                ret = data->port;
+-            }
+-        } else {
+-            if (pptr != NULL)
+-                *pptr = "not initialized";
+-            ret = 0;
+-        }
+-        break;
+-    case BIO_C_SET_CONNECT:
+-        if (ptr != NULL) {
+-            b->init = 1;
+-            if (num == 0) {
+-                if (data->param_hostname != NULL)
+-                    OPENSSL_free(data->param_hostname);
+-                data->param_hostname = BUF_strdup(ptr);
+-            } else if (num == 1) {
+-                if (data->param_port != NULL)
+-                    OPENSSL_free(data->param_port);
+-                data->param_port = BUF_strdup(ptr);
+-            } else if (num == 2) {
+-                char buf[16];
+-                unsigned char *p = ptr;
+-
+-                BIO_snprintf(buf, sizeof buf, "%d.%d.%d.%d",
+-                             p[0], p[1], p[2], p[3]);
+-                if (data->param_hostname != NULL)
+-                    OPENSSL_free(data->param_hostname);
+-                data->param_hostname = BUF_strdup(buf);
+-                memcpy(&(data->ip[0]), ptr, 4);
+-            } else if (num == 3) {
+-                char buf[DECIMAL_SIZE(int) + 1];
+-
+-                BIO_snprintf(buf, sizeof buf, "%d", *(int *)ptr);
+-                if (data->param_port != NULL)
+-                    OPENSSL_free(data->param_port);
+-                data->param_port = BUF_strdup(buf);
+-                data->port = *(int *)ptr;
+-            }
+-        }
+-        break;
+-    case BIO_C_SET_NBIO:
+-        data->nbio = (int)num;
+-        break;
+-    case BIO_C_GET_FD:
+-        if (b->init) {
+-            ip = (int *)ptr;
+-            if (ip != NULL)
+-                *ip = b->num;
+-            ret = b->num;
+-        } else
+-            ret = -1;
+-        break;
+-    case BIO_CTRL_GET_CLOSE:
+-        ret = b->shutdown;
+-        break;
+-    case BIO_CTRL_SET_CLOSE:
+-        b->shutdown = (int)num;
+-        break;
+-    case BIO_CTRL_PENDING:
+-    case BIO_CTRL_WPENDING:
+-        ret = 0;
+-        break;
+-    case BIO_CTRL_FLUSH:
+-        break;
+-    case BIO_CTRL_DUP:
+-        {
+-            dbio = (BIO *)ptr;
+-            if (data->param_port)
+-                BIO_set_conn_port(dbio, data->param_port);
+-            if (data->param_hostname)
+-                BIO_set_conn_hostname(dbio, data->param_hostname);
+-            BIO_set_nbio(dbio, data->nbio);
+-            /*
+-             * FIXME: the cast of the function seems unlikely to be a good
+-             * idea
+-             */
+-            (void)BIO_set_info_callback(dbio,
+-                                        (bio_info_cb *)data->info_callback);
+-        }
+-        break;
+-    case BIO_CTRL_SET_CALLBACK:
+-        {
+-# if 0                          /* FIXME: Should this be used? -- Richard
+-                                 * Levitte */
+-            BIOerr(BIO_F_CONN_CTRL, ERR_R_SHOULD_NOT_HAVE_BEEN_CALLED);
+-            ret = -1;
+-# else
+-            ret = 0;
+-# endif
+-        }
+-        break;
+-    case BIO_CTRL_GET_CALLBACK:
+-        {
+-            int (**fptr) (const BIO *bio, int state, int xret);
+-
+-            fptr = (int (**)(const BIO *bio, int state, int xret))ptr;
+-            *fptr = data->info_callback;
+-        }
+-        break;
+-    default:
+-        ret = 0;
+-        break;
+-    }
+-    return (ret);
+-}
++// static int conn_read(BIO *b, char *out, int outl)
++// {
++    // int ret = 0;
++    // BIO_CONNECT *data;
++
++    // data = (BIO_CONNECT *)b->ptr;
++    // if (data->state != BIO_CONN_S_OK) {
++        // ret = conn_state(b, data);
++        // if (ret <= 0)
++            // return (ret);
++    // }
++
++    // if (out != NULL) {
++        // clear_socket_error();
++        // ret = readsocket(b->num, out, outl);
++        // BIO_clear_retry_flags(b);
++        // if (ret <= 0) {
++            // if (BIO_sock_should_retry(ret))
++                // BIO_set_retry_read(b);
++        // }
++    // }
++    // return (ret);
++// }
++
++// static int conn_write(BIO *b, const char *in, int inl)
++// {
++    // int ret;
++    // BIO_CONNECT *data;
++
++    // data = (BIO_CONNECT *)b->ptr;
++    // if (data->state != BIO_CONN_S_OK) {
++        // ret = conn_state(b, data);
++        // if (ret <= 0)
++            // return (ret);
++    // }
++
++    // clear_socket_error();
++    // ret = writesocket(b->num, in, inl);
++    // BIO_clear_retry_flags(b);
++    // if (ret <= 0) {
++        // if (BIO_sock_should_retry(ret))
++            // BIO_set_retry_write(b);
++    // }
++    // return (ret);
++// }
++
++// static long conn_ctrl(BIO *b, int cmd, long num, void *ptr)
++// {
++    // BIO *dbio;
++    // int *ip;
++    // const char **pptr = NULL;
++    // long ret = 1;
++    // BIO_CONNECT *data;
++
++    // data = (BIO_CONNECT *)b->ptr;
++
++    // switch (cmd) {
++    // case BIO_CTRL_RESET:
++        // ret = 0;
++        // data->state = BIO_CONN_S_BEFORE;
++        // conn_close_socket(b);
++        // b->flags = 0;
++        // break;
++    // case BIO_C_DO_STATE_MACHINE:
++        // /* use this one to start the connection */
++        // if (data->state != BIO_CONN_S_OK)
++            // ret = (long)conn_state(b, data);
++        // else
++            // ret = 1;
++        // break;
++    // case BIO_C_GET_CONNECT:
++        // if (ptr != NULL) {
++            // pptr = (const char **)ptr;
++        // }
++
++        // if (b->init) {
++            // if (pptr != NULL) {
++                // ret = 1;
++                // if (num == 0) {
++                    // *pptr = data->param_hostname;
++                // } else if (num == 1) {
++                    // *pptr = data->param_port;
++                // } else if (num == 2) {
++                    // *pptr = (char *)&(data->ip[0]);
++                // } else {
++                    // ret = 0;
++                // }
++            // }
++            // if (num == 3) {
++                // ret = data->port;
++            // }
++        // } else {
++            // if (pptr != NULL)
++                // *pptr = "not initialized";
++            // ret = 0;
++        // }
++        // break;
++    // case BIO_C_SET_CONNECT:
++        // if (ptr != NULL) {
++            // b->init = 1;
++            // if (num == 0) {
++                // if (data->param_hostname != NULL)
++                    // OPENSSL_free(data->param_hostname);
++                // data->param_hostname = BUF_strdup(ptr);
++            // } else if (num == 1) {
++                // if (data->param_port != NULL)
++                    // OPENSSL_free(data->param_port);
++                // data->param_port = BUF_strdup(ptr);
++            // } else if (num == 2) {
++                // char buf[16];
++                // unsigned char *p = ptr;
++
++                // BIO_snprintf(buf, sizeof buf, "%d.%d.%d.%d",
++                             // p[0], p[1], p[2], p[3]);
++                // if (data->param_hostname != NULL)
++                    // OPENSSL_free(data->param_hostname);
++                // data->param_hostname = BUF_strdup(buf);
++                // memcpy(&(data->ip[0]), ptr, 4);
++            // } else if (num == 3) {
++                // char buf[DECIMAL_SIZE(int) + 1];
++
++                // BIO_snprintf(buf, sizeof buf, "%d", *(int *)ptr);
++                // if (data->param_port != NULL)
++                    // OPENSSL_free(data->param_port);
++                // data->param_port = BUF_strdup(buf);
++                // data->port = *(int *)ptr;
++            // }
++        // }
++        // break;
++    // case BIO_C_SET_NBIO:
++        // data->nbio = (int)num;
++        // break;
++    // case BIO_C_GET_FD:
++        // if (b->init) {
++            // ip = (int *)ptr;
++            // if (ip != NULL)
++                // *ip = b->num;
++            // ret = b->num;
++        // } else
++            // ret = -1;
++        // break;
++    // case BIO_CTRL_GET_CLOSE:
++        // ret = b->shutdown;
++        // break;
++    // case BIO_CTRL_SET_CLOSE:
++        // b->shutdown = (int)num;
++        // break;
++    // case BIO_CTRL_PENDING:
++    // case BIO_CTRL_WPENDING:
++        // ret = 0;
++        // break;
++    // case BIO_CTRL_FLUSH:
++        // break;
++    // case BIO_CTRL_DUP:
++        // {
++            // dbio = (BIO *)ptr;
++            // if (data->param_port)
++                // BIO_set_conn_port(dbio, data->param_port);
++            // if (data->param_hostname)
++                // BIO_set_conn_hostname(dbio, data->param_hostname);
++            // BIO_set_nbio(dbio, data->nbio);
++            // /*
++             // * FIXME: the cast of the function seems unlikely to be a good
++             // * idea
++             // */
++            // (void)BIO_set_info_callback(dbio,
++                                        // (bio_info_cb *)data->info_callback);
++        // }
++        // break;
++    // case BIO_CTRL_SET_CALLBACK:
++        // {
++// # if 0                          /* FIXME: Should this be used? -- Richard
++                                 // * Levitte */
++            // BIOerr(BIO_F_CONN_CTRL, ERR_R_SHOULD_NOT_HAVE_BEEN_CALLED);
++            // ret = -1;
++// # else
++            // ret = 0;
++// # endif
++        // }
++        // break;
++    // case BIO_CTRL_GET_CALLBACK:
++        // {
++            // int (**fptr) (const BIO *bio, int state, int xret);
++
++            // fptr = (int (**)(const BIO *bio, int state, int xret))ptr;
++            // *fptr = data->info_callback;
++        // }
++        // break;
++    // default:
++        // ret = 0;
++        // break;
++    // }
++    // return (ret);
++// }
+ 
+ static long conn_callback_ctrl(BIO *b, int cmd, bio_info_cb *fp)
+ {
+@@ -585,14 +585,14 @@ static long conn_callback_ctrl(BIO *b, int cmd, bio_info_cb *fp)
+     return (ret);
+ }
+ 
+-static int conn_puts(BIO *bp, const char *str)
+-{
+-    int n, ret;
++// static int conn_puts(BIO *bp, const char *str)
++// {
++    // int n, ret;
+ 
+-    n = strlen(str);
+-    ret = conn_write(bp, str, n);
+-    return (ret);
+-}
++    // n = strlen(str);
++    // ret = conn_write(bp, str, n);
++    // return (ret);
++// }
+ 
+ BIO *BIO_new_connect(char *str)
+ {
+diff --git a/jni/cryptlib.c b/jni/cryptlib.c
+index eccee72..c0ea599 100644
+--- a/jni/cryptlib.c
++++ b/jni/cryptlib.c
+@@ -202,99 +202,99 @@ static void (MS_FAR *dynlock_destroy_callback) (struct CRYPTO_dynlock_value
+                                                 *l, const char *file,
+                                                 int line) = 0;
+ 
+-int CRYPTO_get_new_lockid(char *name)
+-{
+-    char *str;
+-    int i;
+-
+-#if defined(OPENSSL_SYS_WIN32) || defined(OPENSSL_SYS_WIN16)
+-    /*
+-     * A hack to make Visual C++ 5.0 work correctly when linking as a DLL
+-     * using /MT. Without this, the application cannot use any floating point
+-     * printf's. It also seems to be needed for Visual C 1.5 (win16)
+-     */
+-    SSLeay_MSVC5_hack = (double)name[0] * (double)name[1];
+-#endif
+-
+-    if ((app_locks == NULL)
+-        && ((app_locks = sk_OPENSSL_STRING_new_null()) == NULL)) {
+-        CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_LOCKID, ERR_R_MALLOC_FAILURE);
+-        return (0);
+-    }
+-    if ((str = BUF_strdup(name)) == NULL) {
+-        CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_LOCKID, ERR_R_MALLOC_FAILURE);
+-        return (0);
+-    }
+-    i = sk_OPENSSL_STRING_push(app_locks, str);
+-    if (!i)
+-        OPENSSL_free(str);
+-    else
+-        i += CRYPTO_NUM_LOCKS;  /* gap of one :-) */
+-    return (i);
+-}
++// int CRYPTO_get_new_lockid(char *name)
++// {
++    // char *str;
++    // int i;
++
++// #if defined(OPENSSL_SYS_WIN32) || defined(OPENSSL_SYS_WIN16)
++    // /*
++     // * A hack to make Visual C++ 5.0 work correctly when linking as a DLL
++     // * using /MT. Without this, the application cannot use any floating point
++     // * printf's. It also seems to be needed for Visual C 1.5 (win16)
++     // */
++    // SSLeay_MSVC5_hack = (double)name[0] * (double)name[1];
++// #endif
++
++    // if ((app_locks == NULL)
++        // && ((app_locks = sk_OPENSSL_STRING_new_null()) == NULL)) {
++        //CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_LOCKID, ERR_R_MALLOC_FAILURE);
++        // return (0);
++    // }
++    // if ((str = BUF_strdup(name)) == NULL) {
++        //CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_LOCKID, ERR_R_MALLOC_FAILURE);
++        // return (0);
++    // }
++    // i = sk_OPENSSL_STRING_push(app_locks, str);
++    // if (!i)
++        // OPENSSL_free(str);
++    // else
++        // i += CRYPTO_NUM_LOCKS;  /* gap of one :-) */
++    // return (i);
++// }
+ 
+ int CRYPTO_num_locks(void)
+ {
+     return CRYPTO_NUM_LOCKS;
+ }
+ 
+-int CRYPTO_get_new_dynlockid(void)
+-{
+-    int i = 0;
+-    CRYPTO_dynlock *pointer = NULL;
+-
+-    if (dynlock_create_callback == NULL) {
+-        CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_DYNLOCKID,
+-                  CRYPTO_R_NO_DYNLOCK_CREATE_CALLBACK);
+-        return (0);
+-    }
+-    CRYPTO_w_lock(CRYPTO_LOCK_DYNLOCK);
+-    if ((dyn_locks == NULL)
+-        && ((dyn_locks = sk_CRYPTO_dynlock_new_null()) == NULL)) {
+-        CRYPTO_w_unlock(CRYPTO_LOCK_DYNLOCK);
+-        CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_DYNLOCKID, ERR_R_MALLOC_FAILURE);
+-        return (0);
+-    }
+-    CRYPTO_w_unlock(CRYPTO_LOCK_DYNLOCK);
+-
+-    pointer = (CRYPTO_dynlock *) OPENSSL_malloc(sizeof(CRYPTO_dynlock));
+-    if (pointer == NULL) {
+-        CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_DYNLOCKID, ERR_R_MALLOC_FAILURE);
+-        return (0);
+-    }
+-    pointer->references = 1;
+-    pointer->data = dynlock_create_callback(__FILE__, __LINE__);
+-    if (pointer->data == NULL) {
+-        OPENSSL_free(pointer);
+-        CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_DYNLOCKID, ERR_R_MALLOC_FAILURE);
+-        return (0);
+-    }
+-
+-    CRYPTO_w_lock(CRYPTO_LOCK_DYNLOCK);
+-    /* First, try to find an existing empty slot */
+-    i = sk_CRYPTO_dynlock_find(dyn_locks, NULL);
+-    /* If there was none, push, thereby creating a new one */
+-    if (i == -1)
+-        /*
+-         * Since sk_push() returns the number of items on the stack, not the
+-         * location of the pushed item, we need to transform the returned
+-         * number into a position, by decreasing it.
+-         */
+-        i = sk_CRYPTO_dynlock_push(dyn_locks, pointer) - 1;
+-    else
+-        /*
+-         * If we found a place with a NULL pointer, put our pointer in it.
+-         */
+-        (void)sk_CRYPTO_dynlock_set(dyn_locks, i, pointer);
+-    CRYPTO_w_unlock(CRYPTO_LOCK_DYNLOCK);
+-
+-    if (i == -1) {
+-        dynlock_destroy_callback(pointer->data, __FILE__, __LINE__);
+-        OPENSSL_free(pointer);
+-    } else
+-        i += 1;                 /* to avoid 0 */
+-    return -i;
+-}
++// int CRYPTO_get_new_dynlockid(void)
++// {
++    // int i = 0;
++    // CRYPTO_dynlock *pointer = NULL;
++
++    // if (dynlock_create_callback == NULL) {
++        // CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_DYNLOCKID,
++                  //CRYPTO_R_NO_DYNLOCK_CREATE_CALLBACK);
++        // return (0);
++    // }
++    // CRYPTO_w_lock(CRYPTO_LOCK_DYNLOCK);
++    // if ((dyn_locks == NULL)
++        // && ((dyn_locks = sk_CRYPTO_dynlock_new_null()) == NULL)) {
++        // CRYPTO_w_unlock(CRYPTO_LOCK_DYNLOCK);
++        // CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_DYNLOCKID, ERR_R_MALLOC_FAILURE);
++        // return (0);
++    // }
++    // CRYPTO_w_unlock(CRYPTO_LOCK_DYNLOCK);
++
++    // pointer = (CRYPTO_dynlock *) OPENSSL_malloc(sizeof(CRYPTO_dynlock));
++    // if (pointer == NULL) {
++        // CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_DYNLOCKID, ERR_R_MALLOC_FAILURE);
++        // return (0);
++    // }
++    // pointer->references = 1;
++    // pointer->data = dynlock_create_callback(__FILE__, __LINE__);
++    // if (pointer->data == NULL) {
++        // OPENSSL_free(pointer);
++        // CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_DYNLOCKID, ERR_R_MALLOC_FAILURE);
++        // return (0);
++    // }
++
++    // CRYPTO_w_lock(CRYPTO_LOCK_DYNLOCK);
++    // /* First, try to find an existing empty slot */
++    // i = sk_CRYPTO_dynlock_find(dyn_locks, NULL);
++    // /* If there was none, push, thereby creating a new one */
++    // if (i == -1)
++        // /*
++         // * Since sk_push() returns the number of items on the stack, not the
++         // * location of the pushed item, we need to transform the returned
++         // * number into a position, by decreasing it.
++         // */
++        // i = sk_CRYPTO_dynlock_push(dyn_locks, pointer) - 1;
++    // else
++        // /*
++         // * If we found a place with a NULL pointer, put our pointer in it.
++         // */
++        // (void)sk_CRYPTO_dynlock_set(dyn_locks, i, pointer);
++    // CRYPTO_w_unlock(CRYPTO_LOCK_DYNLOCK);
++
++    // if (i == -1) {
++        // dynlock_destroy_callback(pointer->data, __FILE__, __LINE__);
++        // OPENSSL_free(pointer);
++    // } else
++        // i += 1;                 /* to avoid 0 */
++    // return -i;
++// }
+ 
+ void CRYPTO_destroy_dynlockid(int i)
+ {
+diff --git a/jni/des/des.c b/jni/des/des.c
+index d737438..ed355db 100644
+--- a/jni/des/des.c
++++ b/jni/des/des.c
+@@ -344,287 +344,287 @@ void usage(void)
+     EXIT(1);
+ }
+ 
+-void doencryption(void)
+-{
+-#ifdef _LIBC
+-    extern unsigned long time();
+-#endif
+-
+-    register int i;
+-    DES_key_schedule ks, ks2;
+-    DES_cblock iv, iv2;
+-    char *p;
+-    int num = 0, j, k, l, rem, ll, len, last, ex = 0;
+-    DES_cblock kk, k2;
+-    FILE *O;
+-    int Exit = 0;
+-#ifndef OPENSSL_SYS_MSDOS
+-    static unsigned char buf[BUFSIZE + 8], obuf[BUFSIZE + 8];
+-#else
+-    static unsigned char *buf = NULL, *obuf = NULL;
+-
+-    if (buf == NULL) {
+-        if (((buf = OPENSSL_malloc(BUFSIZE + 8)) == NULL) ||
+-            ((obuf = OPENSSL_malloc(BUFSIZE + 8)) == NULL)) {
+-            fputs("Not enough memory\n", stderr);
+-            Exit = 10;
+-            goto problems;
+-        }
+-    }
+-#endif
+-
+-    if (hflag) {
+-        j = (flag3 ? 16 : 8);
+-        p = key;
+-        for (i = 0; i < j; i++) {
+-            k = 0;
+-            if ((*p <= '9') && (*p >= '0'))
+-                k = (*p - '0') << 4;
+-            else if ((*p <= 'f') && (*p >= 'a'))
+-                k = (*p - 'a' + 10) << 4;
+-            else if ((*p <= 'F') && (*p >= 'A'))
+-                k = (*p - 'A' + 10) << 4;
+-            else {
+-                fputs("Bad hex key\n", stderr);
+-                Exit = 9;
+-                goto problems;
+-            }
+-            p++;
+-            if ((*p <= '9') && (*p >= '0'))
+-                k |= (*p - '0');
+-            else if ((*p <= 'f') && (*p >= 'a'))
+-                k |= (*p - 'a' + 10);
+-            else if ((*p <= 'F') && (*p >= 'A'))
+-                k |= (*p - 'A' + 10);
+-            else {
+-                fputs("Bad hex key\n", stderr);
+-                Exit = 9;
+-                goto problems;
+-            }
+-            p++;
+-            if (i < 8)
+-                kk[i] = k;
+-            else
+-                k2[i - 8] = k;
+-        }
+-        DES_set_key_unchecked(&k2, &ks2);
+-        OPENSSL_cleanse(k2, sizeof(k2));
+-    } else if (longk || flag3) {
+-        if (flag3) {
+-            DES_string_to_2keys(key, &kk, &k2);
+-            DES_set_key_unchecked(&k2, &ks2);
+-            OPENSSL_cleanse(k2, sizeof(k2));
+-        } else
+-            DES_string_to_key(key, &kk);
+-    } else
+-        for (i = 0; i < KEYSIZ; i++) {
+-            l = 0;
+-            k = key[i];
+-            for (j = 0; j < 8; j++) {
+-                if (k & 1)
+-                    l++;
+-                k >>= 1;
+-            }
+-            if (l & 1)
+-                kk[i] = key[i] & 0x7f;
+-            else
+-                kk[i] = key[i] | 0x80;
+-        }
+-
+-    DES_set_key_unchecked(&kk, &ks);
+-    OPENSSL_cleanse(key, sizeof(key));
+-    OPENSSL_cleanse(kk, sizeof(kk));
+-    /* woops - A bug that does not showup under unix :-( */
+-    memset(iv, 0, sizeof(iv));
+-    memset(iv2, 0, sizeof(iv2));
+-
+-    l = 1;
+-    rem = 0;
+-    /* first read */
+-    if (eflag || (!dflag && cflag)) {
+-        for (;;) {
+-            num = l = fread(&(buf[rem]), 1, BUFSIZE, DES_IN);
+-            l += rem;
+-            num += rem;
+-            if (l < 0) {
+-                perror("read error");
+-                Exit = 6;
+-                goto problems;
+-            }
+-
+-            rem = l % 8;
+-            len = l - rem;
+-            if (feof(DES_IN)) {
+-                for (i = 7 - rem; i > 0; i--) {
+-                    if (RAND_bytes(buf + l++, 1) <= 0)
+-                        goto problems;
+-                }
+-                buf[l++] = rem;
+-                ex = 1;
+-                len += rem;
+-            } else
+-                l -= rem;
+-
+-            if (cflag) {
+-                DES_cbc_cksum(buf, &cksum, (long)len, &ks, &cksum);
+-                if (!eflag) {
+-                    if (feof(DES_IN))
+-                        break;
+-                    else
+-                        continue;
+-                }
+-            }
+-
+-            if (bflag && !flag3)
+-                for (i = 0; i < l; i += 8)
+-                    DES_ecb_encrypt((DES_cblock *)&(buf[i]),
+-                                    (DES_cblock *)&(obuf[i]),
+-                                    &ks, do_encrypt);
+-            else if (flag3 && bflag)
+-                for (i = 0; i < l; i += 8)
+-                    DES_ecb2_encrypt((DES_cblock *)&(buf[i]),
+-                                     (DES_cblock *)&(obuf[i]),
+-                                     &ks, &ks2, do_encrypt);
+-            else if (flag3 && !bflag) {
+-                char tmpbuf[8];
+-
+-                if (rem)
+-                    memcpy(tmpbuf, &(buf[l]), (unsigned int)rem);
+-                DES_3cbc_encrypt((DES_cblock *)buf, (DES_cblock *)obuf,
+-                                 (long)l, ks, ks2, &iv, &iv2, do_encrypt);
+-                if (rem)
+-                    memcpy(&(buf[l]), tmpbuf, (unsigned int)rem);
+-            } else {
+-                DES_cbc_encrypt(buf, obuf, (long)l, &ks, &iv, do_encrypt);
+-                if (l >= 8)
+-                    memcpy(iv, &(obuf[l - 8]), 8);
+-            }
+-            if (rem)
+-                memcpy(buf, &(buf[l]), (unsigned int)rem);
+-
+-            i = 0;
+-            while (i < l) {
+-                if (uflag)
+-                    j = uufwrite(obuf, 1, (unsigned int)l - i, DES_OUT);
+-                else
+-                    j = fwrite(obuf, 1, (unsigned int)l - i, DES_OUT);
+-                if (j == -1) {
+-                    perror("Write error");
+-                    Exit = 7;
+-                    goto problems;
+-                }
+-                i += j;
+-            }
+-            if (feof(DES_IN)) {
+-                if (uflag)
+-                    uufwriteEnd(DES_OUT);
+-                break;
+-            }
+-        }
+-    } else {                    /* decrypt */
+-
+-        ex = 1;
+-        for (;;) {
+-            if (ex) {
+-                if (uflag)
+-                    l = uufread(buf, 1, BUFSIZE, DES_IN);
+-                else
+-                    l = fread(buf, 1, BUFSIZE, DES_IN);
+-                ex = 0;
+-                rem = l % 8;
+-                l -= rem;
+-            }
+-            if (l < 0) {
+-                perror("read error");
+-                Exit = 6;
+-                goto problems;
+-            }
+-
+-            if (bflag && !flag3)
+-                for (i = 0; i < l; i += 8)
+-                    DES_ecb_encrypt((DES_cblock *)&(buf[i]),
+-                                    (DES_cblock *)&(obuf[i]),
+-                                    &ks, do_encrypt);
+-            else if (flag3 && bflag)
+-                for (i = 0; i < l; i += 8)
+-                    DES_ecb2_encrypt((DES_cblock *)&(buf[i]),
+-                                     (DES_cblock *)&(obuf[i]),
+-                                     &ks, &ks2, do_encrypt);
+-            else if (flag3 && !bflag) {
+-                DES_3cbc_encrypt((DES_cblock *)buf, (DES_cblock *)obuf,
+-                                 (long)l, ks, ks2, &iv, &iv2, do_encrypt);
+-            } else {
+-                DES_cbc_encrypt(buf, obuf, (long)l, &ks, &iv, do_encrypt);
+-                if (l >= 8)
+-                    memcpy(iv, &(buf[l - 8]), 8);
+-            }
+-
+-            if (uflag)
+-                ll = uufread(&(buf[rem]), 1, BUFSIZE, DES_IN);
+-            else
+-                ll = fread(&(buf[rem]), 1, BUFSIZE, DES_IN);
+-            ll += rem;
+-            rem = ll % 8;
+-            ll -= rem;
+-            if (feof(DES_IN) && (ll == 0)) {
+-                last = obuf[l - 1];
+-
+-                if ((last > 7) || (last < 0)) {
+-                    fputs("The file was not decrypted correctly.\n", stderr);
+-                    Exit = 8;
+-                    last = 0;
+-                }
+-                l = l - 8 + last;
+-            }
+-            i = 0;
+-            if (cflag)
+-                DES_cbc_cksum(obuf,
+-                              (DES_cblock *)cksum, (long)l / 8 * 8, &ks,
+-                              (DES_cblock *)cksum);
+-            while (i != l) {
+-                j = fwrite(obuf, 1, (unsigned int)l - i, DES_OUT);
+-                if (j == -1) {
+-                    perror("Write error");
+-                    Exit = 7;
+-                    goto problems;
+-                }
+-                i += j;
+-            }
+-            l = ll;
+-            if ((l == 0) && feof(DES_IN))
+-                break;
+-        }
+-    }
+-    if (cflag) {
+-        l = 0;
+-        if (cksumname[0] != '\0') {
+-            if ((O = fopen(cksumname, "w")) != NULL) {
+-                CKSUM_OUT = O;
+-                l = 1;
+-            }
+-        }
+-        for (i = 0; i < 8; i++)
+-            fprintf(CKSUM_OUT, "%02X", cksum[i]);
+-        fprintf(CKSUM_OUT, "\n");
+-        if (l)
+-            fclose(CKSUM_OUT);
+-    }
+- problems:
+-    OPENSSL_cleanse(buf, sizeof(buf));
+-    OPENSSL_cleanse(obuf, sizeof(obuf));
+-    OPENSSL_cleanse(&ks, sizeof(ks));
+-    OPENSSL_cleanse(&ks2, sizeof(ks2));
+-    OPENSSL_cleanse(iv, sizeof(iv));
+-    OPENSSL_cleanse(iv2, sizeof(iv2));
+-    OPENSSL_cleanse(kk, sizeof(kk));
+-    OPENSSL_cleanse(k2, sizeof(k2));
+-    OPENSSL_cleanse(uubuf, sizeof(uubuf));
+-    OPENSSL_cleanse(b, sizeof(b));
+-    OPENSSL_cleanse(bb, sizeof(bb));
+-    OPENSSL_cleanse(cksum, sizeof(cksum));
+-    if (Exit)
+-        EXIT(Exit);
+-}
++// void doencryption(void)
++// {
++// #ifdef _LIBC
++    // extern unsigned long time();
++// #endif
++
++    // register int i;
++    // DES_key_schedule ks, ks2;
++    // DES_cblock iv, iv2;
++    // char *p;
++    // int num = 0, j, k, l, rem, ll, len, last, ex = 0;
++    // DES_cblock kk, k2;
++    // FILE *O;
++    // int Exit = 0;
++// #ifndef OPENSSL_SYS_MSDOS
++    // static unsigned char buf[BUFSIZE + 8], obuf[BUFSIZE + 8];
++// #else
++    // static unsigned char *buf = NULL, *obuf = NULL;
++
++    // if (buf == NULL) {
++        // if (((buf = OPENSSL_malloc(BUFSIZE + 8)) == NULL) ||
++            // ((obuf = OPENSSL_malloc(BUFSIZE + 8)) == NULL)) {
++            // fputs("Not enough memory\n", stderr);
++            // Exit = 10;
++            // goto problems;
++        // }
++    // }
++// #endif
++
++    // if (hflag) {
++        // j = (flag3 ? 16 : 8);
++        // p = key;
++        // for (i = 0; i < j; i++) {
++            // k = 0;
++            // if ((*p <= '9') && (*p >= '0'))
++                // k = (*p - '0') << 4;
++            // else if ((*p <= 'f') && (*p >= 'a'))
++                // k = (*p - 'a' + 10) << 4;
++            // else if ((*p <= 'F') && (*p >= 'A'))
++                // k = (*p - 'A' + 10) << 4;
++            // else {
++                // fputs("Bad hex key\n", stderr);
++                // Exit = 9;
++                // goto problems;
++            // }
++            // p++;
++            // if ((*p <= '9') && (*p >= '0'))
++                // k |= (*p - '0');
++            // else if ((*p <= 'f') && (*p >= 'a'))
++                // k |= (*p - 'a' + 10);
++            // else if ((*p <= 'F') && (*p >= 'A'))
++                // k |= (*p - 'A' + 10);
++            // else {
++                // fputs("Bad hex key\n", stderr);
++                // Exit = 9;
++                // goto problems;
++            // }
++            // p++;
++            // if (i < 8)
++                // kk[i] = k;
++            // else
++                // k2[i - 8] = k;
++        // }
++        // DES_set_key_unchecked(&k2, &ks2);
++        // OPENSSL_cleanse(k2, sizeof(k2));
++    // } else if (longk || flag3) {
++        // if (flag3) {
++            // DES_string_to_2keys(key, &kk, &k2);
++            // DES_set_key_unchecked(&k2, &ks2);
++            // OPENSSL_cleanse(k2, sizeof(k2));
++        // } else
++            // DES_string_to_key(key, &kk);
++    // } else
++        // for (i = 0; i < KEYSIZ; i++) {
++            // l = 0;
++            // k = key[i];
++            // for (j = 0; j < 8; j++) {
++                // if (k & 1)
++                    // l++;
++                // k >>= 1;
++            // }
++            // if (l & 1)
++                // kk[i] = key[i] & 0x7f;
++            // else
++                // kk[i] = key[i] | 0x80;
++        // }
++
++    // DES_set_key_unchecked(&kk, &ks);
++    // OPENSSL_cleanse(key, sizeof(key));
++    // OPENSSL_cleanse(kk, sizeof(kk));
++    // /* woops - A bug that does not showup under unix :-( */
++    // memset(iv, 0, sizeof(iv));
++    // memset(iv2, 0, sizeof(iv2));
++
++    // l = 1;
++    // rem = 0;
++    // /* first read */
++    // if (eflag || (!dflag && cflag)) {
++        // for (;;) {
++            // num = l = fread(&(buf[rem]), 1, BUFSIZE, DES_IN);
++            // l += rem;
++            // num += rem;
++            // if (l < 0) {
++                // perror("read error");
++                // Exit = 6;
++                // goto problems;
++            // }
++
++            // rem = l % 8;
++            // len = l - rem;
++            // if (feof(DES_IN)) {
++                // for (i = 7 - rem; i > 0; i--) {
++                    // if (RAND_bytes(buf + l++, 1) <= 0)
++                        // goto problems;
++                // }
++                // buf[l++] = rem;
++                // ex = 1;
++                // len += rem;
++            // } else
++                // l -= rem;
++
++            // if (cflag) {
++                // DES_cbc_cksum(buf, &cksum, (long)len, &ks, &cksum);
++                // if (!eflag) {
++                    // if (feof(DES_IN))
++                        // break;
++                    // else
++                        // continue;
++                // }
++            // }
++
++            // if (bflag && !flag3)
++                // for (i = 0; i < l; i += 8)
++                    // DES_ecb_encrypt((DES_cblock *)&(buf[i]),
++                                    // (DES_cblock *)&(obuf[i]),
++                                    // &ks, do_encrypt);
++            // else if (flag3 && bflag)
++                // for (i = 0; i < l; i += 8)
++                    // DES_ecb2_encrypt((DES_cblock *)&(buf[i]),
++                                     // (DES_cblock *)&(obuf[i]),
++                                     // &ks, &ks2, do_encrypt);
++            // else if (flag3 && !bflag) {
++                // char tmpbuf[8];
++
++                // if (rem)
++                    // memcpy(tmpbuf, &(buf[l]), (unsigned int)rem);
++                // DES_3cbc_encrypt((DES_cblock *)buf, (DES_cblock *)obuf,
++                                 // (long)l, ks, ks2, &iv, &iv2, do_encrypt);
++                // if (rem)
++                    // memcpy(&(buf[l]), tmpbuf, (unsigned int)rem);
++            // } else {
++                // DES_cbc_encrypt(buf, obuf, (long)l, &ks, &iv, do_encrypt);
++                // if (l >= 8)
++                    // memcpy(iv, &(obuf[l - 8]), 8);
++            // }
++            // if (rem)
++                // memcpy(buf, &(buf[l]), (unsigned int)rem);
++
++            // i = 0;
++            // while (i < l) {
++                // if (uflag)
++                    // j = uufwrite(obuf, 1, (unsigned int)l - i, DES_OUT);
++                // else
++                    // j = fwrite(obuf, 1, (unsigned int)l - i, DES_OUT);
++                // if (j == -1) {
++                    // perror("Write error");
++                    // Exit = 7;
++                    // goto problems;
++                // }
++                // i += j;
++            // }
++            // if (feof(DES_IN)) {
++                // if (uflag)
++                    // uufwriteEnd(DES_OUT);
++                // break;
++            // }
++        // }
++    // } else {                    /* decrypt */
++
++        // ex = 1;
++        // for (;;) {
++            // if (ex) {
++                // if (uflag)
++                    // l = uufread(buf, 1, BUFSIZE, DES_IN);
++                // else
++                    // l = fread(buf, 1, BUFSIZE, DES_IN);
++                // ex = 0;
++                // rem = l % 8;
++                // l -= rem;
++            // }
++            // if (l < 0) {
++                // perror("read error");
++                // Exit = 6;
++                // goto problems;
++            // }
++
++            // if (bflag && !flag3)
++                // for (i = 0; i < l; i += 8)
++                    // DES_ecb_encrypt((DES_cblock *)&(buf[i]),
++                                    // (DES_cblock *)&(obuf[i]),
++                                    // &ks, do_encrypt);
++            // else if (flag3 && bflag)
++                // for (i = 0; i < l; i += 8)
++                    // DES_ecb2_encrypt((DES_cblock *)&(buf[i]),
++                                     // (DES_cblock *)&(obuf[i]),
++                                     // &ks, &ks2, do_encrypt);
++            // else if (flag3 && !bflag) {
++                // DES_3cbc_encrypt((DES_cblock *)buf, (DES_cblock *)obuf,
++                                 // (long)l, ks, ks2, &iv, &iv2, do_encrypt);
++            // } else {
++                // DES_cbc_encrypt(buf, obuf, (long)l, &ks, &iv, do_encrypt);
++                // if (l >= 8)
++                    // memcpy(iv, &(buf[l - 8]), 8);
++            // }
++
++            // if (uflag)
++                // ll = uufread(&(buf[rem]), 1, BUFSIZE, DES_IN);
++            // else
++                // ll = fread(&(buf[rem]), 1, BUFSIZE, DES_IN);
++            // ll += rem;
++            // rem = ll % 8;
++            // ll -= rem;
++            // if (feof(DES_IN) && (ll == 0)) {
++                // last = obuf[l - 1];
++
++                // if ((last > 7) || (last < 0)) {
++                    // fputs("The file was not decrypted correctly.\n", stderr);
++                    // Exit = 8;
++                    // last = 0;
++                // }
++                // l = l - 8 + last;
++            // }
++            // i = 0;
++            // if (cflag)
++                // DES_cbc_cksum(obuf,
++                              // (DES_cblock *)cksum, (long)l / 8 * 8, &ks,
++                              // (DES_cblock *)cksum);
++            // while (i != l) {
++                // j = fwrite(obuf, 1, (unsigned int)l - i, DES_OUT);
++                // if (j == -1) {
++                    // perror("Write error");
++                    // Exit = 7;
++                    // goto problems;
++                // }
++                // i += j;
++            // }
++            // l = ll;
++            // if ((l == 0) && feof(DES_IN))
++                // break;
++        // }
++    // }
++    // if (cflag) {
++        // l = 0;
++        // if (cksumname[0] != '\0') {
++            // if ((O = fopen(cksumname, "w")) != NULL) {
++                // CKSUM_OUT = O;
++                // l = 1;
++            // }
++        // }
++        // for (i = 0; i < 8; i++)
++            // fprintf(CKSUM_OUT, "%02X", cksum[i]);
++        // fprintf(CKSUM_OUT, "\n");
++        // if (l)
++            // fclose(CKSUM_OUT);
++    // }
++ // problems:
++    // OPENSSL_cleanse(buf, sizeof(buf));
++    // OPENSSL_cleanse(obuf, sizeof(obuf));
++    // OPENSSL_cleanse(&ks, sizeof(ks));
++    // OPENSSL_cleanse(&ks2, sizeof(ks2));
++    // OPENSSL_cleanse(iv, sizeof(iv));
++    // OPENSSL_cleanse(iv2, sizeof(iv2));
++    // OPENSSL_cleanse(kk, sizeof(kk));
++    // OPENSSL_cleanse(k2, sizeof(k2));
++    // OPENSSL_cleanse(uubuf, sizeof(uubuf));
++    // OPENSSL_cleanse(b, sizeof(b));
++    // OPENSSL_cleanse(bb, sizeof(bb));
++    // OPENSSL_cleanse(cksum, sizeof(cksum));
++    // if (Exit)
++        // EXIT(Exit);
++// }
+ 
+ /*    We ignore this parameter but it should be > ~50 I believe    */
+ int uufwrite(unsigned char *data, int size, unsigned int num, FILE *fp)
+diff --git a/jni/des/des_old.c b/jni/des/des_old.c
+index c5c5a00..0430e96 100644
+--- a/jni/des/des_old.c
++++ b/jni/des/des_old.c
+@@ -78,10 +78,10 @@
+ #include <openssl/des.h>
+ #include <openssl/rand.h>
+ 
+-const char *_ossl_old_des_options(void)
+-{
+-    return DES_options();
+-}
++// const char *_ossl_old_des_options(void)
++// {
++    // return DES_options();
++// }
+ 
+ void _ossl_old_des_ecb3_encrypt(_ossl_old_des_cblock *input,
+                                 _ossl_old_des_cblock *output,
+@@ -218,17 +218,17 @@ void _ossl_old_des_xwhite_in2out(_ossl_old_des_cblock (*des_key),
+ }
+ #endif
+ 
+-int _ossl_old_des_enc_read(int fd, char *buf, int len, des_key_schedule sched,
+-                           _ossl_old_des_cblock *iv)
+-{
+-    return DES_enc_read(fd, buf, len, (DES_key_schedule *)sched, iv);
+-}
++// int _ossl_old_des_enc_read(int fd, char *buf, int len, des_key_schedule sched,
++                           // _ossl_old_des_cblock *iv)
++// {
++    // return DES_enc_read(fd, buf, len, (DES_key_schedule *)sched, iv);
++// }
+ 
+-int _ossl_old_des_enc_write(int fd, char *buf, int len,
+-                            des_key_schedule sched, _ossl_old_des_cblock *iv)
+-{
+-    return DES_enc_write(fd, buf, len, (DES_key_schedule *)sched, iv);
+-}
++// int _ossl_old_des_enc_write(int fd, char *buf, int len,
++                            // des_key_schedule sched, _ossl_old_des_cblock *iv)
++// {
++    // return DES_enc_write(fd, buf, len, (DES_key_schedule *)sched, iv);
++// }
+ 
+ char *_ossl_old_des_fcrypt(const char *buf, const char *salt, char *ret)
+ {
+@@ -273,26 +273,26 @@ DES_LONG _ossl_old_des_quad_cksum(_ossl_old_des_cblock *input,
+ 
+ void _ossl_old_des_random_seed(_ossl_old_des_cblock key)
+ {
+-    RAND_seed(key, sizeof(_ossl_old_des_cblock));
++    //RAND_seed(key, sizeof(_ossl_old_des_cblock));
+ }
+ 
+-void _ossl_old_des_random_key(_ossl_old_des_cblock ret)
+-{
+-    DES_random_key((DES_cblock *)ret);
+-}
++// void _ossl_old_des_random_key(_ossl_old_des_cblock ret)
++// {
++    // DES_random_key((DES_cblock *)ret);
++// }
+ 
+-int _ossl_old_des_read_password(_ossl_old_des_cblock *key, const char *prompt,
+-                                int verify)
+-{
+-    return DES_read_password(key, prompt, verify);
+-}
++// int _ossl_old_des_read_password(_ossl_old_des_cblock *key, const char *prompt,
++                                // int verify)
++// {
++    // return DES_read_password(key, prompt, verify);
++// }
+ 
+-int _ossl_old_des_read_2passwords(_ossl_old_des_cblock *key1,
+-                                  _ossl_old_des_cblock *key2,
+-                                  const char *prompt, int verify)
+-{
+-    return DES_read_2passwords(key1, key2, prompt, verify);
+-}
++// int _ossl_old_des_read_2passwords(_ossl_old_des_cblock *key1,
++                                  // _ossl_old_des_cblock *key2,
++                                  // const char *prompt, int verify)
++// {
++    // return DES_read_2passwords(key1, key2, prompt, verify);
++// }
+ 
+ void _ossl_old_des_set_odd_parity(_ossl_old_des_cblock *key)
+ {
+@@ -316,16 +316,16 @@ int _ossl_old_des_key_sched(_ossl_old_des_cblock *key,
+     return DES_key_sched(key, (DES_key_schedule *)schedule);
+ }
+ 
+-void _ossl_old_des_string_to_key(char *str, _ossl_old_des_cblock *key)
+-{
+-    DES_string_to_key(str, key);
+-}
++// void _ossl_old_des_string_to_key(char *str, _ossl_old_des_cblock *key)
++// {
++    // DES_string_to_key(str, key);
++// }
+ 
+-void _ossl_old_des_string_to_2keys(char *str, _ossl_old_des_cblock *key1,
+-                                   _ossl_old_des_cblock *key2)
+-{
+-    DES_string_to_2keys(str, key1, key2);
+-}
++// void _ossl_old_des_string_to_2keys(char *str, _ossl_old_des_cblock *key1,
++                                   // _ossl_old_des_cblock *key2)
++// {
++    // DES_string_to_2keys(str, key1, key2);
++// }
+ 
+ void _ossl_old_des_cfb64_encrypt(unsigned char *in, unsigned char *out,
+                                  long length, des_key_schedule schedule,
+diff --git a/jni/des/des_old2.c b/jni/des/des_old2.c
+index 247ff8d..461d0a3 100644
+--- a/jni/des/des_old2.c
++++ b/jni/des/des_old2.c
+@@ -74,7 +74,7 @@
+ #include <openssl/des.h>
+ #include <openssl/rand.h>
+ 
+-void _ossl_096_des_random_seed(DES_cblock *key)
+-{
+-    RAND_seed(key, sizeof(DES_cblock));
+-}
++// void _ossl_096_des_random_seed(DES_cblock *key)
++// {
++    // RAND_seed(key, sizeof(DES_cblock));
++// }
+diff --git a/jni/des/ecb_enc.c b/jni/des/ecb_enc.c
+index f97fd97..22b274d 100644
+--- a/jni/des/ecb_enc.c
++++ b/jni/des/ecb_enc.c
+@@ -64,44 +64,44 @@
+ OPENSSL_GLOBAL const char libdes_version[] = "libdes" OPENSSL_VERSION_PTEXT;
+ OPENSSL_GLOBAL const char DES_version[] = "DES" OPENSSL_VERSION_PTEXT;
+ 
+-const char *DES_options(void)
+-{
+-    static int init = 1;
+-    static char buf[32];
++// const char *DES_options(void)
++// {
++    // static int init = 1;
++    // static char buf[32];
+ 
+-    if (init) {
+-        const char *ptr, *unroll, *risc, *size;
++    // if (init) {
++        // const char *ptr, *unroll, *risc, *size;
+ 
+-#ifdef DES_PTR
+-        ptr = "ptr";
+-#else
+-        ptr = "idx";
+-#endif
+-#if defined(DES_RISC1) || defined(DES_RISC2)
+-# ifdef DES_RISC1
+-        risc = "risc1";
+-# endif
+-# ifdef DES_RISC2
+-        risc = "risc2";
+-# endif
+-#else
+-        risc = "cisc";
+-#endif
+-#ifdef DES_UNROLL
+-        unroll = "16";
+-#else
+-        unroll = "2";
+-#endif
+-        if (sizeof(DES_LONG) != sizeof(long))
+-            size = "int";
+-        else
+-            size = "long";
+-        BIO_snprintf(buf, sizeof buf, "des(%s,%s,%s,%s)", ptr, risc, unroll,
+-                     size);
+-        init = 0;
+-    }
+-    return (buf);
+-}
++// #ifdef DES_PTR
++        // ptr = "ptr";
++// #else
++        // ptr = "idx";
++// #endif
++// #if defined(DES_RISC1) || defined(DES_RISC2)
++// # ifdef DES_RISC1
++        // risc = "risc1";
++// # endif
++// # ifdef DES_RISC2
++        // risc = "risc2";
++// # endif
++// #else
++        // risc = "cisc";
++// #endif
++// #ifdef DES_UNROLL
++        // unroll = "16";
++// #else
++        // unroll = "2";
++// #endif
++        // if (sizeof(DES_LONG) != sizeof(long))
++            // size = "int";
++        // else
++            // size = "long";
++        // BIO_snprintf(buf, sizeof buf, "des(%s,%s,%s,%s)", ptr, risc, unroll,
++                    //size);
++        // init = 0;
++    // }
++    // return (buf);
++// }
+ 
+ void DES_ecb_encrypt(const_DES_cblock *input, DES_cblock *output,
+                      DES_key_schedule *ks, int enc)
+diff --git a/jni/des/enc_read.c b/jni/des/enc_read.c
+index fcb6654..d782429 100644
+--- a/jni/des/enc_read.c
++++ b/jni/des/enc_read.c
+@@ -83,153 +83,153 @@ OPENSSL_IMPLEMENT_GLOBAL(int, DES_rw_mode, DES_PCBC_MODE)
+  *  -  This function uses an internal state and thus cannot be
+  *     used on multiple files.
+  */
+-int DES_enc_read(int fd, void *buf, int len, DES_key_schedule *sched,
+-                 DES_cblock *iv)
+-{
+-#if defined(OPENSSL_NO_POSIX_IO)
+-    return (0);
+-#else
+-    /* data to be unencrypted */
+-    int net_num = 0;
+-    static unsigned char *net = NULL;
+-    /*
+-     * extra unencrypted data for when a block of 100 comes in but is
+-     * des_read one byte at a time.
+-     */
+-    static unsigned char *unnet = NULL;
+-    static int unnet_start = 0;
+-    static int unnet_left = 0;
+-    static unsigned char *tmpbuf = NULL;
+-    int i;
+-    long num = 0, rnum;
+-    unsigned char *p;
++// int DES_enc_read(int fd, void *buf, int len, DES_key_schedule *sched,
++                 // DES_cblock *iv)
++// {
++// #if defined(OPENSSL_NO_POSIX_IO)
++    // return (0);
++// #else
++    // /* data to be unencrypted */
++    // int net_num = 0;
++    // static unsigned char *net = NULL;
++    // /*
++     // * extra unencrypted data for when a block of 100 comes in but is
++     // * des_read one byte at a time.
++     // */
++    // static unsigned char *unnet = NULL;
++    // static int unnet_start = 0;
++    // static int unnet_left = 0;
++    // static unsigned char *tmpbuf = NULL;
++    // int i;
++    // long num = 0, rnum;
++    // unsigned char *p;
+ 
+-    if (tmpbuf == NULL) {
+-        tmpbuf = OPENSSL_malloc(BSIZE);
+-        if (tmpbuf == NULL)
+-            return (-1);
+-    }
+-    if (net == NULL) {
+-        net = OPENSSL_malloc(BSIZE);
+-        if (net == NULL)
+-            return (-1);
+-    }
+-    if (unnet == NULL) {
+-        unnet = OPENSSL_malloc(BSIZE);
+-        if (unnet == NULL)
+-            return (-1);
+-    }
+-    /* left over data from last decrypt */
+-    if (unnet_left != 0) {
+-        if (unnet_left < len) {
+-            /*
+-             * we still still need more data but will return with the number
+-             * of bytes we have - should always check the return value
+-             */
+-            memcpy(buf, &(unnet[unnet_start]), unnet_left);
+-            /*
+-             * eay 26/08/92 I had the next 2 lines reversed :-(
+-             */
+-            i = unnet_left;
+-            unnet_start = unnet_left = 0;
+-        } else {
+-            memcpy(buf, &(unnet[unnet_start]), len);
+-            unnet_start += len;
+-            unnet_left -= len;
+-            i = len;
+-        }
+-        return (i);
+-    }
++    // if (tmpbuf == NULL) {
++        // tmpbuf = OPENSSL_malloc(BSIZE);
++        // if (tmpbuf == NULL)
++            // return (-1);
++    // }
++    // if (net == NULL) {
++        // net = OPENSSL_malloc(BSIZE);
++        // if (net == NULL)
++            // return (-1);
++    // }
++    // if (unnet == NULL) {
++        // unnet = OPENSSL_malloc(BSIZE);
++        // if (unnet == NULL)
++            // return (-1);
++    // }
++    // /* left over data from last decrypt */
++    // if (unnet_left != 0) {
++        // if (unnet_left < len) {
++            // /*
++             // * we still still need more data but will return with the number
++             // * of bytes we have - should always check the return value
++             // */
++            // memcpy(buf, &(unnet[unnet_start]), unnet_left);
++            // /*
++             // * eay 26/08/92 I had the next 2 lines reversed :-(
++             // */
++            // i = unnet_left;
++            // unnet_start = unnet_left = 0;
++        // } else {
++            // memcpy(buf, &(unnet[unnet_start]), len);
++            // unnet_start += len;
++            // unnet_left -= len;
++            // i = len;
++        // }
++        // return (i);
++    // }
+ 
+-    /* We need to get more data. */
+-    if (len > MAXWRITE)
+-        len = MAXWRITE;
++    // /* We need to get more data. */
++    // if (len > MAXWRITE)
++        // len = MAXWRITE;
+ 
+-    /* first - get the length */
+-    while (net_num < HDRSIZE) {
+-# ifndef OPENSSL_SYS_WIN32
+-        i = read(fd, (void *)&(net[net_num]), HDRSIZE - net_num);
+-# else
+-        i = _read(fd, (void *)&(net[net_num]), HDRSIZE - net_num);
+-# endif
+-# ifdef EINTR
+-        if ((i == -1) && (errno == EINTR))
+-            continue;
+-# endif
+-        if (i <= 0)
+-            return (0);
+-        net_num += i;
+-    }
++    // /* first - get the length */
++    // while (net_num < HDRSIZE) {
++// # ifndef OPENSSL_SYS_WIN32
++        // i = read(fd, (void *)&(net[net_num]), HDRSIZE - net_num);
++// # else
++        // i = _read(fd, (void *)&(net[net_num]), HDRSIZE - net_num);
++// # endif
++// # ifdef EINTR
++        // if ((i == -1) && (errno == EINTR))
++            // continue;
++// # endif
++        // if (i <= 0)
++            // return (0);
++        // net_num += i;
++    // }
+ 
+-    /* we now have at net_num bytes in net */
+-    p = net;
+-    /* num=0;  */
+-    n2l(p, num);
+-    /*
+-     * num should be rounded up to the next group of eight we make sure that
+-     * we have read a multiple of 8 bytes from the net.
+-     */
+-    if ((num > MAXWRITE) || (num < 0)) /* error */
+-        return (-1);
+-    rnum = (num < 8) ? 8 : ((num + 7) / 8 * 8);
++    // /* we now have at net_num bytes in net */
++    // p = net;
++    // /* num=0;  */
++    // n2l(p, num);
++    // /*
++     // * num should be rounded up to the next group of eight we make sure that
++     // * we have read a multiple of 8 bytes from the net.
++     // */
++    // if ((num > MAXWRITE) || (num < 0)) /* error */
++        // return (-1);
++    // rnum = (num < 8) ? 8 : ((num + 7) / 8 * 8);
+ 
+-    net_num = 0;
+-    while (net_num < rnum) {
+-# ifndef OPENSSL_SYS_WIN32
+-        i = read(fd, (void *)&(net[net_num]), rnum - net_num);
+-# else
+-        i = _read(fd, (void *)&(net[net_num]), rnum - net_num);
+-# endif
+-# ifdef EINTR
+-        if ((i == -1) && (errno == EINTR))
+-            continue;
+-# endif
+-        if (i <= 0)
+-            return (0);
+-        net_num += i;
+-    }
++    // net_num = 0;
++    // while (net_num < rnum) {
++// # ifndef OPENSSL_SYS_WIN32
++        // i = read(fd, (void *)&(net[net_num]), rnum - net_num);
++// # else
++        // i = _read(fd, (void *)&(net[net_num]), rnum - net_num);
++// # endif
++// # ifdef EINTR
++        // if ((i == -1) && (errno == EINTR))
++            // continue;
++// # endif
++        // if (i <= 0)
++            // return (0);
++        // net_num += i;
++    // }
+ 
+-    /* Check if there will be data left over. */
+-    if (len < num) {
+-        if (DES_rw_mode & DES_PCBC_MODE)
+-            DES_pcbc_encrypt(net, unnet, num, sched, iv, DES_DECRYPT);
+-        else
+-            DES_cbc_encrypt(net, unnet, num, sched, iv, DES_DECRYPT);
+-        memcpy(buf, unnet, len);
+-        unnet_start = len;
+-        unnet_left = num - len;
++    // /* Check if there will be data left over. */
++    // if (len < num) {
++        // if (DES_rw_mode & DES_PCBC_MODE)
++            // DES_pcbc_encrypt(net, unnet, num, sched, iv, DES_DECRYPT);
++        // else
++            // DES_cbc_encrypt(net, unnet, num, sched, iv, DES_DECRYPT);
++        // memcpy(buf, unnet, len);
++        // unnet_start = len;
++        // unnet_left = num - len;
+ 
+-        /*
+-         * The following line is done because we return num as the number of
+-         * bytes read.
+-         */
+-        num = len;
+-    } else {
+-        /*-
+-         * >output is a multiple of 8 byes, if len < rnum
+-         * >we must be careful.  The user must be aware that this
+-         * >routine will write more bytes than he asked for.
+-         * >The length of the buffer must be correct.
+-         * FIXED - Should be ok now 18-9-90 - eay */
+-        if (len < rnum) {
++        // /*
++         // * The following line is done because we return num as the number of
++         // * bytes read.
++         // */
++        // num = len;
++    // } else {
++        // /*-
++         // * >output is a multiple of 8 byes, if len < rnum
++         // * >we must be careful.  The user must be aware that this
++         // * >routine will write more bytes than he asked for.
++         // * >The length of the buffer must be correct.
++         // * FIXED - Should be ok now 18-9-90 - eay */
++        // if (len < rnum) {
+ 
+-            if (DES_rw_mode & DES_PCBC_MODE)
+-                DES_pcbc_encrypt(net, tmpbuf, num, sched, iv, DES_DECRYPT);
+-            else
+-                DES_cbc_encrypt(net, tmpbuf, num, sched, iv, DES_DECRYPT);
++            // if (DES_rw_mode & DES_PCBC_MODE)
++                // DES_pcbc_encrypt(net, tmpbuf, num, sched, iv, DES_DECRYPT);
++            // else
++                // DES_cbc_encrypt(net, tmpbuf, num, sched, iv, DES_DECRYPT);
+ 
+-            /*
+-             * eay 26/08/92 fix a bug that returned more bytes than you asked
+-             * for (returned len bytes :-(
+-             */
+-            memcpy(buf, tmpbuf, num);
+-        } else {
+-            if (DES_rw_mode & DES_PCBC_MODE)
+-                DES_pcbc_encrypt(net, buf, num, sched, iv, DES_DECRYPT);
+-            else
+-                DES_cbc_encrypt(net, buf, num, sched, iv, DES_DECRYPT);
+-        }
+-    }
+-    return num;
+-#endif                          /* OPENSSL_NO_POSIX_IO */
+-}
++            // /*
++             // * eay 26/08/92 fix a bug that returned more bytes than you asked
++             // * for (returned len bytes :-(
++             // */
++            // memcpy(buf, tmpbuf, num);
++        // } else {
++            // if (DES_rw_mode & DES_PCBC_MODE)
++                // DES_pcbc_encrypt(net, buf, num, sched, iv, DES_DECRYPT);
++            // else
++                // DES_cbc_encrypt(net, buf, num, sched, iv, DES_DECRYPT);
++        // }
++    // }
++    // return num;
++// #endif                          /* OPENSSL_NO_POSIX_IO */
++// }
+diff --git a/jni/des/enc_writ.c b/jni/des/enc_writ.c
+index c2aaa8e..31bc6af 100644
+--- a/jni/des/enc_writ.c
++++ b/jni/des/enc_writ.c
+@@ -77,106 +77,106 @@
+  *  -  This code cannot handle non-blocking sockets.
+  */
+ 
+-int DES_enc_write(int fd, const void *_buf, int len,
+-                  DES_key_schedule *sched, DES_cblock *iv)
+-{
+-#if defined(OPENSSL_NO_POSIX_IO)
+-    return (-1);
+-#else
+-# ifdef _LIBC
+-    extern unsigned long time();
+-    extern int write();
+-# endif
+-    const unsigned char *buf = _buf;
+-    long rnum;
+-    int i, j, k, outnum;
+-    static unsigned char *outbuf = NULL;
+-    unsigned char shortbuf[8];
+-    unsigned char *p;
+-    const unsigned char *cp;
+-    static int start = 1;
++// int DES_enc_write(int fd, const void *_buf, int len,
++                  // DES_key_schedule *sched, DES_cblock *iv)
++// {
++// #if defined(OPENSSL_NO_POSIX_IO)
++    // return (-1);
++// #else
++// # ifdef _LIBC
++    // extern unsigned long time();
++    // extern int write();
++// # endif
++    // const unsigned char *buf = _buf;
++    // long rnum;
++    // int i, j, k, outnum;
++    // static unsigned char *outbuf = NULL;
++    // unsigned char shortbuf[8];
++    // unsigned char *p;
++    // const unsigned char *cp;
++    // static int start = 1;
+ 
+-    if (len < 0)
+-        return -1;
++    // if (len < 0)
++        // return -1;
+ 
+-    if (outbuf == NULL) {
+-        outbuf = OPENSSL_malloc(BSIZE + HDRSIZE);
+-        if (outbuf == NULL)
+-            return (-1);
+-    }
+-    /*
+-     * If we are sending less than 8 bytes, the same char will look the same
+-     * if we don't pad it out with random bytes
+-     */
+-    if (start) {
+-        start = 0;
+-    }
++    // if (outbuf == NULL) {
++        // outbuf = OPENSSL_malloc(BSIZE + HDRSIZE);
++        // if (outbuf == NULL)
++            // return (-1);
++    // }
++    // /*
++     // * If we are sending less than 8 bytes, the same char will look the same
++     // * if we don't pad it out with random bytes
++     // */
++    // if (start) {
++        // start = 0;
++    // }
+ 
+-    /* lets recurse if we want to send the data in small chunks */
+-    if (len > MAXWRITE) {
+-        j = 0;
+-        for (i = 0; i < len; i += k) {
+-            k = DES_enc_write(fd, &(buf[i]),
+-                              ((len - i) > MAXWRITE) ? MAXWRITE : (len - i),
+-                              sched, iv);
+-            if (k < 0)
+-                return (k);
+-            else
+-                j += k;
+-        }
+-        return (j);
+-    }
++    // /* lets recurse if we want to send the data in small chunks */
++    // if (len > MAXWRITE) {
++        // j = 0;
++        // for (i = 0; i < len; i += k) {
++            // k = DES_enc_write(fd, &(buf[i]),
++                              // ((len - i) > MAXWRITE) ? MAXWRITE : (len - i),
++                              // sched, iv);
++            // if (k < 0)
++                // return (k);
++            // else
++                // j += k;
++        // }
++        // return (j);
++    // }
+ 
+-    /* write length first */
+-    p = outbuf;
+-    l2n(len, p);
++    // /* write length first */
++    // p = outbuf;
++    // l2n(len, p);
+ 
+-    /* pad short strings */
+-    if (len < 8) {
+-        cp = shortbuf;
+-        memcpy(shortbuf, buf, len);
+-        if (RAND_bytes(shortbuf + len, 8 - len) <= 0) {
+-            return -1;
+-        }
+-        rnum = 8;
+-    } else {
+-        cp = buf;
+-        rnum = ((len + 7) / 8 * 8); /* round up to nearest eight */
+-    }
++    // /* pad short strings */
++    // if (len < 8) {
++        // cp = shortbuf;
++        // memcpy(shortbuf, buf, len);
++        // if (RAND_bytes(shortbuf + len, 8 - len) <= 0) {
++            // return -1;
++        // }
++        // rnum = 8;
++    // } else {
++        // cp = buf;
++        // rnum = ((len + 7) / 8 * 8); /* round up to nearest eight */
++    // }
+ 
+-    if (DES_rw_mode & DES_PCBC_MODE)
+-        DES_pcbc_encrypt(cp, &(outbuf[HDRSIZE]), (len < 8) ? 8 : len, sched,
+-                         iv, DES_ENCRYPT);
+-    else
+-        DES_cbc_encrypt(cp, &(outbuf[HDRSIZE]), (len < 8) ? 8 : len, sched,
+-                        iv, DES_ENCRYPT);
++    // if (DES_rw_mode & DES_PCBC_MODE)
++        // DES_pcbc_encrypt(cp, &(outbuf[HDRSIZE]), (len < 8) ? 8 : len, sched,
++                         // iv, DES_ENCRYPT);
++    // else
++        // DES_cbc_encrypt(cp, &(outbuf[HDRSIZE]), (len < 8) ? 8 : len, sched,
++                        // iv, DES_ENCRYPT);
+ 
+-    /* output */
+-    outnum = rnum + HDRSIZE;
++    // /* output */
++    // outnum = rnum + HDRSIZE;
+ 
+-    for (j = 0; j < outnum; j += i) {
+-        /*
+-         * eay 26/08/92 I was not doing writing from where we got up to.
+-         */
+-# ifndef _WIN32
+-        i = write(fd, (void *)&(outbuf[j]), outnum - j);
+-# else
+-        i = _write(fd, (void *)&(outbuf[j]), outnum - j);
+-# endif
+-        if (i == -1) {
+-# ifdef EINTR
+-            if (errno == EINTR)
+-                i = 0;
+-            else
+-# endif
+-                /*
+-                 * This is really a bad error - very bad It will stuff-up
+-                 * both ends.
+-                 */
+-                return (-1);
+-        }
+-    }
++    // for (j = 0; j < outnum; j += i) {
++        // /*
++         // * eay 26/08/92 I was not doing writing from where we got up to.
++         // */
++// # ifndef _WIN32
++        // i = write(fd, (void *)&(outbuf[j]), outnum - j);
++// # else
++        // i = _write(fd, (void *)&(outbuf[j]), outnum - j);
++// # endif
++        // if (i == -1) {
++// # ifdef EINTR
++            // if (errno == EINTR)
++                // i = 0;
++            // else
++// # endif
++                // /*
++                 // * This is really a bad error - very bad It will stuff-up
++                 // * both ends.
++                 // */
++                // return (-1);
++        // }
++    // }
+ 
+-    return (len);
+-#endif                          /* OPENSSL_NO_POSIX_IO */
+-}
++    // return (len);
++// #endif                          /* OPENSSL_NO_POSIX_IO */
++// }
+diff --git a/jni/des/rand_key.c b/jni/des/rand_key.c
+index b75cc5f..37f6fa9 100644
+--- a/jni/des/rand_key.c
++++ b/jni/des/rand_key.c
+@@ -56,12 +56,12 @@
+ #include <openssl/des.h>
+ #include <openssl/rand.h>
+ 
+-int DES_random_key(DES_cblock *ret)
+-{
+-    do {
+-        if (RAND_bytes((unsigned char *)ret, sizeof(DES_cblock)) != 1)
+-            return (0);
+-    } while (DES_is_weak_key(ret));
+-    DES_set_odd_parity(ret);
+-    return (1);
+-}
++// int DES_random_key(DES_cblock *ret)
++// {
++    // do {
++        // if (RAND_bytes((unsigned char *)ret, sizeof(DES_cblock)) != 1)
++            // return (0);
++    // } while (DES_is_weak_key(ret));
++    // DES_set_odd_parity(ret);
++    // return (1);
++// }
+diff --git a/jni/des/read2pwd.c b/jni/des/read2pwd.c
+index 01e275f..56b6a8f 100644
+--- a/jni/des/read2pwd.c
++++ b/jni/des/read2pwd.c
+@@ -114,27 +114,27 @@
+ #include <openssl/ui.h>
+ #include <openssl/crypto.h>
+ 
+-int DES_read_password(DES_cblock *key, const char *prompt, int verify)
+-{
+-    int ok;
+-    char buf[BUFSIZ], buff[BUFSIZ];
++// int DES_read_password(DES_cblock *key, const char *prompt, int verify)
++// {
++    // int ok;
++    // char buf[BUFSIZ], buff[BUFSIZ];
+ 
+-    if ((ok = UI_UTIL_read_pw(buf, buff, BUFSIZ, prompt, verify)) == 0)
+-        DES_string_to_key(buf, key);
+-    OPENSSL_cleanse(buf, BUFSIZ);
+-    OPENSSL_cleanse(buff, BUFSIZ);
+-    return (ok);
+-}
++    // if ((ok = UI_UTIL_read_pw(buf, buff, BUFSIZ, prompt, verify)) == 0)
++        // DES_string_to_key(buf, key);
++    // OPENSSL_cleanse(buf, BUFSIZ);
++    // OPENSSL_cleanse(buff, BUFSIZ);
++    // return (ok);
++// }
+ 
+-int DES_read_2passwords(DES_cblock *key1, DES_cblock *key2,
+-                        const char *prompt, int verify)
+-{
+-    int ok;
+-    char buf[BUFSIZ], buff[BUFSIZ];
++// int DES_read_2passwords(DES_cblock *key1, DES_cblock *key2,
++                        // const char *prompt, int verify)
++// {
++    // int ok;
++    // char buf[BUFSIZ], buff[BUFSIZ];
+ 
+-    if ((ok = UI_UTIL_read_pw(buf, buff, BUFSIZ, prompt, verify)) == 0)
+-        DES_string_to_2keys(buf, key1, key2);
+-    OPENSSL_cleanse(buf, BUFSIZ);
+-    OPENSSL_cleanse(buff, BUFSIZ);
+-    return (ok);
+-}
++    // if ((ok = UI_UTIL_read_pw(buf, buff, BUFSIZ, prompt, verify)) == 0)
++        // DES_string_to_2keys(buf, key1, key2);
++    // OPENSSL_cleanse(buf, BUFSIZ);
++    // OPENSSL_cleanse(buff, BUFSIZ);
++    // return (ok);
++// }
+diff --git a/jni/des/str2key.c b/jni/des/str2key.c
+index 38a478c..5903cc2 100644
+--- a/jni/des/str2key.c
++++ b/jni/des/str2key.c
+@@ -59,106 +59,106 @@
+ #include <openssl/crypto.h>
+ #include "des_locl.h"
+ 
+-void DES_string_to_key(const char *str, DES_cblock *key)
+-{
+-    DES_key_schedule ks;
+-    int i, length;
+-    register unsigned char j;
++// void DES_string_to_key(const char *str, DES_cblock *key)
++// {
++    // DES_key_schedule ks;
++    // int i, length;
++    // register unsigned char j;
+ 
+-    memset(key, 0, 8);
+-    length = strlen(str);
+-#ifdef OLD_STR_TO_KEY
+-    for (i = 0; i < length; i++)
+-        (*key)[i % 8] ^= (str[i] << 1);
+-#else                           /* MIT COMPATIBLE */
+-    for (i = 0; i < length; i++) {
+-        j = str[i];
+-        if ((i % 16) < 8)
+-            (*key)[i % 8] ^= (j << 1);
+-        else {
+-            /* Reverse the bit order 05/05/92 eay */
+-            j = ((j << 4) & 0xf0) | ((j >> 4) & 0x0f);
+-            j = ((j << 2) & 0xcc) | ((j >> 2) & 0x33);
+-            j = ((j << 1) & 0xaa) | ((j >> 1) & 0x55);
+-            (*key)[7 - (i % 8)] ^= j;
+-        }
+-    }
+-#endif
+-    DES_set_odd_parity(key);
+-#ifdef EXPERIMENTAL_STR_TO_STRONG_KEY
+-    if (DES_is_weak_key(key))
+-        (*key)[7] ^= 0xF0;
+-    DES_set_key(key, &ks);
+-#else
+-    DES_set_key_unchecked(key, &ks);
+-#endif
+-    DES_cbc_cksum((const unsigned char *)str, key, length, &ks, key);
+-    OPENSSL_cleanse(&ks, sizeof(ks));
+-    DES_set_odd_parity(key);
+-}
++    // memset(key, 0, 8);
++    // length = strlen(str);
++// #ifdef OLD_STR_TO_KEY
++    // for (i = 0; i < length; i++)
++        // (*key)[i % 8] ^= (str[i] << 1);
++// #else                           /* MIT COMPATIBLE */
++    // for (i = 0; i < length; i++) {
++        // j = str[i];
++        // if ((i % 16) < 8)
++            // (*key)[i % 8] ^= (j << 1);
++        // else {
++            // /* Reverse the bit order 05/05/92 eay */
++            // j = ((j << 4) & 0xf0) | ((j >> 4) & 0x0f);
++            // j = ((j << 2) & 0xcc) | ((j >> 2) & 0x33);
++            // j = ((j << 1) & 0xaa) | ((j >> 1) & 0x55);
++            // (*key)[7 - (i % 8)] ^= j;
++        // }
++    // }
++// #endif
++    // DES_set_odd_parity(key);
++// #ifdef EXPERIMENTAL_STR_TO_STRONG_KEY
++    // if (DES_is_weak_key(key))
++        // (*key)[7] ^= 0xF0;
++    // DES_set_key(key, &ks);
++// #else
++    // DES_set_key_unchecked(key, &ks);
++// #endif
++    // DES_cbc_cksum((const unsigned char *)str, key, length, &ks, key);
++    // OPENSSL_cleanse(&ks, sizeof(ks));
++    // DES_set_odd_parity(key);
++// }
+ 
+-void DES_string_to_2keys(const char *str, DES_cblock *key1, DES_cblock *key2)
+-{
+-    DES_key_schedule ks;
+-    int i, length;
+-    register unsigned char j;
++// void DES_string_to_2keys(const char *str, DES_cblock *key1, DES_cblock *key2)
++// {
++    // DES_key_schedule ks;
++    // int i, length;
++    // register unsigned char j;
+ 
+-    memset(key1, 0, 8);
+-    memset(key2, 0, 8);
+-    length = strlen(str);
+-#ifdef OLD_STR_TO_KEY
+-    if (length <= 8) {
+-        for (i = 0; i < length; i++) {
+-            (*key2)[i] = (*key1)[i] = (str[i] << 1);
+-        }
+-    } else {
+-        for (i = 0; i < length; i++) {
+-            if ((i / 8) & 1)
+-                (*key2)[i % 8] ^= (str[i] << 1);
+-            else
+-                (*key1)[i % 8] ^= (str[i] << 1);
+-        }
+-    }
+-#else                           /* MIT COMPATIBLE */
+-    for (i = 0; i < length; i++) {
+-        j = str[i];
+-        if ((i % 32) < 16) {
+-            if ((i % 16) < 8)
+-                (*key1)[i % 8] ^= (j << 1);
+-            else
+-                (*key2)[i % 8] ^= (j << 1);
+-        } else {
+-            j = ((j << 4) & 0xf0) | ((j >> 4) & 0x0f);
+-            j = ((j << 2) & 0xcc) | ((j >> 2) & 0x33);
+-            j = ((j << 1) & 0xaa) | ((j >> 1) & 0x55);
+-            if ((i % 16) < 8)
+-                (*key1)[7 - (i % 8)] ^= j;
+-            else
+-                (*key2)[7 - (i % 8)] ^= j;
+-        }
+-    }
+-    if (length <= 8)
+-        memcpy(key2, key1, 8);
+-#endif
+-    DES_set_odd_parity(key1);
+-    DES_set_odd_parity(key2);
+-#ifdef EXPERIMENTAL_STR_TO_STRONG_KEY
+-    if (DES_is_weak_key(key1))
+-        (*key1)[7] ^= 0xF0;
+-    DES_set_key(key1, &ks);
+-#else
+-    DES_set_key_unchecked(key1, &ks);
+-#endif
+-    DES_cbc_cksum((const unsigned char *)str, key1, length, &ks, key1);
+-#ifdef EXPERIMENTAL_STR_TO_STRONG_KEY
+-    if (DES_is_weak_key(key2))
+-        (*key2)[7] ^= 0xF0;
+-    DES_set_key(key2, &ks);
+-#else
+-    DES_set_key_unchecked(key2, &ks);
+-#endif
+-    DES_cbc_cksum((const unsigned char *)str, key2, length, &ks, key2);
+-    OPENSSL_cleanse(&ks, sizeof(ks));
+-    DES_set_odd_parity(key1);
+-    DES_set_odd_parity(key2);
+-}
++    // memset(key1, 0, 8);
++    // memset(key2, 0, 8);
++    // length = strlen(str);
++// #ifdef OLD_STR_TO_KEY
++    // if (length <= 8) {
++        // for (i = 0; i < length; i++) {
++            // (*key2)[i] = (*key1)[i] = (str[i] << 1);
++        // }
++    // } else {
++        // for (i = 0; i < length; i++) {
++            // if ((i / 8) & 1)
++                // (*key2)[i % 8] ^= (str[i] << 1);
++            // else
++                // (*key1)[i % 8] ^= (str[i] << 1);
++        // }
++    // }
++// #else                           /* MIT COMPATIBLE */
++    // for (i = 0; i < length; i++) {
++        // j = str[i];
++        // if ((i % 32) < 16) {
++            // if ((i % 16) < 8)
++                // (*key1)[i % 8] ^= (j << 1);
++            // else
++                // (*key2)[i % 8] ^= (j << 1);
++        // } else {
++            // j = ((j << 4) & 0xf0) | ((j >> 4) & 0x0f);
++            // j = ((j << 2) & 0xcc) | ((j >> 2) & 0x33);
++            // j = ((j << 1) & 0xaa) | ((j >> 1) & 0x55);
++            // if ((i % 16) < 8)
++                // (*key1)[7 - (i % 8)] ^= j;
++            // else
++                // (*key2)[7 - (i % 8)] ^= j;
++        // }
++    // }
++    // if (length <= 8)
++        // memcpy(key2, key1, 8);
++// #endif
++    // DES_set_odd_parity(key1);
++    // DES_set_odd_parity(key2);
++// #ifdef EXPERIMENTAL_STR_TO_STRONG_KEY
++    // if (DES_is_weak_key(key1))
++        // (*key1)[7] ^= 0xF0;
++    // DES_set_key(key1, &ks);
++// #else
++    // DES_set_key_unchecked(key1, &ks);
++// #endif
++    // DES_cbc_cksum((const unsigned char *)str, key1, length, &ks, key1);
++// #ifdef EXPERIMENTAL_STR_TO_STRONG_KEY
++    // if (DES_is_weak_key(key2))
++        // (*key2)[7] ^= 0xF0;
++    // DES_set_key(key2, &ks);
++// #else
++    // DES_set_key_unchecked(key2, &ks);
++// #endif
++    // DES_cbc_cksum((const unsigned char *)str, key2, length, &ks, key2);
++    // OPENSSL_cleanse(&ks, sizeof(ks));
++    // DES_set_odd_parity(key1);
++    // DES_set_odd_parity(key2);
++// }
+diff --git a/jni/err/err.c b/jni/err/err.c
+index e77d963..434c876 100644
+--- a/jni/err/err.c
++++ b/jni/err/err.c
+@@ -239,12 +239,12 @@ struct st_ERR_FNS {
+ };
+ 
+ /* Predeclarations of the "err_defaults" functions */
+-static LHASH_OF(ERR_STRING_DATA) *int_err_get(int create);
++//static LHASH_OF(ERR_STRING_DATA) *int_err_get(int create);
+ static void int_err_del(void);
+ static ERR_STRING_DATA *int_err_get_item(const ERR_STRING_DATA *);
+ static ERR_STRING_DATA *int_err_set_item(ERR_STRING_DATA *);
+ static ERR_STRING_DATA *int_err_del_item(ERR_STRING_DATA *);
+-static LHASH_OF(ERR_STATE) *int_thread_get(int create);
++//static LHASH_OF(ERR_STATE) *int_thread_get(int create);
+ static void int_thread_release(LHASH_OF(ERR_STATE) **hash);
+ static ERR_STATE *int_thread_get_item(const ERR_STATE *);
+ static ERR_STATE *int_thread_set_item(ERR_STATE *);
+@@ -252,12 +252,12 @@ static void int_thread_del_item(const ERR_STATE *);
+ static int int_err_get_next_lib(void);
+ /* The static ERR_FNS table using these defaults functions */
+ static const ERR_FNS err_defaults = {
+-    int_err_get,
++    //int_err_get,
+     int_err_del,
+     int_err_get_item,
+     int_err_set_item,
+     int_err_del_item,
+-    int_thread_get,
++    //int_thread_get,
+     int_thread_release,
+     int_thread_get_item,
+     int_thread_set_item,
+@@ -353,22 +353,22 @@ static int err_string_data_cmp(const ERR_STRING_DATA *a,
+ 
+ static IMPLEMENT_LHASH_COMP_FN(err_string_data, ERR_STRING_DATA)
+ 
+-static LHASH_OF(ERR_STRING_DATA) *int_err_get(int create)
+-{
+-    LHASH_OF(ERR_STRING_DATA) *ret = NULL;
++// static LHASH_OF(ERR_STRING_DATA) *int_err_get(int create)
++// {
++    // LHASH_OF(ERR_STRING_DATA) *ret = NULL;
+ 
+-    CRYPTO_w_lock(CRYPTO_LOCK_ERR);
+-    if (!int_error_hash && create) {
+-        CRYPTO_push_info("int_err_get (err.c)");
+-        int_error_hash = lh_ERR_STRING_DATA_new();
+-        CRYPTO_pop_info();
+-    }
+-    if (int_error_hash)
+-        ret = int_error_hash;
+-    CRYPTO_w_unlock(CRYPTO_LOCK_ERR);
++    // CRYPTO_w_lock(CRYPTO_LOCK_ERR);
++    // if (!int_error_hash && create) {
++        // CRYPTO_push_info("int_err_get (err.c)");
++        // int_error_hash = lh_ERR_STRING_DATA_new();
++        // CRYPTO_pop_info();
++    // }
++    // if (int_error_hash)
++        // ret = int_error_hash;
++    // CRYPTO_w_unlock(CRYPTO_LOCK_ERR);
+ 
+-    return ret;
+-}
++    // return ret;
++// }
+ 
+ static void int_err_del(void)
+ {
+@@ -445,23 +445,23 @@ static int err_state_cmp(const ERR_STATE *a, const ERR_STATE *b)
+ 
+ static IMPLEMENT_LHASH_COMP_FN(err_state, ERR_STATE)
+ 
+-static LHASH_OF(ERR_STATE) *int_thread_get(int create)
+-{
+-    LHASH_OF(ERR_STATE) *ret = NULL;
+-
+-    CRYPTO_w_lock(CRYPTO_LOCK_ERR);
+-    if (!int_thread_hash && create) {
+-        CRYPTO_push_info("int_thread_get (err.c)");
+-        int_thread_hash = lh_ERR_STATE_new();
+-        CRYPTO_pop_info();
+-    }
+-    if (int_thread_hash) {
+-        int_thread_hash_references++;
+-        ret = int_thread_hash;
+-    }
+-    CRYPTO_w_unlock(CRYPTO_LOCK_ERR);
+-    return ret;
+-}
++// static LHASH_OF(ERR_STATE) *int_thread_get(int create)
++// {
++    // LHASH_OF(ERR_STATE) *ret = NULL;
++
++    // CRYPTO_w_lock(CRYPTO_LOCK_ERR);
++    // if (!int_thread_hash && create) {
++        // CRYPTO_push_info("int_thread_get (err.c)");
++        // int_thread_hash = lh_ERR_STATE_new();
++        // CRYPTO_pop_info();
++    // }
++    // if (int_thread_hash) {
++        // int_thread_hash_references++;
++        // ret = int_thread_hash;
++    // }
++    // CRYPTO_w_unlock(CRYPTO_LOCK_ERR);
++    // return ret;
++// }
+ 
+ static void int_thread_release(LHASH_OF(ERR_STATE) **hash)
+ {
+diff --git a/jni/ex_data.c b/jni/ex_data.c
+index f96a517..dc0044a 100644
+--- a/jni/ex_data.c
++++ b/jni/ex_data.c
+@@ -176,20 +176,20 @@ static const CRYPTO_EX_DATA_IMPL *impl = NULL;
+ /* Predeclare the "default" ex_data implementation */
+ static int int_new_class(void);
+ static void int_cleanup(void);
+-static int int_get_new_index(int class_index, long argl, void *argp,
+-                             CRYPTO_EX_new *new_func, CRYPTO_EX_dup *dup_func,
+-                             CRYPTO_EX_free *free_func);
+-static int int_new_ex_data(int class_index, void *obj, CRYPTO_EX_DATA *ad);
+-static int int_dup_ex_data(int class_index, CRYPTO_EX_DATA *to,
+-                           CRYPTO_EX_DATA *from);
+-static void int_free_ex_data(int class_index, void *obj, CRYPTO_EX_DATA *ad);
++// static int int_get_new_index(int class_index, long argl, void *argp,
++                             // CRYPTO_EX_new *new_func, CRYPTO_EX_dup *dup_func,
++                             // CRYPTO_EX_free *free_func);
++// static int int_new_ex_data(int class_index, void *obj, CRYPTO_EX_DATA *ad);
++// static int int_dup_ex_data(int class_index, CRYPTO_EX_DATA *to,
++                           // CRYPTO_EX_DATA *from);
++// static void int_free_ex_data(int class_index, void *obj, CRYPTO_EX_DATA *ad);
+ static CRYPTO_EX_DATA_IMPL impl_default = {
+     int_new_class,
+     int_cleanup,
+-    int_get_new_index,
+-    int_new_ex_data,
+-    int_dup_ex_data,
+-    int_free_ex_data
++    // int_get_new_index,
++    // int_new_ex_data,
++    // int_dup_ex_data,
++    // int_free_ex_data
+ };
+ 
+ /*
+@@ -310,71 +310,71 @@ static void def_cleanup_cb(void *a_void)
+  * Return the EX_CLASS_ITEM from the "ex_data" hash table that corresponds to
+  * a given class. Handles locking.
+  */
+-static EX_CLASS_ITEM *def_get_class(int class_index)
+-{
+-    EX_CLASS_ITEM d, *p, *gen;
+-    EX_DATA_CHECK(return NULL;)
+-        d.class_index = class_index;
+-    CRYPTO_w_lock(CRYPTO_LOCK_EX_DATA);
+-    p = lh_EX_CLASS_ITEM_retrieve(ex_data, &d);
+-    if (!p) {
+-        gen = OPENSSL_malloc(sizeof(EX_CLASS_ITEM));
+-        if (gen) {
+-            gen->class_index = class_index;
+-            gen->meth_num = 0;
+-            gen->meth = sk_CRYPTO_EX_DATA_FUNCS_new_null();
+-            if (!gen->meth)
+-                OPENSSL_free(gen);
+-            else {
+-                /*
+-                 * Because we're inside the ex_data lock, the return value
+-                 * from the insert will be NULL
+-                 */
+-                (void)lh_EX_CLASS_ITEM_insert(ex_data, gen);
+-                p = gen;
+-            }
+-        }
+-    }
+-    CRYPTO_w_unlock(CRYPTO_LOCK_EX_DATA);
+-    if (!p)
+-        CRYPTOerr(CRYPTO_F_DEF_GET_CLASS, ERR_R_MALLOC_FAILURE);
+-    return p;
+-}
++// static EX_CLASS_ITEM *def_get_class(int class_index)
++// {
++    // EX_CLASS_ITEM d, *p, *gen;
++    // EX_DATA_CHECK(return NULL;)
++        // d.class_index = class_index;
++    // CRYPTO_w_lock(CRYPTO_LOCK_EX_DATA);
++    // p = lh_EX_CLASS_ITEM_retrieve(ex_data, &d);
++    // if (!p) {
++        // gen = OPENSSL_malloc(sizeof(EX_CLASS_ITEM));
++        // if (gen) {
++            // gen->class_index = class_index;
++            // gen->meth_num = 0;
++            // gen->meth = sk_CRYPTO_EX_DATA_FUNCS_new_null();
++            // if (!gen->meth)
++                // OPENSSL_free(gen);
++            // else {
++                // /*
++                 // * Because we're inside the ex_data lock, the return value
++                 // * from the insert will be NULL
++                 // */
++                // (void)lh_EX_CLASS_ITEM_insert(ex_data, gen);
++                // p = gen;
++            // }
++        // }
++    // }
++    // CRYPTO_w_unlock(CRYPTO_LOCK_EX_DATA);
++    // if (!p)
++        // CRYPTOerr(CRYPTO_F_DEF_GET_CLASS, ERR_R_MALLOC_FAILURE);
++    // return p;
++// }
+ 
+ /*
+  * Add a new method to the given EX_CLASS_ITEM and return the corresponding
+  * index (or -1 for error). Handles locking.
+  */
+-static int def_add_index(EX_CLASS_ITEM *item, long argl, void *argp,
+-                         CRYPTO_EX_new *new_func, CRYPTO_EX_dup *dup_func,
+-                         CRYPTO_EX_free *free_func)
+-{
+-    int toret = -1;
+-    CRYPTO_EX_DATA_FUNCS *a =
+-        (CRYPTO_EX_DATA_FUNCS *)OPENSSL_malloc(sizeof(CRYPTO_EX_DATA_FUNCS));
+-    if (!a) {
+-        CRYPTOerr(CRYPTO_F_DEF_ADD_INDEX, ERR_R_MALLOC_FAILURE);
+-        return -1;
+-    }
+-    a->argl = argl;
+-    a->argp = argp;
+-    a->new_func = new_func;
+-    a->dup_func = dup_func;
+-    a->free_func = free_func;
+-    CRYPTO_w_lock(CRYPTO_LOCK_EX_DATA);
+-    while (sk_CRYPTO_EX_DATA_FUNCS_num(item->meth) <= item->meth_num) {
+-        if (!sk_CRYPTO_EX_DATA_FUNCS_push(item->meth, NULL)) {
+-            CRYPTOerr(CRYPTO_F_DEF_ADD_INDEX, ERR_R_MALLOC_FAILURE);
+-            OPENSSL_free(a);
+-            goto err;
+-        }
+-    }
+-    toret = item->meth_num++;
+-    (void)sk_CRYPTO_EX_DATA_FUNCS_set(item->meth, toret, a);
+- err:
+-    CRYPTO_w_unlock(CRYPTO_LOCK_EX_DATA);
+-    return toret;
+-}
++// static int def_add_index(EX_CLASS_ITEM *item, long argl, void *argp,
++                         // CRYPTO_EX_new *new_func, CRYPTO_EX_dup *dup_func,
++                         // CRYPTO_EX_free *free_func)
++// {
++    // int toret = -1;
++    // CRYPTO_EX_DATA_FUNCS *a =
++        // (CRYPTO_EX_DATA_FUNCS *)OPENSSL_malloc(sizeof(CRYPTO_EX_DATA_FUNCS));
++    // if (!a) {
++        //CRYPTOerr(CRYPTO_F_DEF_ADD_INDEX, ERR_R_MALLOC_FAILURE);
++        // return -1;
++    // }
++    // a->argl = argl;
++    // a->argp = argp;
++    // a->new_func = new_func;
++    // a->dup_func = dup_func;
++    // a->free_func = free_func;
++    // CRYPTO_w_lock(CRYPTO_LOCK_EX_DATA);
++    // while (sk_CRYPTO_EX_DATA_FUNCS_num(item->meth) <= item->meth_num) {
++        // if (!sk_CRYPTO_EX_DATA_FUNCS_push(item->meth, NULL)) {
++            //CRYPTOerr(CRYPTO_F_DEF_ADD_INDEX, ERR_R_MALLOC_FAILURE);
++            // OPENSSL_free(a);
++            // goto err;
++        // }
++    // }
++    // toret = item->meth_num++;
++    // (void)sk_CRYPTO_EX_DATA_FUNCS_set(item->meth, toret, a);
++ // err:
++    // CRYPTO_w_unlock(CRYPTO_LOCK_EX_DATA);
++    // return toret;
++// }
+ 
+ /**************************************************************/
+ /* The functions in the default CRYPTO_EX_DATA_IMPL structure */
+@@ -397,15 +397,15 @@ static void int_cleanup(void)
+     impl = NULL;
+ }
+ 
+-static int int_get_new_index(int class_index, long argl, void *argp,
+-                             CRYPTO_EX_new *new_func, CRYPTO_EX_dup *dup_func,
+-                             CRYPTO_EX_free *free_func)
+-{
+-    EX_CLASS_ITEM *item = def_get_class(class_index);
+-    if (!item)
+-        return -1;
+-    return def_add_index(item, argl, argp, new_func, dup_func, free_func);
+-}
++// static int int_get_new_index(int class_index, long argl, void *argp,
++                             // CRYPTO_EX_new *new_func, CRYPTO_EX_dup *dup_func,
++                             // CRYPTO_EX_free *free_func)
++// {
++    // EX_CLASS_ITEM *item = def_get_class(class_index);
++    // if (!item)
++        // return -1;
++    // return def_add_index(item, argl, argp, new_func, dup_func, free_func);
++// }
+ 
+ /*
+  * Thread-safe by copying a class's array of "CRYPTO_EX_DATA_FUNCS" entries
+@@ -413,126 +413,126 @@ static int int_get_new_index(int class_index, long argl, void *argp,
+  * applies to the global "ex_data" state (ie. class definitions), not
+  * thread-safe on 'ad' itself.
+  */
+-static int int_new_ex_data(int class_index, void *obj, CRYPTO_EX_DATA *ad)
+-{
+-    int mx, i;
+-    void *ptr;
+-    CRYPTO_EX_DATA_FUNCS **storage = NULL;
+-    EX_CLASS_ITEM *item = def_get_class(class_index);
+-    if (!item)
+-        /* error is already set */
+-        return 0;
+-    ad->sk = NULL;
+-    CRYPTO_r_lock(CRYPTO_LOCK_EX_DATA);
+-    mx = sk_CRYPTO_EX_DATA_FUNCS_num(item->meth);
+-    if (mx > 0) {
+-        storage = OPENSSL_malloc(mx * sizeof(CRYPTO_EX_DATA_FUNCS *));
+-        if (!storage)
+-            goto skip;
+-        for (i = 0; i < mx; i++)
+-            storage[i] = sk_CRYPTO_EX_DATA_FUNCS_value(item->meth, i);
+-    }
+- skip:
+-    CRYPTO_r_unlock(CRYPTO_LOCK_EX_DATA);
+-    if ((mx > 0) && !storage) {
+-        CRYPTOerr(CRYPTO_F_INT_NEW_EX_DATA, ERR_R_MALLOC_FAILURE);
+-        return 0;
+-    }
+-    for (i = 0; i < mx; i++) {
+-        if (storage[i] && storage[i]->new_func) {
+-            ptr = CRYPTO_get_ex_data(ad, i);
+-            storage[i]->new_func(obj, ptr, ad, i,
+-                                 storage[i]->argl, storage[i]->argp);
+-        }
+-    }
+-    if (storage)
+-        OPENSSL_free(storage);
+-    return 1;
+-}
++// static int int_new_ex_data(int class_index, void *obj, CRYPTO_EX_DATA *ad)
++// {
++    // int mx, i;
++    // void *ptr;
++    // CRYPTO_EX_DATA_FUNCS **storage = NULL;
++    // EX_CLASS_ITEM *item = def_get_class(class_index);
++    // if (!item)
++        // /* error is already set */
++        // return 0;
++    // ad->sk = NULL;
++    // CRYPTO_r_lock(CRYPTO_LOCK_EX_DATA);
++    // mx = sk_CRYPTO_EX_DATA_FUNCS_num(item->meth);
++    // if (mx > 0) {
++        // storage = OPENSSL_malloc(mx * sizeof(CRYPTO_EX_DATA_FUNCS *));
++        // if (!storage)
++            // goto skip;
++        // for (i = 0; i < mx; i++)
++            // storage[i] = sk_CRYPTO_EX_DATA_FUNCS_value(item->meth, i);
++    // }
++ // skip:
++    // CRYPTO_r_unlock(CRYPTO_LOCK_EX_DATA);
++    // if ((mx > 0) && !storage) {
++        // CRYPTOerr(CRYPTO_F_INT_NEW_EX_DATA, ERR_R_MALLOC_FAILURE);
++        // return 0;
++    // }
++    // for (i = 0; i < mx; i++) {
++        // if (storage[i] && storage[i]->new_func) {
++            // ptr = CRYPTO_get_ex_data(ad, i);
++            // storage[i]->new_func(obj, ptr, ad, i,
++                                 // storage[i]->argl, storage[i]->argp);
++        // }
++    // }
++    // if (storage)
++        // OPENSSL_free(storage);
++    // return 1;
++// }
+ 
+ /* Same thread-safety notes as for "int_new_ex_data" */
+-static int int_dup_ex_data(int class_index, CRYPTO_EX_DATA *to,
+-                           CRYPTO_EX_DATA *from)
+-{
+-    int mx, j, i;
+-    char *ptr;
+-    CRYPTO_EX_DATA_FUNCS **storage = NULL;
+-    EX_CLASS_ITEM *item;
+-    if (!from->sk)
+-        /* 'to' should be "blank" which *is* just like 'from' */
+-        return 1;
+-    if ((item = def_get_class(class_index)) == NULL)
+-        return 0;
+-    CRYPTO_r_lock(CRYPTO_LOCK_EX_DATA);
+-    mx = sk_CRYPTO_EX_DATA_FUNCS_num(item->meth);
+-    j = sk_void_num(from->sk);
+-    if (j < mx)
+-        mx = j;
+-    if (mx > 0) {
+-        storage = OPENSSL_malloc(mx * sizeof(CRYPTO_EX_DATA_FUNCS *));
+-        if (!storage)
+-            goto skip;
+-        for (i = 0; i < mx; i++)
+-            storage[i] = sk_CRYPTO_EX_DATA_FUNCS_value(item->meth, i);
+-    }
+- skip:
+-    CRYPTO_r_unlock(CRYPTO_LOCK_EX_DATA);
+-    if ((mx > 0) && !storage) {
+-        CRYPTOerr(CRYPTO_F_INT_DUP_EX_DATA, ERR_R_MALLOC_FAILURE);
+-        return 0;
+-    }
+-    for (i = 0; i < mx; i++) {
+-        ptr = CRYPTO_get_ex_data(from, i);
+-        if (storage[i] && storage[i]->dup_func)
+-            storage[i]->dup_func(to, from, &ptr, i,
+-                                 storage[i]->argl, storage[i]->argp);
+-        CRYPTO_set_ex_data(to, i, ptr);
+-    }
+-    if (storage)
+-        OPENSSL_free(storage);
+-    return 1;
+-}
++// static int int_dup_ex_data(int class_index, CRYPTO_EX_DATA *to,
++                           // CRYPTO_EX_DATA *from)
++// {
++    // int mx, j, i;
++    // char *ptr;
++    // CRYPTO_EX_DATA_FUNCS **storage = NULL;
++    // EX_CLASS_ITEM *item;
++    // if (!from->sk)
++        // /* 'to' should be "blank" which *is* just like 'from' */
++        // return 1;
++    // if ((item = def_get_class(class_index)) == NULL)
++        // return 0;
++    // CRYPTO_r_lock(CRYPTO_LOCK_EX_DATA);
++    // mx = sk_CRYPTO_EX_DATA_FUNCS_num(item->meth);
++    // j = sk_void_num(from->sk);
++    // if (j < mx)
++        // mx = j;
++    // if (mx > 0) {
++        // storage = OPENSSL_malloc(mx * sizeof(CRYPTO_EX_DATA_FUNCS *));
++        // if (!storage)
++            // goto skip;
++        // for (i = 0; i < mx; i++)
++            // storage[i] = sk_CRYPTO_EX_DATA_FUNCS_value(item->meth, i);
++    // }
++ // skip:
++    // CRYPTO_r_unlock(CRYPTO_LOCK_EX_DATA);
++    // if ((mx > 0) && !storage) {
++        // CRYPTOerr(CRYPTO_F_INT_DUP_EX_DATA, ERR_R_MALLOC_FAILURE);
++        // return 0;
++    // }
++    // for (i = 0; i < mx; i++) {
++        // ptr = CRYPTO_get_ex_data(from, i);
++        // if (storage[i] && storage[i]->dup_func)
++            // storage[i]->dup_func(to, from, &ptr, i,
++                                 // storage[i]->argl, storage[i]->argp);
++        // CRYPTO_set_ex_data(to, i, ptr);
++    // }
++    // if (storage)
++        // OPENSSL_free(storage);
++    // return 1;
++// }
+ 
+ /* Same thread-safety notes as for "int_new_ex_data" */
+-static void int_free_ex_data(int class_index, void *obj, CRYPTO_EX_DATA *ad)
+-{
+-    int mx, i;
+-    EX_CLASS_ITEM *item;
+-    void *ptr;
+-    CRYPTO_EX_DATA_FUNCS **storage = NULL;
+-    if (ex_data == NULL)
+-        return;
+-    if ((item = def_get_class(class_index)) == NULL)
+-        return;
+-    CRYPTO_r_lock(CRYPTO_LOCK_EX_DATA);
+-    mx = sk_CRYPTO_EX_DATA_FUNCS_num(item->meth);
+-    if (mx > 0) {
+-        storage = OPENSSL_malloc(mx * sizeof(CRYPTO_EX_DATA_FUNCS *));
+-        if (!storage)
+-            goto skip;
+-        for (i = 0; i < mx; i++)
+-            storage[i] = sk_CRYPTO_EX_DATA_FUNCS_value(item->meth, i);
+-    }
+- skip:
+-    CRYPTO_r_unlock(CRYPTO_LOCK_EX_DATA);
+-    if ((mx > 0) && !storage) {
+-        CRYPTOerr(CRYPTO_F_INT_FREE_EX_DATA, ERR_R_MALLOC_FAILURE);
+-        return;
+-    }
+-    for (i = 0; i < mx; i++) {
+-        if (storage[i] && storage[i]->free_func) {
+-            ptr = CRYPTO_get_ex_data(ad, i);
+-            storage[i]->free_func(obj, ptr, ad, i,
+-                                  storage[i]->argl, storage[i]->argp);
+-        }
+-    }
+-    if (storage)
+-        OPENSSL_free(storage);
+-    if (ad->sk) {
+-        sk_void_free(ad->sk);
+-        ad->sk = NULL;
+-    }
+-}
++// static void int_free_ex_data(int class_index, void *obj, CRYPTO_EX_DATA *ad)
++// {
++    // int mx, i;
++    // EX_CLASS_ITEM *item;
++    // void *ptr;
++    // CRYPTO_EX_DATA_FUNCS **storage = NULL;
++    // if (ex_data == NULL)
++        // return;
++    // if ((item = def_get_class(class_index)) == NULL)
++        // return;
++    // CRYPTO_r_lock(CRYPTO_LOCK_EX_DATA);
++    // mx = sk_CRYPTO_EX_DATA_FUNCS_num(item->meth);
++    // if (mx > 0) {
++        // storage = OPENSSL_malloc(mx * sizeof(CRYPTO_EX_DATA_FUNCS *));
++        // if (!storage)
++            // goto skip;
++        // for (i = 0; i < mx; i++)
++            // storage[i] = sk_CRYPTO_EX_DATA_FUNCS_value(item->meth, i);
++    // }
++ // skip:
++    // CRYPTO_r_unlock(CRYPTO_LOCK_EX_DATA);
++    // if ((mx > 0) && !storage) {
++        // CRYPTOerr(CRYPTO_F_INT_FREE_EX_DATA, ERR_R_MALLOC_FAILURE);
++        // return;
++    // }
++    // for (i = 0; i < mx; i++) {
++        // if (storage[i] && storage[i]->free_func) {
++            // ptr = CRYPTO_get_ex_data(ad, i);
++            // storage[i]->free_func(obj, ptr, ad, i,
++                                  // storage[i]->argl, storage[i]->argp);
++        // }
++    // }
++    // if (storage)
++        // OPENSSL_free(storage);
++    // if (ad->sk) {
++        // sk_void_free(ad->sk);
++        // ad->sk = NULL;
++    // }
++// }
+ 
+ /********************************************************************/
+ /*
+@@ -606,28 +606,28 @@ void CRYPTO_free_ex_data(int class_index, void *obj, CRYPTO_EX_DATA *ad)
+  * For a given CRYPTO_EX_DATA variable, set the value corresponding to a
+  * particular index in the class used by this variable
+  */
+-int CRYPTO_set_ex_data(CRYPTO_EX_DATA *ad, int idx, void *val)
+-{
+-    int i;
+-
+-    if (ad->sk == NULL) {
+-        if ((ad->sk = sk_void_new_null()) == NULL) {
+-            CRYPTOerr(CRYPTO_F_CRYPTO_SET_EX_DATA, ERR_R_MALLOC_FAILURE);
+-            return (0);
+-        }
+-    }
+-    i = sk_void_num(ad->sk);
+-
+-    while (i <= idx) {
+-        if (!sk_void_push(ad->sk, NULL)) {
+-            CRYPTOerr(CRYPTO_F_CRYPTO_SET_EX_DATA, ERR_R_MALLOC_FAILURE);
+-            return (0);
+-        }
+-        i++;
+-    }
+-    sk_void_set(ad->sk, idx, val);
+-    return (1);
+-}
++// int CRYPTO_set_ex_data(CRYPTO_EX_DATA *ad, int idx, void *val)
++// {
++    // int i;
++
++    // if (ad->sk == NULL) {
++        // if ((ad->sk = sk_void_new_null()) == NULL) {
++            // CRYPTOerr(CRYPTO_F_CRYPTO_SET_EX_DATA, ERR_R_MALLOC_FAILURE);
++            // return (0);
++        // }
++    // }
++    // i = sk_void_num(ad->sk);
++
++    // while (i <= idx) {
++        // if (!sk_void_push(ad->sk, NULL)) {
++            // CRYPTOerr(CRYPTO_F_CRYPTO_SET_EX_DATA, ERR_R_MALLOC_FAILURE);
++            // return (0);
++        // }
++        // i++;
++    // }
++    // sk_void_set(ad->sk, idx, val);
++    // return (1);
++// }
+ 
+ /*
+  * For a given CRYPTO_EX_DATA_ variable, get the value corresponding to a
+diff --git a/jni/rand/rand_lib.c b/jni/rand/rand_lib.c
+index 88a78d3..7992820 100644
+--- a/jni/rand/rand_lib.c
++++ b/jni/rand/rand_lib.c
+@@ -89,26 +89,26 @@ int RAND_set_rand_method(const RAND_METHOD *meth)
+     return 1;
+ }
+ 
+-const RAND_METHOD *RAND_get_rand_method(void)
+-{
+-    if (!default_RAND_meth) {
+-#ifndef OPENSSL_NO_ENGINE
+-        ENGINE *e = ENGINE_get_default_RAND();
+-        if (e) {
+-            default_RAND_meth = ENGINE_get_RAND(e);
+-            if (!default_RAND_meth) {
+-                ENGINE_finish(e);
+-                e = NULL;
+-            }
+-        }
+-        if (e)
+-            funct_ref = e;
+-        else
+-#endif
+-            default_RAND_meth = RAND_SSLeay();
+-    }
+-    return default_RAND_meth;
+-}
++// const RAND_METHOD *RAND_get_rand_method(void)
++// {
++    // if (!default_RAND_meth) {
++// #ifndef OPENSSL_NO_ENGINE
++        // ENGINE *e = ENGINE_get_default_RAND();
++        // if (e) {
++            // default_RAND_meth = ENGINE_get_RAND(e);
++            // if (!default_RAND_meth) {
++                // ENGINE_finish(e);
++                // e = NULL;
++            // }
++        // }
++        // if (e)
++            // funct_ref = e;
++        // else
++// #endif
++            // default_RAND_meth = RAND_SSLeay();
++    // }
++    // return default_RAND_meth;
++// }
+ 
+ #ifndef OPENSSL_NO_ENGINE
+ int RAND_set_rand_engine(ENGINE *engine)
+@@ -130,51 +130,51 @@ int RAND_set_rand_engine(ENGINE *engine)
+ }
+ #endif
+ 
+-void RAND_cleanup(void)
+-{
+-    const RAND_METHOD *meth = RAND_get_rand_method();
+-    if (meth && meth->cleanup)
+-        meth->cleanup();
+-    RAND_set_rand_method(NULL);
+-}
++// void RAND_cleanup(void)
++// {
++    // const RAND_METHOD *meth = RAND_get_rand_method();
++    // if (meth && meth->cleanup)
++        // meth->cleanup();
++    // RAND_set_rand_method(NULL);
++// }
+ 
+-void RAND_seed(const void *buf, int num)
+-{
+-    const RAND_METHOD *meth = RAND_get_rand_method();
+-    if (meth && meth->seed)
+-        meth->seed(buf, num);
+-}
++// void RAND_seed(const void *buf, int num)
++// {
++    // const RAND_METHOD *meth = RAND_get_rand_method();
++    // if (meth && meth->seed)
++        // meth->seed(buf, num);
++// }
+ 
+-void RAND_add(const void *buf, int num, double entropy)
+-{
+-    const RAND_METHOD *meth = RAND_get_rand_method();
+-    if (meth && meth->add)
+-        meth->add(buf, num, entropy);
+-}
++// void RAND_add(const void *buf, int num, double entropy)
++// {
++    // const RAND_METHOD *meth = RAND_get_rand_method();
++    // if (meth && meth->add)
++        // meth->add(buf, num, entropy);
++// }
+ 
+-int RAND_bytes(unsigned char *buf, int num)
+-{
+-    const RAND_METHOD *meth = RAND_get_rand_method();
+-    if (meth && meth->bytes)
+-        return meth->bytes(buf, num);
+-    return (-1);
+-}
++// int RAND_bytes(unsigned char *buf, int num)
++// {
++    // const RAND_METHOD *meth = RAND_get_rand_method();
++    // if (meth && meth->bytes)
++        // return meth->bytes(buf, num);
++    // return (-1);
++// }
+ 
+-int RAND_pseudo_bytes(unsigned char *buf, int num)
+-{
+-    const RAND_METHOD *meth = RAND_get_rand_method();
+-    if (meth && meth->pseudorand)
+-        return meth->pseudorand(buf, num);
+-    return (-1);
+-}
++// int RAND_pseudo_bytes(unsigned char *buf, int num)
++// {
++    // const RAND_METHOD *meth = RAND_get_rand_method();
++    // if (meth && meth->pseudorand)
++        // return meth->pseudorand(buf, num);
++    // return (-1);
++// }
+ 
+-int RAND_status(void)
+-{
+-    const RAND_METHOD *meth = RAND_get_rand_method();
+-    if (meth && meth->status)
+-        return meth->status();
+-    return 0;
+-}
++// int RAND_status(void)
++// {
++    // const RAND_METHOD *meth = RAND_get_rand_method();
++    // if (meth && meth->status)
++        // return meth->status();
++    // return 0;
++// }
+ 
+ #ifdef OPENSSL_FIPS
+ 
+diff --git a/jni/stack/stack.c b/jni/stack/stack.c
+index 331f907..16b836e 100644
+--- a/jni/stack/stack.c
++++ b/jni/stack/stack.c
+@@ -210,39 +210,39 @@ void *sk_delete(_STACK *st, int loc)
+     return (ret);
+ }
+ 
+-static int internal_find(_STACK *st, void *data, int ret_val_options)
+-{
+-    const void *const *r;
+-    int i;
+-
+-    if (st == NULL)
+-        return -1;
+-
+-    if (st->comp == NULL) {
+-        for (i = 0; i < st->num; i++)
+-            if (st->data[i] == data)
+-                return (i);
+-        return (-1);
+-    }
+-    sk_sort(st);
+-    if (data == NULL)
+-        return (-1);
+-    r = OBJ_bsearch_ex_(&data, st->data, st->num, sizeof(void *), st->comp,
+-                        ret_val_options);
+-    if (r == NULL)
+-        return (-1);
+-    return (int)((char **)r - st->data);
+-}
+-
+-int sk_find(_STACK *st, void *data)
+-{
+-    return internal_find(st, data, OBJ_BSEARCH_FIRST_VALUE_ON_MATCH);
+-}
+-
+-int sk_find_ex(_STACK *st, void *data)
+-{
+-    return internal_find(st, data, OBJ_BSEARCH_VALUE_ON_NOMATCH);
+-}
++// static int internal_find(_STACK *st, void *data, int ret_val_options)
++// {
++    // const void *const *r;
++    // int i;
++
++    // if (st == NULL)
++        // return -1;
++
++    // if (st->comp == NULL) {
++        // for (i = 0; i < st->num; i++)
++            // if (st->data[i] == data)
++                // return (i);
++        // return (-1);
++    // }
++    // sk_sort(st);
++    // if (data == NULL)
++        // return (-1);
++    // r = OBJ_bsearch_ex_(&data, st->data, st->num, sizeof(void *), st->comp,
++                        // ret_val_options);
++    // if (r == NULL)
++        // return (-1);
++    // return (int)((char **)r - st->data);
++// }
++
++// int sk_find(_STACK *st, void *data)
++// {
++    // return internal_find(st, data, OBJ_BSEARCH_FIRST_VALUE_ON_MATCH);
++// }
++
++// int sk_find_ex(_STACK *st, void *data)
++// {
++    // return internal_find(st, data, OBJ_BSEARCH_VALUE_ON_NOMATCH);
++// }
+ 
+ int sk_push(_STACK *st, void *data)
+ {

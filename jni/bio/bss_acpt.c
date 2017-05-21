@@ -91,13 +91,13 @@ typedef struct bio_accept_st {
     BIO *bio_chain;
 } BIO_ACCEPT;
 
-//static int acpt_write(BIO *h, const char *buf, int num);
-//static int acpt_read(BIO *h, char *buf, int size);
-//static int acpt_puts(BIO *h, const char *str);
+static int acpt_write(BIO *h, const char *buf, int num);
+static int acpt_read(BIO *h, char *buf, int size);
+static int acpt_puts(BIO *h, const char *str);
 static long acpt_ctrl(BIO *h, int cmd, long arg1, void *arg2);
 static int acpt_new(BIO *h);
 static int acpt_free(BIO *data);
-//static int acpt_state(BIO *b, BIO_ACCEPT *c);
+static int acpt_state(BIO *b, BIO_ACCEPT *c);
 static void acpt_close_socket(BIO *data);
 static BIO_ACCEPT *BIO_ACCEPT_new(void);
 static void BIO_ACCEPT_free(BIO_ACCEPT *a);
@@ -109,13 +109,13 @@ static void BIO_ACCEPT_free(BIO_ACCEPT *a);
 static BIO_METHOD methods_acceptp = {
     BIO_TYPE_ACCEPT,
     "socket accept",
-    //acpt_write,
-    //acpt_read,
-    //acpt_puts,
+    acpt_write,
+    acpt_read,
+    acpt_puts,
     NULL,                       /* connect_gets, */
-    //acpt_ctrl,
+    acpt_ctrl,
     acpt_new,
-    //acpt_free,
+    acpt_free,
     NULL,
 };
 
@@ -197,144 +197,144 @@ static int acpt_free(BIO *a)
     return (1);
 }
 
-// static int acpt_state(BIO *b, BIO_ACCEPT *c)
-// {
-    // BIO *bio = NULL, *dbio;
-    // int s = -1;
-    // int i;
+static int acpt_state(BIO *b, BIO_ACCEPT *c)
+{
+    BIO *bio = NULL, *dbio;
+    int s = -1;
+    int i;
 
- // again:
-    // switch (c->state) {
-    // case ACPT_S_BEFORE:
-        // if (c->param_addr == NULL) {
-            // BIOerr(BIO_F_ACPT_STATE, BIO_R_NO_ACCEPT_PORT_SPECIFIED);
-            // return (-1);
-        // }
-        // s = BIO_get_accept_socket(c->param_addr, c->bind_mode);
-        // if (s == INVALID_SOCKET)
-            // return (-1);
+ again:
+    switch (c->state) {
+    case ACPT_S_BEFORE:
+        if (c->param_addr == NULL) {
+            BIOerr(BIO_F_ACPT_STATE, BIO_R_NO_ACCEPT_PORT_SPECIFIED);
+            return (-1);
+        }
+        s = BIO_get_accept_socket(c->param_addr, c->bind_mode);
+        if (s == INVALID_SOCKET)
+            return (-1);
 
-        // if (c->accept_nbio) {
-            // if (!BIO_socket_nbio(s, 1)) {
-                // closesocket(s);
-                // BIOerr(BIO_F_ACPT_STATE,
-                       // BIO_R_ERROR_SETTING_NBIO_ON_ACCEPT_SOCKET);
-                // return (-1);
-            // }
-        // }
-        // c->accept_sock = s;
-        // b->num = s;
-        // c->state = ACPT_S_GET_ACCEPT_SOCKET;
-        // return (1);
-        // /* break; */
-    // case ACPT_S_GET_ACCEPT_SOCKET:
-        // if (b->next_bio != NULL) {
-            // c->state = ACPT_S_OK;
-            // goto again;
-        // }
-        // BIO_clear_retry_flags(b);
-        // b->retry_reason = 0;
-        // i = BIO_accept(c->accept_sock, &(c->addr));
+        if (c->accept_nbio) {
+            if (!BIO_socket_nbio(s, 1)) {
+                closesocket(s);
+                BIOerr(BIO_F_ACPT_STATE,
+                       BIO_R_ERROR_SETTING_NBIO_ON_ACCEPT_SOCKET);
+                return (-1);
+            }
+        }
+        c->accept_sock = s;
+        b->num = s;
+        c->state = ACPT_S_GET_ACCEPT_SOCKET;
+        return (1);
+        /* break; */
+    case ACPT_S_GET_ACCEPT_SOCKET:
+        if (b->next_bio != NULL) {
+            c->state = ACPT_S_OK;
+            goto again;
+        }
+        BIO_clear_retry_flags(b);
+        b->retry_reason = 0;
+        i = BIO_accept(c->accept_sock, &(c->addr));
 
-        // /* -2 return means we should retry */
-        // if (i == -2) {
-            // BIO_set_retry_special(b);
-            // b->retry_reason = BIO_RR_ACCEPT;
-            // return -1;
-        // }
+        /* -2 return means we should retry */
+        if (i == -2) {
+            BIO_set_retry_special(b);
+            b->retry_reason = BIO_RR_ACCEPT;
+            return -1;
+        }
 
-        // if (i < 0)
-            // return (i);
+        if (i < 0)
+            return (i);
 
-        // bio = BIO_new_socket(i, BIO_CLOSE);
-        // if (bio == NULL)
-            // goto err;
+        bio = BIO_new_socket(i, BIO_CLOSE);
+        if (bio == NULL)
+            goto err;
 
-        // BIO_set_callback(bio, BIO_get_callback(b));
-        // BIO_set_callback_arg(bio, BIO_get_callback_arg(b));
+        BIO_set_callback(bio, BIO_get_callback(b));
+        BIO_set_callback_arg(bio, BIO_get_callback_arg(b));
 
-        // if (c->nbio) {
-            // if (!BIO_socket_nbio(i, 1)) {
-                // BIOerr(BIO_F_ACPT_STATE,
-                       // BIO_R_ERROR_SETTING_NBIO_ON_ACCEPTED_SOCKET);
-                // goto err;
-            // }
-        // }
+        if (c->nbio) {
+            if (!BIO_socket_nbio(i, 1)) {
+                BIOerr(BIO_F_ACPT_STATE,
+                       BIO_R_ERROR_SETTING_NBIO_ON_ACCEPTED_SOCKET);
+                goto err;
+            }
+        }
 
-        // /*
-         // * If the accept BIO has an bio_chain, we dup it and put the new
-         // * socket at the end.
-         // */
-        // if (c->bio_chain != NULL) {
-            // if ((dbio = BIO_dup_chain(c->bio_chain)) == NULL)
-                // goto err;
-            // if (!BIO_push(dbio, bio))
-                // goto err;
-            // bio = dbio;
-        // }
-        // if (BIO_push(b, bio) == NULL)
-            // goto err;
+        /*
+         * If the accept BIO has an bio_chain, we dup it and put the new
+         * socket at the end.
+         */
+        if (c->bio_chain != NULL) {
+            if ((dbio = BIO_dup_chain(c->bio_chain)) == NULL)
+                goto err;
+            if (!BIO_push(dbio, bio))
+                goto err;
+            bio = dbio;
+        }
+        if (BIO_push(b, bio) == NULL)
+            goto err;
 
-        // c->state = ACPT_S_OK;
-        // return (1);
- // err:
-        // if (bio != NULL)
-            // BIO_free(bio);
-        // else if (s >= 0)
-            // closesocket(s);
-        // return (0);
-        // /* break; */
-    // case ACPT_S_OK:
-        // if (b->next_bio == NULL) {
-            // c->state = ACPT_S_GET_ACCEPT_SOCKET;
-            // goto again;
-        // }
-        // return (1);
-        // /* break; */
-    // default:
-        // return (0);
-        // /* break; */
-    // }
+        c->state = ACPT_S_OK;
+        return (1);
+ err:
+        if (bio != NULL)
+            BIO_free(bio);
+        else if (s >= 0)
+            closesocket(s);
+        return (0);
+        /* break; */
+    case ACPT_S_OK:
+        if (b->next_bio == NULL) {
+            c->state = ACPT_S_GET_ACCEPT_SOCKET;
+            goto again;
+        }
+        return (1);
+        /* break; */
+    default:
+        return (0);
+        /* break; */
+    }
 
-// }
+}
 
-// static int acpt_read(BIO *b, char *out, int outl)
-// {
-    // int ret = 0;
-    // BIO_ACCEPT *data;
+static int acpt_read(BIO *b, char *out, int outl)
+{
+    int ret = 0;
+    BIO_ACCEPT *data;
 
-    // BIO_clear_retry_flags(b);
-    // data = (BIO_ACCEPT *)b->ptr;
+    BIO_clear_retry_flags(b);
+    data = (BIO_ACCEPT *)b->ptr;
 
-    // while (b->next_bio == NULL) {
-        // ret = acpt_state(b, data);
-        // if (ret <= 0)
-            // return (ret);
-    // }
+    while (b->next_bio == NULL) {
+        ret = acpt_state(b, data);
+        if (ret <= 0)
+            return (ret);
+    }
 
-    // ret = BIO_read(b->next_bio, out, outl);
-    // BIO_copy_next_retry(b);
-    // return (ret);
-// }
+    ret = BIO_read(b->next_bio, out, outl);
+    BIO_copy_next_retry(b);
+    return (ret);
+}
 
-// static int acpt_write(BIO *b, const char *in, int inl)
-// {
-    // int ret;
-    // BIO_ACCEPT *data;
+static int acpt_write(BIO *b, const char *in, int inl)
+{
+    int ret;
+    BIO_ACCEPT *data;
 
-    // BIO_clear_retry_flags(b);
-    // data = (BIO_ACCEPT *)b->ptr;
+    BIO_clear_retry_flags(b);
+    data = (BIO_ACCEPT *)b->ptr;
 
-    // while (b->next_bio == NULL) {
-        // ret = acpt_state(b, data);
-        // if (ret <= 0)
-            // return (ret);
-    // }
+    while (b->next_bio == NULL) {
+        ret = acpt_state(b, data);
+        if (ret <= 0)
+            return (ret);
+    }
 
-    // ret = BIO_write(b->next_bio, in, inl);
-    // BIO_copy_next_retry(b);
-    // return (ret);
-// }
+    ret = BIO_write(b->next_bio, in, inl);
+    BIO_copy_next_retry(b);
+    return (ret);
+}
 
 static long acpt_ctrl(BIO *b, int cmd, long num, void *ptr)
 {
@@ -436,14 +436,14 @@ static long acpt_ctrl(BIO *b, int cmd, long num, void *ptr)
     return (ret);
 }
 
-// static int acpt_puts(BIO *bp, const char *str)
-// {
-    // int n, ret;
+static int acpt_puts(BIO *bp, const char *str)
+{
+    int n, ret;
 
-    // n = strlen(str);
-    // ret = acpt_write(bp, str, n);
-    // return (ret);
-// }
+    n = strlen(str);
+    ret = acpt_write(bp, str, n);
+    return (ret);
+}
 
 BIO *BIO_new_accept(char *str)
 {

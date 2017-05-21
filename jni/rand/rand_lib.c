@@ -108,7 +108,7 @@ int RAND_set_rand_method(const RAND_METHOD *meth)
             // default_RAND_meth = RAND_SSLeay();
     // }
     // return default_RAND_meth;
-// }
+//}
 
 #ifndef OPENSSL_NO_ENGINE
 int RAND_set_rand_engine(ENGINE *engine)
