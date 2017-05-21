@@ -202,36 +202,36 @@ static void (MS_FAR *dynlock_destroy_callback) (struct CRYPTO_dynlock_value
                                                 *l, const char *file,
                                                 int line) = 0;
 
-// int CRYPTO_get_new_lockid(char *name)
-// {
-    // char *str;
-    // int i;
+int CRYPTO_get_new_lockid(char *name)
+{
+    char *str;
+    int i;
 
-// #if defined(OPENSSL_SYS_WIN32) || defined(OPENSSL_SYS_WIN16)
-    // /*
-     // * A hack to make Visual C++ 5.0 work correctly when linking as a DLL
-     // * using /MT. Without this, the application cannot use any floating point
-     // * printf's. It also seems to be needed for Visual C 1.5 (win16)
-     // */
-    // SSLeay_MSVC5_hack = (double)name[0] * (double)name[1];
-// #endif
+#if defined(OPENSSL_SYS_WIN32) || defined(OPENSSL_SYS_WIN16)
+    /*
+     * A hack to make Visual C++ 5.0 work correctly when linking as a DLL
+     * using /MT. Without this, the application cannot use any floating point
+     * printf's. It also seems to be needed for Visual C 1.5 (win16)
+     */
+    SSLeay_MSVC5_hack = (double)name[0] * (double)name[1];
+#endif
 
-    // if ((app_locks == NULL)
-        // && ((app_locks = sk_OPENSSL_STRING_new_null()) == NULL)) {
-        //CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_LOCKID, ERR_R_MALLOC_FAILURE);
-        // return (0);
-    // }
-    // if ((str = BUF_strdup(name)) == NULL) {
-        //CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_LOCKID, ERR_R_MALLOC_FAILURE);
-        // return (0);
-    // }
-    // i = sk_OPENSSL_STRING_push(app_locks, str);
-    // if (!i)
-        // OPENSSL_free(str);
-    // else
-        // i += CRYPTO_NUM_LOCKS;  /* gap of one :-) */
-    // return (i);
-// }
+    if ((app_locks == NULL)
+        && ((app_locks = sk_OPENSSL_STRING_new_null()) == NULL)) {
+        CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_LOCKID, ERR_R_MALLOC_FAILURE);
+        return (0);
+    }
+    if ((str = BUF_strdup(name)) == NULL) {
+        CRYPTOerr(CRYPTO_F_CRYPTO_GET_NEW_LOCKID, ERR_R_MALLOC_FAILURE);
+        return (0);
+    }
+    i = sk_OPENSSL_STRING_push(app_locks, str);
+    if (!i)
+        OPENSSL_free(str);
+    else
+        i += CRYPTO_NUM_LOCKS;  /* gap of one :-) */
+    return (i);
+}
 
 int CRYPTO_num_locks(void)
 {

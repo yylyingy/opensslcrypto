@@ -22,7 +22,6 @@ LOCAL_SRC_FILES :=\
 	bio/b_print.c \
 	bio/b_sock.c \
 	bio/bf_buff.c \
-	bio/bf_nbio.c \
 	bio/bf_null.c \
 	bio/bio_cb.c \
 	bio/bio_err.c \
@@ -35,6 +34,8 @@ LOCAL_SRC_FILES :=\
 	bio/bss_mem.c \
 	bio/bss_null.c \
 	bio/bss_sock.c \
+	buffer/buffer.c \
+	buffer/buf_str.c \
 	des/cbc_cksm.c \
 	des/cbc_enc.c \
 	des/cfb64ede.c \
@@ -72,9 +73,8 @@ LOCAL_SRC_FILES :=\
 	stack/stack.c \
 	ui/ui_lib.c \
 	ui/ui_openssl.c \
-	ui/ui_util.c \
-	buffer/buffer.c \
-	buffer/buf_str.c
+	ui/ui_util.c
+	
 
 	
 ifeq ($(TARGET_ARCH),arm)
