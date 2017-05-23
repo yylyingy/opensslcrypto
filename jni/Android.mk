@@ -12,6 +12,11 @@ arm_src_files := \
     sha/asm/sha512-armv4.S
 non_arm_src_files := aes/aes_core.c
 
+jni_src_files := \
+	native-lib.cpp \
+	MyBASE64.cpp \
+	My3DES.cpp
+
 LOCAL_SRC_FILES :=\
 	cryptlib.c \
 	mem.c \
@@ -83,6 +88,9 @@ ifeq ($(TARGET_ARCH),arm)
 else
 	LOCAL_SRC_FILES += $(non_arm_src_files)
 endif
+
+
+LOCAL_SRC_FILES += $(jni_src_files)
 	
 #LOCAL_C_INCLUDES := $(LOCAL_PATH)
 LOCAL_CFLAGS += -O3 -fstrict-aliasing -fprefetch-loop-arrays \
