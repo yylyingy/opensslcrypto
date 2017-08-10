@@ -537,7 +537,11 @@ endif
 #LOCAL_C_INCLUDES := $(LOCAL_PATH)
 LOCAL_CFLAGS += -O3 -fstrict-aliasing -fprefetch-loop-arrays \
     -DANDROID -DANDROID_TILE_BASED_DECODE -DENABLE_ANDROID_NULL_CONVERT
-	
+#	so优化
+#LOCAL_CPPFLAGS += -ffunction-sections -fdata-sections -fvisibility=hidden
+#LOCAL_CFLAGS += -ffunction-sections -fdata-sections -fvisibility=hidden
+#so 优化
+
 # From CLFAG=	
 LOCAL_CFLAGS += -DOPENSSL_THREADS -D_REENTRANT -DDSO_DLFCN -DHAVE_DLFCN_H -DL_ENDIAN #-DTERMIO
 
