@@ -1,2 +1,3 @@
 # opensslcrypto
 本分支启用了OPENSSL CRYPTO中所有的加解密算法，使用openssl 1.0.1u release
+本分支添加了cpp文件，将所有app需用通过jni调用的函数实现辐照到cpp目录编译即可，可极大优化so占用存储大小
