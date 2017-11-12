@@ -4,7 +4,7 @@
 
 #include "TDMD5.h"
 #include "Log.h"
-#include <algorithm>
+//#include <algorithm>
 #include <md5.h>
 #include <string.h>
 #include <stdio.h>
@@ -24,13 +24,13 @@ std::string TDMD5::encryptMD5(const std::string& msg){
     char  tmp[3]={ '\0' },buf[33]={ '\0' };
     MD5((const unsigned char *) msg.c_str(), msg.length(), md);
     for  (i = 0; i < 16; i++){
-        LOGD (tmp, "%2.2x" ,md[i]);
+//        LOGD (tmp, "%2.2x" ,md[i]);
         strcat (buf,tmp);
     }
-    LOGD ( "%s\n" ,buf);
+//    LOGD ( "%s\n" ,buf);
     md5Result.assign(buf);
 
-    transform(md5Result.begin(), md5Result.end(), md5Result.begin(), ::toupper);//转大写
+//    transform(md5Result.begin(), md5Result.end(), md5Result.begin(), ::toupper);//转大写
 
 //    testSign();
     return  md5Result;

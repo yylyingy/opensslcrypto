@@ -37,6 +37,7 @@ std::string TDAES::encodeAES( const std::string& password, const std::string& da
     {
         std::string str16 = data_bak.substr(i*AES_BLOCK_SIZE, AES_BLOCK_SIZE);
         unsigned char out[AES_BLOCK_SIZE];
+
         ::memset(out, 0, AES_BLOCK_SIZE);
 		        //看源码就是ECB模式,解密一样
 

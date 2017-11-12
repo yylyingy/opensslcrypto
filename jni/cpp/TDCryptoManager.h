@@ -6,7 +6,7 @@
 #define ENCRYPTJNILIB_TDCRYPTOMANAGER_H
 #include <jni.h>
 #include "TD3DES.h"
-#include "TDRSASign.h"
+#include "TDRSACrypto.h"
 
 #define ONLY_3DES false //是否仅仅支持3DES算法
 
@@ -24,13 +24,14 @@ public:
     jstring encryptRSA(JNIEnv *env, jobject instance, jstring msg_);
     jstring decryptRSA(JNIEnv *env, jobject instance, jstring msg_);
     jstring rsaSha1Sign(JNIEnv *env,jobject instance,jstring msg_);
+    jstring Sha1(JNIEnv *env, jobject instance, jstring msg_);
     ~TDCryptoManager();
 private:
     TD3DES *td3DES;
     /**
      * RSA_SHA1签名对象
      */
-    TDRSASign *tdrsaSign;
+    TDRSACrypto *tdrsaCrypto;
 };
 
 #endif //ENCRYPTJNILIB_TDCRYPTOMANAGER_H

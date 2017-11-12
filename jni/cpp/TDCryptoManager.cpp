@@ -11,11 +11,13 @@
 #include "TDAES.h"
 #include "TDRSA.h"
 #include "Log.h"
+#include "TDSha1.h"
+
 #undef PRINT_KEY
 #define PRINT_KEY false
 TDCryptoManager::TDCryptoManager() {
     td3DES = new TD3DES();
-    tdrsaSign = new TDRSASign();
+    tdrsaCrypto = new TDRSACrypto();
 }
 
 /**
@@ -286,37 +288,64 @@ jstring TDCryptoManager::encryptRSA(JNIEnv *env, jobject instance, jstring msg_)
  * @return
  */
 jstring TDCryptoManager::decryptRSA(JNIEnv *env, jobject instance, jstring msg_){
-    const char *msg = env->GetStringUTFChars(msg_, 0);
-
-    std::string msgC;
-    msgC.assign(msg);
-
-    std::string base64 = TDBASE64::base64_decodestring(msgC);
-
-    std::string rsa ;//= TDRSA::decryptRSA(base64);
-#if !ONLY_3DES
-    rsa = TDRSA::decryptRSA(base64);
-#endif
-
-    env->ReleaseStringUTFChars(msg_, msg);
-
-    return env->NewStringUTF(rsa.c_str());
+    /**************************************************************/
+//    const char *msg = env->GetStringUTFChars(msg_, 0);
+//
+//    std::string msgC;
+//    msgC.assign(msg);
+//
+//    std::string base64 = TDBASE64::base64_decodestring(msgC);
+//
+//    std::string rsa ;//= TDRSA::decryptRSA(base64);
+//#if !ONLY_3DES
+//    rsa = TDRSA::decryptRSA(base64);
+//#endif
+//
+//    env->ReleaseStringUTFChars(msg_, msg);
+//
+//    return env->NewStringUTF(rsa.c_str());
+    /**************************************************************/
+//    const char *msg = env->GetStringUTFChars(msg_,0);
+//    std::string msgC;
+//    msgC.assign(msg);
+//
+//    std::string base64 = TDBASE64::base64_decodestring(msgC);
+//
+//    std::string rsa ;//= TDRSA::decryptRSA(base64);
+//    rsa = tdrsaCrypto->decrypt(base64);
+//    env->ReleaseStringUTFChars(msg_, msg);
+//    return env->NewStringUTF(rsa.c_str());
+    std::string plaint = tdrsaCrypto->javaRelfectDecrypt(env,instance,msg_);
+    return env->NewStringUTF(plaint.c_str());
 }
 
 jstring TDCryptoManager::rsaSha1Sign(JNIEnv *env, jobject instance, jstring msg_) {
     std::string string;
     const char *c_msg_ = env->GetStringUTFChars(msg_,0);
     string.assign(c_msg_);
-    std::string signString = tdrsaSign->rsaSha1Sign(&string);
+    std::string signString = tdrsaCrypto->rsaSha1Sign(&string);
     env->ReleaseStringUTFChars(msg_,c_msg_);
     return env->NewStringUTF(signString.c_str());
+}
+
+jstring TDCryptoManager::Sha1(JNIEnv *env, jobject instance, jstring msg_) {
+    const char *msg = env->GetStringUTFChars(msg_, 0);
+    std::string msgC;
+    msgC.assign(msg);
+
+    std::string f;
+#if !ONLY_3DES
+    f = TDSha1::sha1(msgC);
+#endif
+    env->ReleaseStringUTFChars(msg_,msg);
+    return env->NewStringUTF(f.c_str());
 }
 
 /**
  * 析构函数，释放对象占用内存
  */
 TDCryptoManager::~TDCryptoManager() {
-    delete(td3DES);
-    delete(tdrsaSign);
+//    delete(td3DES);
+//    delete(tdrsaCrypto);
 }
 
