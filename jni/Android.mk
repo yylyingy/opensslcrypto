@@ -535,8 +535,14 @@ else
 endif
 	
 #LOCAL_C_INCLUDES := $(LOCAL_PATH)
+#arm64-v8a不支持-fprefetch-loop-arrays特性
+ifeq ($(TARGET_ARCH),arm64)
+LOCAL_CFLAGS += -O3 -fstrict-aliasing \
+    -DANDROID -DANDROID_TILE_BASED_DECODE -DENABLE_ANDROID_NULL_CONVERT
+else
 LOCAL_CFLAGS += -O3 -fstrict-aliasing -fprefetch-loop-arrays \
     -DANDROID -DANDROID_TILE_BASED_DECODE -DENABLE_ANDROID_NULL_CONVERT
+endif
 
 
 # From CLFAG=	
