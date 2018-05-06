@@ -13,14 +13,6 @@ arm_src_files := \
 non_arm_src_files := aes/aes_core.c
 
 LOCAL_SRC_FILES :=\
-	cpp/tdcrypto.cpp \
-	cpp/TDCryptoManager.cpp \
-	cpp/TD3DES.cpp \
-	cpp/TDRSA.cpp \
-	cpp/TDBASE64.cpp \
-	cpp/TDMD5.cpp \
-	cpp/TDAES.cpp \
-	cpp/TDRSASign.cpp \
 	cryptlib.c \
 	mem.c \
 	mem_clr.c \
@@ -545,17 +537,7 @@ endif
 #LOCAL_C_INCLUDES := $(LOCAL_PATH)
 LOCAL_CFLAGS += -O3 -fstrict-aliasing -fprefetch-loop-arrays \
     -DANDROID -DANDROID_TILE_BASED_DECODE -DENABLE_ANDROID_NULL_CONVERT
-#	so优化start
-LOCAL_CPPFLAGS += -ffunction-sections -fdata-sections -fvisibility=hidden
-LOCAL_CFLAGS += -ffunction-sections -fdata-sections -fvisibility=hidden
-#mips链接不支持--icf=safe
-ifeq ($(TARGET_ARCH), mips)
-    LOCAL_LDFLAGS += -Wl,--gc-sections
-else
-    LOCAL_LDFLAGS += -Wl,--gc-sections,--icf=safe
-endif
-LOCAL_LDLIBS += -llog
-#so 优化end
+
 
 # From CLFAG=	
 LOCAL_CFLAGS += -DOPENSSL_THREADS -D_REENTRANT -DDSO_DLFCN -DHAVE_DLFCN_H -DL_ENDIAN #-DTERMIO
@@ -602,4 +584,4 @@ LOCAL_MODULE_TAGS := optional
 # unbundled branch, built against NDK.
 LOCAL_SDK_VERSION := 17
 
-include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_STATIC_LIBRARY)
