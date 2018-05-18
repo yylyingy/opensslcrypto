@@ -12,6 +12,9 @@ arm_src_files := \
     sha/asm/sha512-armv4.S
 non_arm_src_files := aes/aes_core.c
 
+x86_64_asm_files := \
+    rc4/asm/rc4-md5-x86_64.S
+
 LOCAL_SRC_FILES :=\
 	cryptlib.c \
 	mem.c \
@@ -533,13 +536,23 @@ ifeq ($(TARGET_ARCH),arm)
 else
 	LOCAL_SRC_FILES += $(non_arm_src_files)
 endif
+
+ifeq ($(TARGET_ARCH),x86_64)
+	LOCAL_SRC_FILES += $(x86_64_asm_files)
+endif
 	
 #LOCAL_C_INCLUDES := $(LOCAL_PATH)
+#arm64-v8a不支持-fprefetch-loop-arrays特性
+ifeq ($(TARGET_ARCH),arm64)
+LOCAL_CFLAGS += -O3 -fstrict-aliasing \
+    -DANDROID -DANDROID_TILE_BASED_DECODE -DENABLE_ANDROID_NULL_CONVERT
+else
 LOCAL_CFLAGS += -O3 -fstrict-aliasing -fprefetch-loop-arrays \
     -DANDROID -DANDROID_TILE_BASED_DECODE -DENABLE_ANDROID_NULL_CONVERT
+endif
 	
 # From CLFAG=	
-LOCAL_CFLAGS += -DOPENSSL_THREADS -D_REENTRANT -DDSO_DLFCN -DHAVE_DLFCN_H -DL_ENDIAN #-DTERMIO
+LOCAL_CFLAGS += -D_REENTRANT -DDSO_DLFCN -DHAVE_DLFCN_H -DL_ENDIAN #-DTERMIO
 
 # From DEPFLAG=
 LOCAL_CFLAGS += -DOPENSSL_NO_CAMELLIA -DOPENSSL_NO_CAPIENG -DOPENSSL_NO_CAST -DOPENSSL_NO_CMS -DOPENSSL_NO_GMP -DOPENSSL_NO_IDEA -DOPENSSL_NO_JPAKE -DOPENSSL_NO_MD2 -DOPENSSL_NO_MDC2 -DOPENSSL_NO_RC5 -DOPENSSL_NO_SHA0 -DOPENSSL_NO_RFC3779 -DOPENSSL_NO_SEED -DOPENSSL_NO_STORE -DOPENSSL_NO_WHIRLPOOL
@@ -567,6 +580,13 @@ local_c_includes := \
 local_c_flags := -DNO_WINDOWS_BRAINDEATH
 LOCAL_CFLAGS += $(local_c_flags)
 
+#
+LOCAL_C_INCLUDES := \
+external/stlport/stlport \
+bionic \
+LOCAL_STATIC_LIBRARIES := libstlport_static
+#
+
 LOCAL_C_INCLUDES += $(local_c_includes)	
 
 LOCAL_MODULE := libcrypto
@@ -576,4 +596,4 @@ LOCAL_MODULE_TAGS := optional
 # unbundled branch, built against NDK.
 LOCAL_SDK_VERSION := 17
 
-include $(BUILD_SHARED_LIBRARY)
+include $(BUILD_STATIC_LIBRARY)
